@@ -1,0 +1,9 @@
+setup.cfg
+setup.py
+blockchain/__init__.py
+blockchain/block.py
+estudos_blockchain.egg-info/PKG-INFO
+estudos_blockchain.egg-info/SOURCES.txt
+estudos_blockchain.egg-info/dependency_links.txt
+estudos_blockchain.egg-info/not-zip-safe
+estudos_blockchain.egg-info/top_level.txt
