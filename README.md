@@ -23,6 +23,10 @@ Links uteis:
 
 **Comandos básicos:**
 
+* pipenv para listar comandos:
+        
+        pipenv
+
 * remove a virtualenv created by "pipenv run"
   
         pipenv --rm
