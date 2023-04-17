@@ -16,7 +16,8 @@ arquivo = open('texto.txt')
 
 # O block with - Forma Pythônica de manipular arquivos
 
-with open('texto.txt') as arquivo:
+with open(
+        'texto.txt') as arquivo:
     print(arquivo.readlines())
     print(arquivo.closed)
 

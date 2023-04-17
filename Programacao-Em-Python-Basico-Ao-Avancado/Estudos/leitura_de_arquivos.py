@@ -21,7 +21,8 @@ mode r -> Modo de Leitura. r -> read() -> ler
 
 # Exemplo
 
-arquivo = open('texto.txt')
+arquivo = open(
+    'texto.txt')
 
 # print(arquivo)
 
