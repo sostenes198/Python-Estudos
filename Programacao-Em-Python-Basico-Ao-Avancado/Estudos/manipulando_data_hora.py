@@ -56,7 +56,7 @@ print(nascimento)
 print(type(nascimento))
 """
 
-import datetime
+import estudos_datetime
 
 
 evento = datetime.datetime.now()
