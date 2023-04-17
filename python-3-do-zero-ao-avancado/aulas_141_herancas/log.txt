@@ -1,0 +1,3 @@
+Error: Faio Patrão LogFileMixin
+Success: Sucesso Patrão LogFileMixin
+Error: Faio Patrão LogFileMixin

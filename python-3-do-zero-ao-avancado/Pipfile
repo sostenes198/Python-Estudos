@@ -1,0 +1,26 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pytz = "*"
+types-pytz = "*"
+python-dateutil = "*"
+types-python-dateutil = "*"
+python-dotenv = "*"
+requests = "*"
+types-requests = "*"
+bs4 = "*"
+selenium = "*"
+pypdf2 = {extras = ["image"], version = "*"}
+openpyxl = "*"
+coverage = "*"
+
+[dev-packages]
+mypy = "*"
+flake8 = "*"
+autopep8 = "*"
+
+[requires]
+python_version = "3.11"
