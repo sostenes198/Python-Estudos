@@ -7,6 +7,7 @@ async def say(what):
 
 
 def say_after(delay, what):
+    print(f"Dentro da função say_after {what}")
     return asyncio.create_task(say(what))
 
 

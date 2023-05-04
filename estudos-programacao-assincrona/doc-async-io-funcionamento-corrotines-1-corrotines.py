@@ -9,9 +9,11 @@ async def say_after(delay, what):
 async def main():
     func1 = say_after(1, 'hello')
     func2 = say_after(2, 'world')
-    
+
+    await asyncio.sleep(4)
     print("Execuntadno coisa no meio")
     await asyncio.sleep(2)
+    
 
     await func1
     await func2
