@@ -6,6 +6,7 @@ async def say_after(delay, what):
     loop = asyncio.get_event_loop()
     fut = loop.create_future()
     fut.set_result(what)
+    print(f"Dentro da função say_after {what}")
     return fut
 
 

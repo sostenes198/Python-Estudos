@@ -10,6 +10,7 @@ async def main():
     func1 = asyncio.create_task(say_after(1, 'hello'))
     func2 = asyncio.create_task(say_after(2, 'world'))
 
+    await asyncio.sleep(4)
     print("Execuntadno coisa no meio")
     await asyncio.sleep(2)
 
