@@ -112,7 +112,7 @@ os.removedirs('geek2/mais')
 
 # Se algum dos diretórios contiver arquivos ou outros diretórios, o processo para.
 
-sudo apt-get install lsb-core
+sudo apt-get install lsb-core2
 
 os.remove('cesta1.txt')  # Não vai para a lixeira. É deletado imediatamente
 
