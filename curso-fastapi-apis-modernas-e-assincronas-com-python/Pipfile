@@ -6,6 +6,10 @@ name = "pypi"
 [packages]
 fastapi = "*"
 uvicorn = "*"
+psycopg2-binary = "*"
+sqlalchemy = "*"
+asyncpg = "*"
+sqlmodel = "*"
 
 [dev-packages]
 
