@@ -18,22 +18,6 @@
 # Ex:
 # with open('aula149.txt', 'w') as arquivo:
 #     ...
-
-from contextlib import contextmanager
-
-@contextmanager
-def my_open(caminho_arquivo, modo):
-    try:
-        print('Abrindo arquivo')
-        arquivo = open(caminho_arquivo, modo, encoding='utf8')
-        yield arquivo        
-    # except Exception as e:
-    #     print('Ccorreu erro')
-    finally:
-        print('Fechando arquivo')
-        arquivo.close()
-    
-
 class MyOpen:
     def __init__(self, caminho_arquivo, modo):
         self.caminho_arquivo = caminho_arquivo
@@ -48,15 +32,18 @@ class MyOpen:
     def __exit__(self, class_exception, exception_, traceback_):
         print('FECHANDO ARQUIVO')
         self._arquivo.close()
-        print(class_exception)
-        print(exception_)
-        print(traceback_)
-        
-        return True # Exceção tratada
+        # raise class_exception(*exception_.args).with_traceback(traceback_)
+
+        # print(class_exception)
+        # print(exception_)
+        # print(traceback_)
+        # exception_.add_note('Minha nota')
+
+        # return True  # Tratei a exceção
 
 
 with MyOpen('aula149.txt', 'w') as arquivo:
     arquivo.write('Linha 1\n')
-    arquivo.write('Linha 2\n', 1231)
+    arquivo.write('Linha 2\n')
     arquivo.write('Linha 3\n')
     print('WITH', arquivo)
