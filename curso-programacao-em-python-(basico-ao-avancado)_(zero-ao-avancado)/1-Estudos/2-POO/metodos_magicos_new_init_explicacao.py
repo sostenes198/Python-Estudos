@@ -18,6 +18,9 @@ class A:
     def __repr__(self):
         return 'A()'
 
+# exemplo
+# a = object.__new__(A)
+# a.__init__()
 
 a = A(123)
 print(a.x)
