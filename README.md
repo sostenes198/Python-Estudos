@@ -9,8 +9,28 @@ Tutorial instalando pip para gerenciamento de pacotes pyhton: [installing-packag
 **Comandos básicos:**
 
 * Certifique-se que pip, setuptools e wheel estejam atualizados:
+
+    ```
+    py -m pip install --upgrade pip setuptools wheel
+    ```
+
+* Listar todos os pacotes instalados
         
-        py -m pip install --upgrade pip setuptools wheel
+    ```
+    pip list --outdated
+    ```
+
+#### Atualizando dependências globais do PIP:
+
+[https://www.activestate.com/resources/quick-reads/how-to-update-all-python-packages/](https://www.activestate.com/resources/quick-reads/how-to-update-all-python-packages/)
+
+**Powershell:**
+
+    pip freeze | %{$_.split('==')[0]} | %{pip install --upgrade $_}
+    
+**Bash:**
+
+    pip3 list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip3 install -U
 
 ### Pipenv
 
@@ -27,24 +47,32 @@ Links uteis:
 
 * pipenv para listar comandos:
         
-        pipenv
+    ```
+    pipenv
+    ```
 
 *  criar ambiente virtual
 
-        pipenv --python 3.11.1 (3.11.1<VERSION_PYTON>) 
+    ```
+    pipenv --python 3.11.1 (3.11.1<VERSION_PYTON>)
+    ``` 
 
 * remove a virtualenv created by "pipenv run"
   
-        pipenv --rm
+    ```
+    pipenv --rm
+    ```
 
 * Listar local onde o ambiente virtual está
 
-        pipenv --venv
+    ```
+    pipenv --venv
+    ```
 
 ## Mypy:
 
 ### Documentação:
-    https://mypy.readthedocs.io/en/stable/getting_started.html
+[https://mypy.readthedocs.io/en/stable/getting_started.html](https://mypy.readthedocs.io/en/stable/getting_started.html)
 
 ### Instalação:
      pipenv install mypy --save-dev

@@ -8,7 +8,8 @@
 
 from typing import Optional
 
-variavael_1 = 10
+"""variavel_1 valor default 10"""
+variavel_1 = 10
 
 
 def soma(x: int, y: int) -> int:
@@ -43,8 +44,8 @@ def multiplica(x: int, y: int, z: Optional[int] = None) -> int:
     if z is None:
         return x * y
     return x * y * z
-    
-    
-variavael_2 = 20
-variavael_3 = 30
-variavael_4 = 40
+
+
+variavel_2 = 20
+variavel_3 = 30
+variavel_4 = 40

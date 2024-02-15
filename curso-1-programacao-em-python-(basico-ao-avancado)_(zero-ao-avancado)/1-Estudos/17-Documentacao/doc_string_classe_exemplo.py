@@ -14,7 +14,10 @@ class Foo:
 
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
     
-    """   
+    """
+    
+    variavel_1 = 10
+    variavel_2 = 20
     
     def soma(self, x: int, y: int) -> int:
         """Soma X e Y
