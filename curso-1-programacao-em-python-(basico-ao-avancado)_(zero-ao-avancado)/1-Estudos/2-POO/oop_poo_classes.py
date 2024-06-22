@@ -5,7 +5,7 @@ from abc import ABC, abstractmethod
 from decorator_decorators import LogDecorator, MyReprDecorator
 from typing import List, Dict, Generator, Self, Any
 from inspect import signature
-from Estudos.POO.log import LogPrintMixin
+from Log_Mixin_Abstracao_Uniao.log import LogPrintMixin
 
 
 class Animal(ABC):
