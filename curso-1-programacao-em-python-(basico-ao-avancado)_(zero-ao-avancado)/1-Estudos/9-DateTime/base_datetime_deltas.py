@@ -26,7 +26,7 @@ print(tempo_para_evento)
 print(f'Faltam {tempo_para_evento.days} dias, {tempo_para_evento.seconds // 60 // 60} horas...')
 """
 
-import estudos_datetime
+import datetime
 
 data_da_compra = datetime.datetime.now()
 
