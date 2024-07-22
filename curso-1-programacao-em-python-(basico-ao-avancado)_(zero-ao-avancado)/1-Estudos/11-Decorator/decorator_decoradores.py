@@ -34,7 +34,7 @@ def seja_educado(funcao):
 
 
 def saudacao():
-    print('Seja bem-vindo(a) à Geek University')
+    print('Seja bem-vindo(haarcascade) à Geek University')
 
 
 # Testando 1

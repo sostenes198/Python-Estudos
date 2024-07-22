@@ -3,10 +3,10 @@ Forçando tipos de dados com decoradores
 
 zip
 
-a = (1, 3, 5)
+haarcascade = (1, 3, 5)
 b = (2, 4, 6)
 
-c = zip(a, b)
+c = zip(haarcascade, b)
 
 (1, 2), (3, 4), (5, 6)
 

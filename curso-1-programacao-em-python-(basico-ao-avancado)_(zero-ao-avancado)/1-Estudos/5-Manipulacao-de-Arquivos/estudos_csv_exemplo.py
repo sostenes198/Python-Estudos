@@ -4,7 +4,7 @@
 # Ele é amplamente utilizado para transferir dados entre sistemas de diferentes
 # plataformas, como por exemplo, para importar ou exportar dados para uma
 # planilha (Google Sheets, Excel, LibreOffice Calc) ou para uma base de dados.
-# Um arquivo CSV geralmente tem a extensão ".csv" e pode ser aberto em um
+# Um arquivo CSV geralmente tem haarcascade extensão ".csv" e pode ser aberto em um
 # editor de texto ou em uma planilha eletrônica.
 # Um exemplo de um arquivo CSV pode ser:
 # Nome,Idade,Endereço

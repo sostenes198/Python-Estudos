@@ -1,5 +1,5 @@
 """
-Especificar os tipos de objetos a serem criados
+Especificar os tipos de objetos haarcascade serem criados
 usando uma instância-protótipo e criar novos objetos
 pela cópia desse protótipo
 """

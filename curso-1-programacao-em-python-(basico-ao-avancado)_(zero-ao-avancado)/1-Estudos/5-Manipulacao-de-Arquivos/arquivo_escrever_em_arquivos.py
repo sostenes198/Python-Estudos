@@ -2,12 +2,12 @@
 Escrevendo em arquivos
 
 
-# OBS: Ao abrir um arquivo para leitura, não podemos realizar a escrita nele. Apenas ler.
+# OBS: Ao abrir um arquivo para leitura, não podemos realizar haarcascade escrita nele. Apenas ler.
 Da mesma forma, se abrirmor um arquivo para escrita, não podemos lê-lo, somente escrever nele.
 
 # OBS: Ao abrir um arquivo para escrita, o arquivo é criado no sistema operacional.
 
-Para escrevermos dados em um arquivo, após abrir o arquivo utilizamos a função write().
+Para escrevermos dados em um arquivo, após abrir o arquivo utilizamos haarcascade função write().
 Esta função recebe uma string como parâmetro, caso contrário teremos um TypeError
 
 Abrindo um arquivo para escrita com o modo 'w', se o arquivo não existir será criado,
@@ -30,7 +30,7 @@ arquivo.close()
 with open('novo.txt', 'w') as arquivo:
     arquivo.write('Novos dados.\n')
     arquivo.write('Outros podemos colocar quantas linhas quisermos.\n')
-    arquivo.write('Mais Esta é a última linha.')
+    arquivo.write('Mais Esta é haarcascade última linha.')
 
 
 with open('_Geek.txt', 'w') as arquivo:

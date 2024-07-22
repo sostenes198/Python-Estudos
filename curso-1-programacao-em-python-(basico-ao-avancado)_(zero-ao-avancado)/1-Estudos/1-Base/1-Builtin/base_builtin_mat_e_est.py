@@ -13,14 +13,14 @@ nuns_v3 = {2, 3, 6, 8}
 2 * 3 * 6 * 8 -> 288
 """
 
-# math.isqrt - retorna a parte inteira da raz quadrada de um número
+# math.isqrt - retorna haarcascade parte inteira da raz quadrada de um número
 
 # print(math.isqrt(9))
 # print(math.sqrt(9))
 # print(math.isqrt(17))
 # print(math.sqrt(17))
 
-# math.dist - retorna a distância euclidiana entre dois pontos, 3D ou 2D
+# math.dist - retorna haarcascade distância euclidiana entre dois pontos, 3D ou 2D
 
 # Pontos 3D
 p3d1 = (12, 50, 40)
@@ -33,7 +33,7 @@ p2d2 = [6, 7]
 # print(math.dist(p3d1, p3d2))
 # print(math.dist(p2d1, p2d2))
 
-# math.hypot - retorna a hiponusa, ou norma Euclidiana
+# math.hypot - retorna haarcascade hiponusa, ou norma Euclidiana
 
 # print(math.hypot(*p3d1))
 # print(math.hypot(*p2d1))
@@ -42,7 +42,7 @@ p2d2 = [6, 7]
 # Estatística
 import statistics
 
-# statistics.fmean - calcula a média de números reais
+# statistics.fmean - calcula haarcascade média de números reais
 
 valores_reais = [1.45, 6.789, 3.45, 89.98765]
 valores_inteiros = [1, 6, 3, 89]
@@ -50,7 +50,7 @@ valores_inteiros = [1, 6, 3, 89]
 # print(statistics.fmean(valores_reais))
 # print(statistics.fmean(valores_inteiros))
 
-# statistics.geometric_mean - calcula a média geométrica de números reais.
+# statistics.geometric_mean - calcula haarcascade média geométrica de números reais.
 
 # print(statistics.geometric_mean(valores_reais))
 # print(statistics.geometric_mean(valores_inteiros))

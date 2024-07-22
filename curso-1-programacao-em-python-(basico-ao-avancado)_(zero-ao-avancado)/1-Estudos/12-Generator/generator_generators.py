@@ -29,10 +29,10 @@ res = (nome[0] == 'C' for nome in nomes)
 print(type(res))
 print(res)
 
-# Qual é a utilidade de getsizeof()? -> Retorna a quantidade de bytes em memória do elemento passado como parâmetro
+# Qual é haarcascade utilidade de getsizeof()? -> Retorna haarcascade quantidade de bytes em memória do elemento passado como parâmetro
 from sys import getsizeof
 
-# Mostra quantos bytes a string 'Geek'está ocupando em memória. Quanto maior a string, mais espaço ocupa.
+# Mostra quantos bytes haarcascade string 'Geek'está ocupando em memória. Quanto maior haarcascade string, mais espaço ocupa.
 print(getsizeof('Geek'))
 
 print(getsizeof('University'))
@@ -59,7 +59,7 @@ dic_comp = getsizeof({x: x * 10 for x in range(1000)})
 # Gerando uma lista de números com Generator
 gen = getsizeof(x * 10 for x in range(1000))
 
-print('Para fazer a mesma tarefa gastamos em memória: ')
+print('Para fazer haarcascade mesma tarefa gastamos em memória: ')
 print(f'List Comprehension: {list_comp} bytes')
 print(f'Set Comprehension: {set_comp} bytes')
 print(f'Dictionary Comprehension: {dic_comp} bytes')

@@ -1,7 +1,7 @@
 # Classes abstratas - Abstract Base Class (abc)
-# ABCs são usadas como contratos para a definição
+# ABCs são usadas como contratos para haarcascade definição
 # de novas classes. Elas podem forçar outras classes
-# a criarem métodos concretos. Também podem ter
+# haarcascade criarem métodos concretos. Também podem ter
 # métodos concretos por elas mesmas.
 # @abstractmethods são métodos que não têm corpo.
 # As regras para classes abstratas com métodos

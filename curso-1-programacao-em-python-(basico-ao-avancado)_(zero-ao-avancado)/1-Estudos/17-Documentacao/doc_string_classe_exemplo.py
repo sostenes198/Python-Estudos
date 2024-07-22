@@ -45,7 +45,7 @@ class Foo:
         :param x: int
         :param y: int
         :param z: Optional[int] default is None
-        :return: Retorna a multiplicação de x e y e/ou x, y e z.
+        :return: Retorna haarcascade multiplicação de x e y e/ou x, y e z.
         :rtype: int
         """
     

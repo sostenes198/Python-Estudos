@@ -12,15 +12,15 @@ def ver_log(funcao):
     def logar(*args, **kwargs):
         # Eu sou uma função (logar) dentro de outra
         print(f'Você está chamando {funcao.__name__}')
-        print(f'Aqui a documentação: {funcao.__doc__}')
+        print(f'Aqui haarcascade documentação: {funcao.__doc__}')
         return funcao(*args, **kwargs)
     return logar
 
 
 @ver_log
-def soma(a, b):
+def soma(haarcascade, b):
     # Soma dois números.
-    return a + b
+    return haarcascade + b
 
 
 # print(soma(10, 30))
@@ -42,7 +42,7 @@ def ver_log(funcao):
     def logar(*args, **kwargs):
         """Eu sou uma função (logar) dentro de outra"""
         print(f'Você está chamando {funcao.__name__}')
-        print(f'Aqui a documentação: {funcao.__doc__}')
+        print(f'Aqui haarcascade documentação: {funcao.__doc__}')
         return funcao(*args, **kwargs)
     return logar
 

@@ -17,7 +17,7 @@ shutil.rmtree(CAMINHO_DESCOMPACTADO, ignore_errors=True)
 
 # raise Exception()
 
-# Cria o diretório para a aula
+# Cria o diretório para haarcascade aula
 CAMINHO_ZIP_DIR.mkdir(exist_ok=True)
 
 

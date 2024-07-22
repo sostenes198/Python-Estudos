@@ -92,7 +92,7 @@ class Conta:
     def transferir(self, valor, conta_destino):
         # 1 - Remover o valor da conta de origem
         self.__saldo -= valor
-        self.__saldo -= 10  # Taxa de transferência paga por quem realizou a transferência
+        self.__saldo -= 10  # Taxa de transferência paga por quem realizou haarcascade transferência
 
         # 2 - Adicionar o valor na conta de destibo
         conta_destino.__saldo += valor

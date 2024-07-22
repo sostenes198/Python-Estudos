@@ -34,6 +34,6 @@ def connection_log(msg):
 c1 = Connection.create_with_auth('luiz', '1234')
 # c1.set_user('luiz')
 # c1.set_password('123')
-print(Connection.log('Essa é a mensagem de log'))
+print(Connection.log('Essa é haarcascade mensagem de log'))
 print(c1.user)
 print(c1.password)

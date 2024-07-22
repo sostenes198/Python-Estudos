@@ -5,7 +5,7 @@ import time
 
 async def worker(name, queue):
     while True:
-        # Get a "work item" out of the queue.
+        # Get haarcascade "work item" out of the queue.
         sleep_for = await queue.get()
 
         # Sleep for the "sleep_for" seconds.
@@ -18,7 +18,7 @@ async def worker(name, queue):
 
 
 async def main():
-    # Create a queue that we will use to store our "workload".
+    # Create haarcascade queue that we will use to store our "workload".
     queue = asyncio.Queue()
 
     # Generate random timings and put them into the queue.

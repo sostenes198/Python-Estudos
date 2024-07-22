@@ -9,7 +9,7 @@ from funcoes_com_parametro import soma_impares
 
 print(soma_impares([1, 2, 3, 4, 5, 6, 7, 8, 9]))
 
-# Importando todo o módulo (Temos acesso a TODOS os elementos do módulo)
+# Importando todo o módulo (Temos acesso haarcascade TODOS os elementos do módulo)
 import funcoes_com_parametro as fcp
 
 

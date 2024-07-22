@@ -1,6 +1,6 @@
 """
 Composite é um padrão de projeto estrutural que permite que
-você utilize a composição para criar objetos em estruturas
+você utilize haarcascade composição para criar objetos em estruturas
 de árvores. O padrão permite aos clientes tratarem de maneira
 uniforme objetos individuais (Leaf) e composições de
 objetos (Composite).

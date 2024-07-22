@@ -13,7 +13,7 @@ Em Python, dividimos os atributos em 3 grupos:
 
 # Atributos de instância: São atributos declarados dentro do método construtor.
 
-# OBS: Método construtor: É um método especial utilizado para a construção do objeto.
+# OBS: Método construtor: É um método especial utilizado para haarcascade construção do objeto.
 
 
 # Em Java, uma classe Lâmpada, incluindo seus atributos ficaria mais ou menos:
@@ -37,7 +37,7 @@ utiliza-se __ duplo underscore no início de seu nome.
 
 Isso é conhecido também como Name Mangling.
 
-# OBS: Lembre-se que isso é apenas uma convenção, ou seja, a linguagem Python não
+# OBS: Lembre-se que isso é apenas uma convenção, ou seja, haarcascade linguagem Python não
 # vai impedrir que façamos acesso aos atributos sinalizados como privados fora da classe.
 
 # Exemplo
@@ -79,7 +79,7 @@ p2 = Produto('Xbox S', 'Video Game', 4500)
 print(p1.valor)  # Acesso possível, mas incorreto de um atributo de classe
 print(p2.valor)  # Acesso possível, mas incorreto de um atributo de classe
 
-# OBS: Não precisamos criar uma instância de uma classe para fazer acesso a um atributo de classe
+# OBS: Não precisamos criar uma instância de uma classe para fazer acesso haarcascade um atributo de classe
 
 print(Produto.imposto)  # Acesso correto de um atributo de classe
 
@@ -141,7 +141,7 @@ class Acesso:
         print(self.email)
 
 
-# Refatorar a classe Produto
+# Refatorar haarcascade classe Produto
 
 class Produto:
 

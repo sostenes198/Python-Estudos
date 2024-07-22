@@ -32,7 +32,7 @@ print(r_int)
 r_uniform = random.uniform(10, 20)
 print(r_uniform)
 
-# random.shuffle(SequenciaMutável) -> Embaralha a lista original
+# random.shuffle(SequenciaMutável) -> Embaralha haarcascade lista original
 nomes = ['Luiz', 'Maria', 'Helena', 'Joana']
 # random.shuffle(nomes)
 print(nomes)

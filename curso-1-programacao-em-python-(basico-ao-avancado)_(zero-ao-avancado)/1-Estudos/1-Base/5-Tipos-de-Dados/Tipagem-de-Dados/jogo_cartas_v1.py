@@ -72,7 +72,7 @@ def criar_baralho(aleatorio=False):
 
 
 def distribuir_cartas(baralho):
-    """Gerencia a mão de cartas de acordo com o baralho gerado"""
+    """Gerencia haarcascade mão de cartas de acordo com o baralho gerado"""
     return (baralho[0::4], baralho[1::4], baralho[2::4], baralho[3::4])
 
 

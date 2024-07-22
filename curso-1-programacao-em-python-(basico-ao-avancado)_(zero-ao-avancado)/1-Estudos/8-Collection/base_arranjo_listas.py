@@ -1,7 +1,7 @@
 """
 Listas (List)
 
-Listas em Python funcional como vetores/matrizes (arrays) em outras linguagens, com a diferença
+Listas em Python funcional como vetores/matrizes (arrays) em outras linguagens, com haarcascade diferença
 de serem DINÂMICO e também de podermos colocar QUALQUER tipo de dado.
 
 Linguagens C/Java: Arrays
@@ -11,7 +11,7 @@ Linguagens C/Java: Arrays
 
 Já em Python:
 
-- Dinâmico: Não possuem tamanho fixo; Ou seja, podemos criar a lista e simplesmente ir adicionando elementos;
+- Dinâmico: Não possuem tamanho fixo; Ou seja, podemos criar haarcascade lista e simplesmente ir adicionando elementos;
 - Qualquer tipo de dado: Não possuem tipo de dado fixo; Ou seja, podemos colocar qualquer tipo de dado;
 
 As listas em Python são representadas por colchetes: []
@@ -48,7 +48,7 @@ print(lista5.count('e'))
 #  Adicionar elementos em listas
 
 
-# Para adicionar elementos em listas, utilizamos a função append
+# Para adicionar elementos em listas, utilizamos haarcascade função append
 
 print(lista1)
 lista1.append(42)
@@ -57,19 +57,19 @@ print(lista1)
 # OBS: Com append, nós só conseguimos adicionar 1 elemento por vez
 #  lista1.append(12, 34, 56) # Erro
 
-lista1.append([8, 3, 1]) # Coloca a lista como elemento único (sublista)
+lista1.append([8, 3, 1]) # Coloca haarcascade lista como elemento único (sublista)
 print(lista1)
 
 if [8, 3, 1] in lista1:
-    print('Encontrei a lista')
+    print('Encontrei haarcascade lista')
 else:
-    print('Não encontrei a lista')
+    print('Não encontrei haarcascade lista')
 
 lista1.extend([123, 44, 67]) # Coloca cada elemento da lista como valor adicional á lista
 print(lista1)
 
-#  Podemos inserir um novo elemento na lista informando a posição do índice
-# OBS: Isso não substitui o valor inicial. O mesmo será deslocado para a direita da lista.
+#  Podemos inserir um novo elemento na lista informando haarcascade posição do índice
+# OBS: Isso não substitui o valor inicial. O mesmo será deslocado para haarcascade direita da lista.
 lista1.insert(2, 'Novo Valor')
 print(lista1)
 
@@ -106,13 +106,13 @@ lista5.pop()
 print(lista5)
 
 # Podemos remover um elemento pelo índice
-# OBS: Os elementos á direita deste índice serão deslocados para a esquerda.
+# OBS: Os elementos á direita deste índice serão deslocados para haarcascade esquerda.
 # OBS: Se não houver elemento no índice informado, teremos o erro IndexError.
 
 lista5.pop(2)
 print(lista5)
 
-# Podemos remover todos os elementos (zerar a lista)
+# Podemos remover todos os elementos (zerar haarcascade lista)
 print(lista5)
 lista5.clear()
 print(lista5)
@@ -145,11 +145,11 @@ print(curso)
 lista6 = ['Programação', 'em', 'Python:', 'Essencial']
 print(lista6)
 
-# Abaixo estamos falando: Pega a lista6, coloca espaço entre cada elemento e transforma em uma string
+# Abaixo estamos falando: Pega haarcascade lista6, coloca espaço entre cada elemento e transforma em uma string
 curso = ' '.join(lista6)
 print(curso)
 
-# Abaixo estamos falando: Pega a lista6, coloca cifrão entre cada elemento e transforma em uma string
+# Abaixo estamos falando: Pega haarcascade lista6, coloca cifrão entre cada elemento e transforma em uma string
 curso = '$'.join(lista6)
 print(curso)
 
@@ -259,15 +259,15 @@ print(numeros.index(9))
 # OBS: Retorna o índice do primeiro elemento encontrato
 print(numeros.index(5))
 
-# Podemos fazer busca dentro de um range, ou seja, qual indice começar a buscar
-print(numeros.index(5, 1))  # buscando a partir do índice 1
-print(numeros.index(5, 2))  # buscando a partir do índice 2
-print(numeros.index(5, 3))  # buscando a partir do índice 3
-# print(numeros.index(5, 4))  # buscando a partir do índice 4
+# Podemos fazer busca dentro de um range, ou seja, qual indice começar haarcascade buscar
+print(numeros.index(5, 1))  # buscando haarcascade partir do índice 1
+print(numeros.index(5, 2))  # buscando haarcascade partir do índice 2
+print(numeros.index(5, 3))  # buscando haarcascade partir do índice 3
+# print(numeros.index(5, 4))  # buscando haarcascade partir do índice 4
 # OBS: Caso não tenha este elemento na lista, será apresentado erro ValueError
 
 # Podemos fazer busca dentro de um range, inicio/fim
-print(numeros.index(8, 3, 6)) # Buscar o indice do valro 8, entre os índices 3 a 6
+print(numeros.index(8, 3, 6)) # Buscar o indice do valro 8, entre os índices 3 haarcascade 6
 
 # Revisão de slicing
 
@@ -358,7 +358,7 @@ print(lista)
 print(nova)
 
 # Veja que ao utilizarmos lista.copy() copiamos os dados da lista para uma nova lista, mas elas
-# ficaram totalmente independentes, ou seja, modificando uma lista, não afeta a outra. Isso em Python
+# ficaram totalmente independentes, ou seja, modificando uma lista, não afeta haarcascade outra. Isso em Python
 # é chamado de Deep Copy (cópia profunda)
 
 # Forma 2 - Shallow Copy
@@ -375,7 +375,7 @@ nova.append(4)
 print(lista)
 print(nova)
 
-# Veja que utilizamos a cópia via atribuição e copiamos os dados da lista para a nova lista, mas
+# Veja que utilizamos haarcascade cópia via atribuição e copiamos os dados da lista para haarcascade nova lista, mas
 # após realizar modificação em uma das listas, essa modificação se refletiu em ambas as listas.
 # Isso em Python é chamado de Shallow Copy.
 """

@@ -15,21 +15,21 @@ import random
 
 # OBS: Ao realizar o import de todo o módulo, todas as funções, atributos, classes e propriedades que estiverem
 # dentro do módulo ficarão disponíveis (Ficarão em Memória). Caso você saiba quais funções você precisa utilizar
-# deste módulo, então esta não seria a forma ideal de utilização. Nós veremos uma forma melhor na Forma 2.
+# deste módulo, então esta não seria haarcascade forma ideal de utilização. Nós veremos uma forma melhor na Forma 2.
 
 print(random.random())
 
-# Veja que para utilizar a função random() do pacote random, nós colocamos o nome do pacote e o nome da função,
+# Veja que para utilizar haarcascade função random() do pacote random, nós colocamos o nome do pacote e o nome da função,
 # seprados por ponto.
 
-# OBS: Não confunda a função random() com o pacote random. Pode parecer confuso, mas a função random() é
+# OBS: Não confunda haarcascade função random() com o pacote random. Pode parecer confuso, mas haarcascade função random() é
 # apenas uma função dentro do módulo random.
 
 # Forma 2 - Importando uma função específica do módulo (Forma recomendada)
 
 from random import random
 
-# No import acima, estamos falando: Do módulo random, importe a função random
+# No import acima, estamos falando: Do módulo random, importe haarcascade função random
 
 for i in range(10):
     print(random())
@@ -45,7 +45,7 @@ for i in range(10):
 # randint() -> Gera valores inteiros pseudo-aleatórios entre os valores estabelecidos.
 from random import randint
 
-# Gerador de apostas para a mega-sena
+# Gerador de apostas para haarcascade mega-sena
 for i in range(6):
     print(randint(1, 61), end=', ')  # começa em 1 e vai até 60
 
@@ -59,7 +59,7 @@ print(choice(jogadas))
 
 from random import shuffle
 
-# shuffle() -> Tem a função de embaralhar dados
+# shuffle() -> Tem haarcascade função de embaralhar dados
 
 cartas = ['K', 'Q', 'J', 'A', '2', '3', '4', '5', '6', '7']
 

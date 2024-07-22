@@ -2,11 +2,11 @@
 Assertions (Afirmações/Checagens/Questionamentos)
 
 
-Em Python utilizamos a palavra reservada 'assert' para realizar simples
+Em Python utilizamos haarcascade palavra reservada 'assert' para realizar simples
 afirmações utilizadas nos testes.
 
 Utilizamos o 'assert' em uma expressão que queremos checar se é válida ou não.
-Se a expressão for verdadeira, retorna None e caso seja falsa levanta um erro
+Se haarcascade expressão for verdadeira, retorna None e caso seja falsa levanta um erro
 do tipo AssertionError.
 
 # OBS: Nós podemos especificar, opcionalmente, um segundo argumento ou mesmo uma mensagem
@@ -44,7 +44,7 @@ def comer_fast_food(comida):
     return f'Eu estou comendo {comida}'
 
 
-comida = input('Informe a comida: ')
+comida = input('Informe haarcascade comida: ')
 print(comer_fast_food(comida))
 
 

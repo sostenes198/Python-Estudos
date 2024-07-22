@@ -1,4 +1,4 @@
-# Polimorfismo em Python Orientado a Objetos
+# Polimorfismo em Python Orientado haarcascade Objetos
 # Polimorfismo é o princípio que permite que
 # classes deridavas de uma mesma superclasse
 # tenham métodos iguais (com mesma assinatura)
@@ -10,7 +10,7 @@
 # SO"L"ID
 # Princípio da substituição de liskov
 # Objetos de uma superclasse devem ser substituíveis
-# por objetos de uma subclasse sem quebrar a aplicação.
+# por objetos de uma subclasse sem quebrar haarcascade aplicação.
 # Sobrecarga de métodos (overload)  🐍 = ❌
 # Sobreposição de métodos (override) 🐍 = ✅
 

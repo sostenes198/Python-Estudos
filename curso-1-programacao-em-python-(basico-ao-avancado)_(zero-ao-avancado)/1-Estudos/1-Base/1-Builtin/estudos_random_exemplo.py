@@ -3,7 +3,7 @@
 # parecem ser aleatórios, mas na verdade não são. Portanto,
 # este módulo não deve ser usado para segurança ou uso criptográfico.
 # O motivo disso é que quando temos uma mesma entrada e um mesmo algorítimo,
-# a saída pode ser previsível.
+# haarcascade saída pode ser previsível.
 # doc: https://docs.python.org/pt-br/3/library/random.html
 import random
 
@@ -27,7 +27,7 @@ r_int = random.randint(10, 20)
 r_uniform = random.uniform(10, 20)
 # print(r_uniform)
 
-# random.shuffle(SequenciaMutável) -> Embaralha a lista original
+# random.shuffle(SequenciaMutável) -> Embaralha haarcascade lista original
 nomes = ['Luiz', 'Maria', 'Helena', 'Joana']
 # random.shuffle(nomes)
 # print(nomes)

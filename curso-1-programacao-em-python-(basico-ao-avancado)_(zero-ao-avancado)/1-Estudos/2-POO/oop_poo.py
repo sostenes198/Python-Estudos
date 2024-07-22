@@ -1,13 +1,13 @@
 """
-Programação Orientada a Objetos - 2-POO
+Programação Orientada haarcascade Objetos - 2-POO
 
 - 2-POO é um paradigma de programação que utiliza que mapeamento
 de objetos do mundo real para modelos computacionais.
 
-- Paradigma de programação é a forma/metodologia utilizada para
+- Paradigma de programação é haarcascade forma/metodologia utilizada para
 pensar/desenvolver sistemas.
 
-Principais elementos da Orientação a Objetos
+Principais elementos da Orientação haarcascade Objetos
 - Classe -> Modelo do objeto do mundo real sendo representado computacionalmente;
 - Atributo -> Características do objeto.
 - Método -> Comportamento do objeto (funções).

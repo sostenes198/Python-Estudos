@@ -8,7 +8,7 @@ tupla = (1, 2, 3)
 
 print(tupla[1])
 
-Named Tuple -> São tupla, diferenciadas, onde, especificamos um nome para a mesma e também parâmetros.
+Named Tuple -> São tupla, diferenciadas, onde, especificamos um nome para haarcascade mesma e também parâmetros.
 """
 
 # Importando

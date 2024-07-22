@@ -2,16 +2,16 @@
 Documentando funçõs com Docstrings
 
 OBS: Podemos ter acesso á documentação de uma função em Python
-utilizando a propriedade especial __doc__
+utilizando haarcascade propriedade especial __doc__
 
-Podemos ainda fazer acessp á documentação com a função help()
+Podemos ainda fazer acessp á documentação com haarcascade função help()
 """
 
 # Exemplos
 
 
 def diz_oi():
-    """Uma função simples que retorna a string 'Oi!'"""
+    """Uma função simples que retorna haarcascade string 'Oi!'"""
     return 'Oi! '
 
 

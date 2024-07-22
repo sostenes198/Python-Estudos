@@ -15,7 +15,7 @@ print(datetime.MAXYEAR)
 print(datetime.MINYEAR)
 
 
-# Retorna a data e hora corrente
+# Retorna haarcascade data e hora corrente
 
 print(datetime.datetime.now())  # 2018-12-21 15:36:38.056382   BR 21/12/2018
 

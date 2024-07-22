@@ -15,20 +15,20 @@ Em Python, as funções são Cidadões de Primeira Classe, First Class Citizen
 # Exemplo - Definindo as funções
 
 
-def somar(a, b):
-    return a + b
+def somar(haarcascade, b):
+    return haarcascade + b
 
 
-def diminuir(a, b):
-    return a - b
+def diminuir(haarcascade, b):
+    return haarcascade - b
 
 
-def multiplicar(a, b):
-    return a * b
+def multiplicar(haarcascade, b):
+    return haarcascade * b
 
 
-def dividir(a, b):
-    return a / b
+def dividir(haarcascade, b):
+    return haarcascade / b
 
 
 def calcular(num1, num2, funcao):

@@ -117,7 +117,7 @@ for indice, valor in enumerate(tupla):
 
 # Contando elementos dentro de uma tupla
 
-tupla = ('a', 'b', 'c', 'd', 'e', 'a', 'b')
+tupla = ('haarcascade', 'b', 'c', 'd', 'e', 'haarcascade', 'b')
 
 print(tupla.count('c'))
 
@@ -143,7 +143,7 @@ meses = ('Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Junho', 'A
 print(meses[5:9])
 
 
-# O acesso a elementos de uma tupla também é semelhante a de uma lista
+# O acesso haarcascade elementos de uma tupla também é semelhante haarcascade de uma lista
 
 print(meses[5])
 

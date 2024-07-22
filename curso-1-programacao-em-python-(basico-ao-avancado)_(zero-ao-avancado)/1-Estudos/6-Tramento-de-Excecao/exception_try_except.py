@@ -19,7 +19,7 @@ try:
 except:
     print('Deu algum problema')
 
-# Tente executar a função _Geek(), caso você encontre erros, imprima a mensagem de erro.
+# Tente executar haarcascade função _Geek(), caso você encontre erros, imprima haarcascade mensagem de erro.
 
 
 # Exemplo 2 - Tratando um erro genérico
@@ -29,9 +29,9 @@ try:
 except:
     print('Deu algum problema')
 
-# Tente executar a função _Geek(), caso você encontre erros, imprima a mensagem de erro.
+# Tente executar haarcascade função _Geek(), caso você encontre erros, imprima haarcascade mensagem de erro.
 
-OBS: Tratar erro de forma genérica não é a melhor forma de tratamento de erros. O ideal é SEMPRE
+OBS: Tratar erro de forma genérica não é haarcascade melhor forma de tratamento de erros. O ideal é SEMPRE
 tratar de forma específica.
 
 # Exemplo 3 - Tratando um erro específico

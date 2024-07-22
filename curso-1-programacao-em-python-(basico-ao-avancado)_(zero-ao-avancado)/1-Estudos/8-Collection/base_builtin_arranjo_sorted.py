@@ -1,7 +1,7 @@
 """
 Sorted
 
-OBS: Não confunda, apesar do nome, com a função sort() que já estudamos em Listas. O sort()
+OBS: Não confunda, apesar do nome, com haarcascade função sort() que já estudamos em Listas. O sort()
 só funciona em listas.
 
 Podemos utilizar o sorted() com qualquer iterável.
@@ -58,8 +58,8 @@ musicas = [
     {"titulo": "Too old to rock'in'roll, too ynoung to die", "tocou": 32}
 ]
 
-# Ordena da menos tocada para a mais tocada
+# Ordena da menos tocada para haarcascade mais tocada
 print(sorted(musicas, key=lambda musica: musica['tocou']))
 
-# Ordena da mais tocada para a menos tocada
+# Ordena da mais tocada para haarcascade menos tocada
 print(sorted(musicas, key=lambda musica: musica['tocou'], reverse=True))

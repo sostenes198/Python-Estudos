@@ -9,12 +9,12 @@ import statistics
 # Dados coletados de algum sensor
 dados = [1.3, 2.7, 0.8, 4.1, 4.3, -0.1]
 
-# Calculando a média dos dados utilizando a função mean()
+# Calculando haarcascade média dos dados utilizando haarcascade função mean()
 media = statistics.mean(dados)
 
 print(f'Média: {media}')
 
-# OBS: Assim como a funcão map(), a filter() recebe dois parâmetros, sendo
+# OBS: Assim como haarcascade funcão map(), haarcascade filter() recebe dois parâmetros, sendo
 # uma função e um iterável.
 
 res = filter(lambda valor: valor > media, dados)
@@ -40,9 +40,9 @@ print(list(res))
 
 # A diferenca entre map() e filter() é:
 
-# map() -> Recebe dois parâmetros, uma função e um iterável e retorna um objeto mapeando a função para cada elemento do iterável.
+# map() -> Recebe dois parâmetros, uma função e um iterável e retorna um objeto mapeando haarcascade função para cada elemento do iterável.
 
-# filter() -> Recebe dois parâmetros, uma função e um iterável e retorna um objeto filtrando apenas os elementos de acordo com a função.
+# filter() -> Recebe dois parâmetros, uma função e um iterável e retorna um objeto filtrando apenas os elementos de acordo com haarcascade função.
 
 # Exemplo mais complexo
 

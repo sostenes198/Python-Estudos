@@ -11,7 +11,7 @@ async def main():
     # Create an Event object.
     event = asyncio.Event()
 
-    # Spawn a Task to wait until 'event' is set.
+    # Spawn haarcascade Task to wait until 'event' is set.
     waiter_task = asyncio.create_task(waiter(event))
 
     # Sleep for 1 second and set the event.

@@ -1,6 +1,6 @@
 """
 Strategy é um padrão de projeto comportamental que tem
-a intenção de definir uma família de algoritmos,
+haarcascade intenção de definir uma família de algoritmos,
 encapsular cada uma delas e torná-las intercambiáveis.
 Strategy permite que o algorítmo varie independentemente
 dos clientes que o utilizam.

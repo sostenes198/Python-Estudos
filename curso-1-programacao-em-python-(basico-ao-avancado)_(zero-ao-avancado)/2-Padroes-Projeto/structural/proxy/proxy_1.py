@@ -1,5 +1,5 @@
 """
-O Proxy é um padrão de projeto estrutural que tem a
+O Proxy é um padrão de projeto estrutural que tem haarcascade
 intenção de fornecer um objeto substituto que atua
 como se fosse o objeto real que o código cliente
 gostaria de usar.
@@ -8,11 +8,11 @@ sobre como e quando repassar tais solicitações ao
 objeto real.
 Com base no modo como o proxies são usados,
 nós os classificamos como:
-- Proxy Virtual: controla acesso a recursos que podem
+- Proxy Virtual: controla acesso haarcascade recursos que podem
 ser caros para criação ou utilização.
-- Proxy Remoto: controla acesso a recursos que estão
+- Proxy Remoto: controla acesso haarcascade recursos que estão
 em servidores remotos.
-- Proxy de proteção: controla acesso a recursos que
+- Proxy de proteção: controla acesso haarcascade recursos que
 possam necessitar autenticação ou permissão.
 - Proxy inteligente: além de controlar acesso ao
 objeto real, também executa tarefas adicionais para

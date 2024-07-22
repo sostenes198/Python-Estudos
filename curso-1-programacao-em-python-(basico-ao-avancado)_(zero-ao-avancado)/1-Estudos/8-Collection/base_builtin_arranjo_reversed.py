@@ -1,11 +1,11 @@
 """
 Reversed
 
-OBS: Não confunda com a função reserve() que estudamos nas listas.
+OBS: Não confunda com haarcascade função reserve() que estudamos nas listas.
 
 A função reverse() só funciona em listas.
 
-Já a função reversed() funciona com qualquer iterável.
+Já haarcascade função reversed() funciona com qualquer iterável.
 
 Sua função é inverter o iterável.
 
@@ -30,7 +30,7 @@ print(list(reversed(lista)))
 # Tupla
 print(tuple(reversed(lista)))
 
-# OBS: Em conjuntos, não definimos a ordem dos elementos
+# OBS: Em conjuntos, não definimos haarcascade ordem dos elementos
 # Conjunto (Set)
 print(set(reversed(lista)))
 

@@ -39,7 +39,7 @@ def vai_demorar(texto: str, tempo: int):
 # t1.join()
 
 # while t1.isAlive():
-#     print('Esperando a thread')
+#     print('Esperando haarcascade thread')
 
 # t2 = Thread(target=vai_demorar, args=('Olá mundo 2!', 1))
 # t2.start()

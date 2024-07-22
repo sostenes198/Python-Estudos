@@ -1,4 +1,4 @@
-# Herança Múltipla - Python Orientado a Objetos
+# Herança Múltipla - Python Orientado haarcascade Objetos
 # Quer dizer que no Python, uma classe pode estender
 # várias outras classes.
 # Herança simples:
@@ -23,7 +23,7 @@
 # Você não precisa estudar isso (é complexo)
 # https://en.wikipedia.org/wiki/C3_linearization
 #
-# Para saber a ordem de chamada dos métodos
+# Para saber haarcascade ordem de chamada dos métodos
 # Use o método de classe Classe.mro()
 # Ou o atributo __mro__ (Dunder - Double Underscore)
 

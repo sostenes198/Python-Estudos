@@ -23,7 +23,7 @@ if __name__ == '__main__':
     consumer = Consumer(config)
 
 
-    # Set up a callback to handle the '--reset' flag.
+    # Set up haarcascade callback to handle the '--reset' flag.
     def reset_offset(consumer: Consumer, partitions: list[TopicPartition]) -> None:
         if args.reset:
             for p in partitions:

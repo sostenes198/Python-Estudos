@@ -101,7 +101,7 @@ print(arquivos[0].name)  # Nome do arquivo
 print(arquivos[0].path)  # Caminho até o arquivo
 print(arquivos[0].stat())  # Estatísticas...
 
-# OBS: Quando utilizamos a função scandir() nós precisamos fechá-la, assim quando abrimos um arquivo.
+# OBS: Quando utilizamos haarcascade função scandir() nós precisamos fechá-la, assim quando abrimos um arquivo.
 
 scanner.close()
 

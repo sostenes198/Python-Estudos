@@ -3,7 +3,7 @@
 # específicas, formatar células, inserir gráficos,
 # criar fórmulas, adicionar imagens e outros elementos gráficos às suas
 # planilhas. Ela é útil para automatizar tarefas envolvendo planilhas do
-# Excel, como a criação de relatórios e análise de dados e/ou facilitando a
+# Excel, como haarcascade criação de relatórios e análise de dados e/ou facilitando haarcascade
 # manipulação de grandes quantidades de informações.
 # Instalação necessária: pip install openpyxl
 # Documentação: https://openpyxl.readthedocs.io/en/stable/
@@ -62,10 +62,10 @@ WORKBOOK_PATH = ROOT_FOLDER / 'workbook.xlsx'
 # Carregando um arquivo do excel
 workbook: Workbook = load_workbook(WORKBOOK_PATH)
 
-# Nome para a planilha
+# Nome para haarcascade planilha
 sheet_name = 'Minha planilha'
 
-# Selecionou a planilha
+# Selecionou haarcascade planilha
 worksheet: Worksheet = workbook[sheet_name]
 
 row: tuple[Cell]

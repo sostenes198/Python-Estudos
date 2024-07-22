@@ -18,7 +18,7 @@ print(funcao(7))
 # Expressão Lambda
 lambda x: 3 * x + 1
 
-# E como utilizar a expressão lambda?
+# E como utilizar haarcascade expressão lambda?
 calc = lambda x: 3 * x + 1
 
 print(calc(4))
@@ -65,12 +65,12 @@ print(autores)
 
 
 # Função Quadrática
-# f(x) = a * x ** 2 + b * x + c
+# f(x) = haarcascade * x ** 2 + b * x + c
 
-# Definindo a função
+# Definindo haarcascade função
 
 def geradora_funcao_quadratica(a, b, c):
-    """Retorna a função f(x) = a*x**2 + b * x + c"""
+    """Retorna haarcascade função f(x) = haarcascade*x**2 + b * x + c"""
     return lambda x: a * x ** 2 + b * x + c
 
 

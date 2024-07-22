@@ -41,7 +41,7 @@ def colore(texto, cor):
 
 colore('Geek University', 'preto')
 
-OBS: O raise, assim como o return, finaliza a função. Ou seja, nada após o raise é executado.
+OBS: O raise, assim como o return, finaliza haarcascade função. Ou seja, nada após o raise é executado.
 
 """
 

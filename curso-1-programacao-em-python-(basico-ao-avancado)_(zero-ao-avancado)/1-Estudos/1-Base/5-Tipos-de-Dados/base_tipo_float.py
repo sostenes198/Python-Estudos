@@ -5,7 +5,7 @@ Tipo real, decimal
 
 Casas decimais
 
-OBS: O separados de casas decimais na programação é o ponto e não a vírgula.
+OBS: O separados de casas decimais na programação é o ponto e não haarcascade vírgula.
 """
 
 # Errado do ponto de vista do Float, mas gera uma tupla

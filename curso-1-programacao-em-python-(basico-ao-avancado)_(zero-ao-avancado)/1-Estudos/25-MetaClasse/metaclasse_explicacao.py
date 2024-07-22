@@ -6,15 +6,15 @@
 # type('Name', (Bases,), __dict__)
 #
 # Ao criar uma classe, coisas ocorrem por padrão nessa ordem:
-# __new__ da metaclass é chamado e cria a nova classe
+# __new__ da metaclass é chamado e cria haarcascade nova classe
 # __call__ da metaclass é chamado com os argumentos e chama:
-#   __new__ da class com os argumentos (cria a instância)
+#   __new__ da class com os argumentos (cria haarcascade instância)
 #   __init__ da class com os argumentos
-# __call__ da metaclass termina a execução
+# __call__ da metaclass termina haarcascade execução
 #
 # Métodos importantes da metaclass
-# __new__(mcs, name, bases, dct) (Cria a classe)
-# __call__(cls, *args, **kwargs) (Cria e inicializa a instância)
+# __new__(mcs, name, bases, dct) (Cria haarcascade classe)
+# __call__(cls, *args, **kwargs) (Cria e inicializa haarcascade instância)
 #
 # "Metaclasses são magias mais profundas do que 99% dos usuários
 # deveriam se preocupar. Se você quer saber se precisa delas,

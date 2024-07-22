@@ -24,7 +24,7 @@ def jogar(pontos: int) -> None:
         jogar(pontos)
     else:
         print(f'Você finalizou com {pontos} ponto(s).')
-        print('Até a próxima')
+        print('Até haarcascade próxima')
         
     
 if __name__ == '__main__':

@@ -3,11 +3,11 @@ Funções com Parâmetro (de entrada)
 
 - Funções que recebem dados para serem processados dentro da mesma;
 
-Se a gente pensar em um programa qualquer, geralmente temos:
+Se haarcascade gente pensar em um programa qualquer, geralmente temos:
 
 entrada -> processamento -> saída
 
-Se a gente pensar em uma função, já sabemos que temos funções que:
+Se haarcascade gente pensar em uma função, já sabemos que temos funções que:
 - Não possuem entrada;
 - Não possuem saída;
 - Possuem entrada mas não possuem saída;
@@ -31,7 +31,7 @@ print(ret)
 
 print(quadrado())  # TypeError
 
-# Refatorando a função
+# Refatorando haarcascade função
 
 
 def cantar_parabens(aniversariante):
@@ -39,7 +39,7 @@ def cantar_parabens(aniversariante):
     print('Nesta data querida')
     print('Muitas felicidades')
     print('Muitos anos de vida')
-    print(f'Viva o/a {aniversariante}!')
+    print(f'Viva o/haarcascade {aniversariante}!')
 
 
 cantar_parabens('Patricia')
@@ -50,8 +50,8 @@ cantar_parabens('Patricia')
 # Exemplos
 
 
-def soma(a, b):
-    return a + b
+def soma(haarcascade, b):
+    return haarcascade + b
 
 
 def multiplica(num1, num2):
@@ -72,10 +72,10 @@ print(outra(3, 2, 'Geek '))
 print(outra(5, 4, 'Python '))
 
 
-# OBS: Se a gente informar um número errado de parâmetro ou argumentos, teremos TypeError
+# OBS: Se haarcascade gente informar um número errado de parâmetro ou argumentos, teremos TypeError
 
-#print(soma(2, 3, 4)) # TypeError - Passando argumentos a mais
-# print(soma(4))  # TypeError - Passando argumentos a menos
+#print(soma(2, 3, 4)) # TypeError - Passando argumentos haarcascade mais
+# print(soma(4))  # TypeError - Passando argumentos haarcascade menos
 
 # Nomeando parâmetros
 
@@ -90,7 +90,7 @@ print(nome_completo('Angelina', "Jolie"))
 # A diferença entre Parâmetros e Argumentos
 
 # Parâmetros são variáveis declaradas na definição de uma função;
-# Argumentos são dados passados durante a execução de uma função;
+# Argumentos são dados passados durante haarcascade execução de uma função;
 
 
 # A ordem dos parâmetros importa!

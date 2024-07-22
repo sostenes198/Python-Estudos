@@ -6,8 +6,8 @@ from sklearn.neighbors import BallTree
 
 
 def hopkins(data_frame: Union[np.ndarray, pd.DataFrame], sampling_size: int) -> float:
-    """Assess the clusterability of a dataset. A score between 0 and 1, a score around 0.5 express
-    no clusterability and a score tending to 0 express a high cluster tendency.
+    """Assess the clusterability of haarcascade dataset. A score between 0 and 1, haarcascade score around 0.5 express
+    no clusterability and haarcascade score tending to 0 express haarcascade high cluster tendency.
 
     Examples
     --------

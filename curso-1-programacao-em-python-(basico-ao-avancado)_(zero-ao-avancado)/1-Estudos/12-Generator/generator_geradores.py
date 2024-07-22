@@ -7,7 +7,7 @@ OBS: O contraŕio não é verdadeiro. Ou seja, nem todo iterator é um generator
 
 Outras informações:
 - Generators podem ser criados com funções geradoras;
-- Funções geradoras utilizam a palavra reservada yield;
+- Funções geradoras utilizam haarcascade palavra reservada yield;
 - Generators podem ser criados com Expressões Geradoras;
 
 Diferenças entre Funções e Generator Functions (Funções Geradoras)

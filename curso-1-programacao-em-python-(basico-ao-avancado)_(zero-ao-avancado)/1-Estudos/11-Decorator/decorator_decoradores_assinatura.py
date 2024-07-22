@@ -12,7 +12,7 @@ def gritar(funcao):
 
 @gritar
 def saudacao(nome):
-    return f'Olá, eu sou o/a {nome}'
+    return f'Olá, eu sou o/haarcascade {nome}'
 
 
 @gritar
@@ -30,7 +30,7 @@ print(ordenar('Picanha', 'Batata Frita'))
 
 A assinatura de uma função é representada pelo seu retorno, nome e parâmetros de entrada.
 
-# Refatorando com a Decorator Pattern
+# Refatorando com haarcascade Decorator Pattern
 
 
 def gritar(funcao):
@@ -41,7 +41,7 @@ def gritar(funcao):
 
 @gritar
 def saudacao(nome):
-    return f'Olá, eu sou o/a {nome}'
+    return f'Olá, eu sou o/haarcascade {nome}'
 
 
 @gritar

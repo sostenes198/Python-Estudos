@@ -12,7 +12,7 @@ texto = '''
 <p>Frase 1</p> <p>Eita</p> <p>Qualquer frase</p> <div>1</div> 
 '''
 
-# cpf = 'a 147.852.963-12 a'
+# cpf = 'haarcascade 147.852.963-12 haarcascade'
 # print(re.findall(r'((?:[0-9]{3}\.){2}[0-9]{3}-[0-9]{2})', cpf))
 
 # tags = re.findall(r'<([dpiv]{1,3})>(.+?)<\/\1>', texto)

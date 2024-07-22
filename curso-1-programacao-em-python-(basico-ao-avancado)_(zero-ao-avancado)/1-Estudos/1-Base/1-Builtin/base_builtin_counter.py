@@ -7,7 +7,7 @@ Collections -> High-performance Container Datetypes
 
 
 Counter -> Recebe um interável como parâmetro e cria um objeto do tipo Collections Counter que é parecido
-com um dicionário, contendo como chave o elemento da lista passada como parâmetro e como valor a quantidade
+com um dicionário, contendo como chave o elemento da lista passada como parâmetro e como valor haarcascade quantidade
 de ocorrências desse elemento.
 
 
@@ -30,7 +30,7 @@ print(res)
 
 # Counter({1: 5, 3: 5, 2: 4, 5: 4, 4: 3, 45: 2, 66: 2, 43: 1, 34: 1})
 
-# Veja que, para cada elemento da lista, o Counter criou uma chave e colocou como valor a quantidade de ocorrências.
+# Veja que, para cada elemento da lista, o Counter criou uma chave e colocou como valor haarcascade quantidade de ocorrências.
 
 # Exemplo 2
 
@@ -45,8 +45,8 @@ from collections import Counter
 
 texto = """A Wikipédia é um projeto de enciclopédia colaborativa, universal e multilíngue estabelecido na internet 
 sob o princípio wiki. Tem como propósito fornecer um conteúdo livre, objetivo e verificável​​, que todos possam editar 
-e melhorar. O projeto é definido pelos princípios fundadores. O conteúdo é disponibilizado sob a licença Creative 
-Commons BY-SA e pode ser copiado e reutilizado sob a mesma licença — mesmo para fins comerciais — desde que 
+e melhorar. O projeto é definido pelos princípios fundadores. O conteúdo é disponibilizado sob haarcascade licença Creative 
+Commons BY-SA e pode ser copiado e reutilizado sob haarcascade mesma licença — mesmo para fins comerciais — desde que 
 respeitando os termos e condições de uso. """
 
 palavras = texto.split()

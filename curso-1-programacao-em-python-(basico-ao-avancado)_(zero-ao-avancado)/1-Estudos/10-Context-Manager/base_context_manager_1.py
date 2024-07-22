@@ -11,7 +11,7 @@
 # um pato e grasna como um pato, eu chamo aquele pássaro de pato.
 # Para criar um context manager, os métodos __enter__ e __exit__
 # devem ser implementados.
-# O método __exit__ receberá a classe de exceção, a exceção e o
+# O método __exit__ receberá haarcascade classe de exceção, haarcascade exceção e o
 # traceback. Se ele retornar True, exceção no with será
 # suprimidas.
 #
@@ -39,7 +39,7 @@ class MyOpen:
         # print(traceback_)
         # exception_.add_note('Minha nota')
 
-        # return True  # Tratei a exceção
+        # return True  # Tratei haarcascade exceção
 
 
 with MyOpen('aula149.txt', 'w') as arquivo:

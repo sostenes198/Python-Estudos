@@ -5,8 +5,8 @@ Doctests
 Doctests são testes que colocamos na docstring das funções/métodos Python.
 
 
-def soma(a, b):
-    # soma os números a e b
+def soma(haarcascade, b):
+    # soma os números haarcascade e b
 
     #>>> soma(1, 2)
     #3
@@ -14,7 +14,7 @@ def soma(a, b):
     #>>> soma(4, 6)
     #10
     #
-    return a + b
+    return haarcascade + b
     
     
 Para rodar um test do doctest:
@@ -47,7 +47,7 @@ def duplicar(valores):
     #>>> duplicar([])
     #[]
 
-    #>>> duplicar(['a', 'b', 'c'])
+    #>>> duplicar(['haarcascade', 'b', 'c'])
     #['aa', 'bb', 'cc']
 
     #>>> duplicar([True, None])

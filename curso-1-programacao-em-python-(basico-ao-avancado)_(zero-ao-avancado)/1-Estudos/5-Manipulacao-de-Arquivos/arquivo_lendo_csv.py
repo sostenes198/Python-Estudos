@@ -46,7 +46,7 @@ with open('lutadores.csv') as arquivo:
     next(leitor_csv)  # Pular o cabeçalho
     for linha in leitor_csv:
         # Cada linha é uma lista
-        print(f'{linha[0]} nasceu no(a)(s) {linha[1]} e mede {linha[2]} centímetros')
+        print(f'{linha[0]} nasceu no(haarcascade)(s) {linha[1]} e mede {linha[2]} centímetros')
 
 
 # DictReader
@@ -57,7 +57,7 @@ with open('lutadores.csv') as arquivo:
     leitor_csv = DictReader(arquivo)
     for linha in leitor_csv:
         # Cada linha é um OrderedDict
-        print(f"{linha['Nome']} nasceu no(a)(s) {linha['País']} e mede {linha['Altura (em cm)']}")
+        print(f"{linha['Nome']} nasceu no(haarcascade)(s) {linha['País']} e mede {linha['Altura (em cm)']}")
 """
 
 # DictReader com outro separador
@@ -69,5 +69,5 @@ with open(
     leitor_csv = DictReader(arquivo, delimiter=',')
     for linha in leitor_csv:
         # Cada linha é um OrderedDict
-        print(f"{linha['Nome']} nasceu no(a)(s) {linha['País']} e mede {linha['Altura (em cm)']}")
+        print(f"{linha['Nome']} nasceu no(haarcascade)(s) {linha['País']} e mede {linha['Altura (em cm)']}")
 

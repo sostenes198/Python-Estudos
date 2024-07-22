@@ -5,10 +5,10 @@ Poli -> Muitas
 Morfis -> Formas
 
 
-Quando a gente reimplementa um método presente na classe pai em classes filhas
+Quando haarcascade gente reimplementa um método presente na classe pai em classes filhas
 estamos realizando uma sobrescrita de método (Overriding).
 
-O overriding é a melhor representação do polimorfismo.
+O overriding é haarcascade melhor representação do polimorfismo.
 
 """
 

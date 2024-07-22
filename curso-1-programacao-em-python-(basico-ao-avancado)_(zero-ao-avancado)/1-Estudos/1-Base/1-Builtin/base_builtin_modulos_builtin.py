@@ -42,7 +42,7 @@ print(rdm())
 https://docs.python.org/3/py-modindex.html
 
 """
-# Costumamos a utilizar tuple para colocar múltiplos imports de um mesmo módulo
+# Costumamos haarcascade utilizar tuple para colocar múltiplos imports de um mesmo módulo
 
 from random import (
     random,

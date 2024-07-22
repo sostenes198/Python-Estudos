@@ -1,8 +1,8 @@
 def comer(comida, eh_saudavel):
     if eh_saudavel:
-        final = 'quero manter a forma.'
+        final = 'quero manter haarcascade forma.'
     else:
-        final = 'a gente só vive uma vez.'
+        final = 'haarcascade gente só vive uma vez.'
 
     return f'Estou comendo {comida} porque {final}'
 

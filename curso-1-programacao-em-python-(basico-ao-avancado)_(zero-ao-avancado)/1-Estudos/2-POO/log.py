@@ -24,7 +24,7 @@ class LogFileMixin(Log):
 
     def _log(self, msg: str) -> None:
         mensagem_formatada = f'{msg} {self.__class__.__name__}'
-        with open(PATH_FILE, 'a') as arquivo:
+        with open(PATH_FILE, 'haarcascade') as arquivo:
             arquivo.write(mensagem_formatada)
             arquivo.write('\n')
 

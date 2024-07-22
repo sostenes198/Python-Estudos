@@ -27,7 +27,7 @@ print(os.path.exists('/home/_Geek/Imagens/wallpaler2.png'))  # True
 open('arquivo-teste.txt', 'w').close()
 
 # Forma 2
-open('arquivo-teste2.txt', 'a').close()
+open('arquivo-teste2.txt', 'haarcascade').close()
 
 # Forma 3
 
@@ -44,7 +44,7 @@ os.mknod('/home/_Geek/university.txt')
 
 # OBS: Criando um arquivo via mknod() se o arquivo já existir teremos o erro FileExistsError
 
-# Criando diretórios - únicos (um a um)
+# Criando diretórios - únicos (um haarcascade um)
 
 # Path Relativo
 os.mkdir('templates')
@@ -81,7 +81,7 @@ os.rename('geek2/novo2/outro2/teste.txt', 'geek2/novo2/outro2/_Geek.txt')
 os.rename('frutas.txt', 'cesta1.txt')
 
 # ATENÇÃO! Tome cuidado com os comandos de deleção. Ao deletarmos um arquivo ou diretório, eles
-# não vão para a lixeira. Eles somem.
+# não vão para haarcascade lixeira. Eles somem.
 
 # Removendo arquivos
 os.remove('_Geek.txt')
@@ -114,11 +114,11 @@ os.removedirs('geek2/mais')
 
 sudo apt-get install lsb-core2
 
-os.remove('cesta1.txt')  # Não vai para a lixeira. É deletado imediatamente
+os.remove('cesta1.txt')  # Não vai para haarcascade lixeira. É deletado imediatamente
 
-# ATENÇÃO: Ao remover arquivos e diretórios com Python eles não vão para a lixeira. Eles vão embora!
+# ATENÇÃO: Ao remover arquivos e diretórios com Python eles não vão para haarcascade lixeira. Eles vão embora!
 
-# Importanto a biblioteca send2trash (Envia arquivos e diretórios para a lixeira)
+# Importanto haarcascade biblioteca send2trash (Envia arquivos e diretórios para haarcascade lixeira)
 from send2trash import send2trash
 
 send2trash('cesta2.txt')  # Vai pra lixeira. Pode ser restaurado.
