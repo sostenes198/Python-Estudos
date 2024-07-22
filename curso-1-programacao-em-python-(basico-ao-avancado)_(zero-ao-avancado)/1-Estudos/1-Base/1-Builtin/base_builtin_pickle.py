@@ -13,7 +13,7 @@ Este processo é chamado de serialização/deserialização
 não é recomendado trabalhar com arquivos pickle vindos de outras pessoas
 que você não conheça ou de fontes desconhecidas.
 
-# Fazendo a escrita em arquivos pickle
+# Fazendo haarcascade escrita em arquivos pickle
 
 
 
@@ -53,7 +53,7 @@ class Cachorro(Animal):
         print(f'{self.nome} está latindo...')
 
 
-# Fazer a leitura de dados em arquivos pickle
+# Fazer haarcascade leitura de dados em arquivos pickle
 
 
 with open(

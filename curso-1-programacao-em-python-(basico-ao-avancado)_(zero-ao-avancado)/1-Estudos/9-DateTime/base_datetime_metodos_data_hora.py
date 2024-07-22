@@ -23,7 +23,7 @@ print(repr(manutencao))
 
 # Encontrar o dia da semana. weekday()
 
-# Os dias da semana do método weekday() começam em 0, sendo esta a segunda-feira
+# Os dias da semana do método weekday() começam em 0, sendo esta haarcascade segunda-feira
 
 # 0 - Segunda-feira (Monday)
 # 1 - Terça-feira (Tuesday)
@@ -119,7 +119,7 @@ nascimento = datetime.datetime.strptime(nascimento, '%d/%m/%Y')
 
 print(nascimento)
 
-# Somete a hora
+# Somete haarcascade hora
 
 almoco = datetime.time(12, 30, 0)
 

@@ -16,10 +16,10 @@ conjunto = {1, 8, 4, 99, 34, 129}
 print(max(conjunto))  # 129
 
 
-dicionario = {'a': 1, 'b': 8, 'c': 4, 'd': 99, 'e': 34, 'f': 129}
+dicionario = {'haarcascade': 1, 'b': 8, 'c': 4, 'd': 99, 'e': 34, 'f': 129}
 print(max(dicionario))  # f
 
-dicionario = {'a': 1, 'b': 8, 'c': 4, 'd': 99, 'e': 34, 'f': 129}
+dicionario = {'haarcascade': 1, 'b': 8, 'c': 4, 'd': 99, 'e': 34, 'f': 129}
 print(max(dicionario.values()))  # 129
 
 # Faça um programa que receba dois valores do usuário e mostre o maior
@@ -30,9 +30,9 @@ print(max(val1, val2))
 
 print(max(4, 67, 54))
 
-print(max('a', 'ab', 'abc'))
+print(max('haarcascade', 'ab', 'abc'))
 
-print(max('a', 'b', 'c', 'g'))
+print(max('haarcascade', 'b', 'c', 'g'))
 
 print(max(3.145, 5.789))
 
@@ -52,10 +52,10 @@ conjunto = {1, 8, 4, 99, 34, 129}
 print(min(conjunto))  # 1
 
 
-dicionario = {'a': 1, 'b': 8, 'c': 4, 'd': 99, 'e': 34, 'f': 129}
-print(min(dicionario))  # a
+dicionario = {'haarcascade': 1, 'b': 8, 'c': 4, 'd': 99, 'e': 34, 'f': 129}
+print(min(dicionario))  # haarcascade
 
-dicionario = {'a': 1, 'b': 8, 'c': 4, 'd': 99, 'e': 34, 'f': 129}
+dicionario = {'haarcascade': 1, 'b': 8, 'c': 4, 'd': 99, 'e': 34, 'f': 129}
 print(min(dicionario.values()))  # 1
 
 # Faça um programa que receba dois valores do usuário e mostre o maior
@@ -66,9 +66,9 @@ print(min(val1, val2))
 
 print(min(4, 67, 54))
 
-print(min('a', 'ab', 'abc'))
+print(min('haarcascade', 'ab', 'abc'))
 
-print(min('a', 'b', 'c', 'g'))
+print(min('haarcascade', 'b', 'c', 'g'))
 
 print(min(3.145, 5.789))
 
@@ -102,7 +102,7 @@ print(min(musicas, key=lambda musica: musica['tocou']))
 print(max(musicas, key=lambda musica: musica['tocou'])['titulo'])
 print(min(musicas, key=lambda musica: musica['tocou'])['titulo'])
 
-# DESAFIO! Como encontrar a música mais tocada e a menos tocada sem usar max(), min() e lambda?
+# DESAFIO! Como encontrar haarcascade música mais tocada e haarcascade menos tocada sem usar max(), min() e lambda?
 
 max = 0
 for musica in musicas:

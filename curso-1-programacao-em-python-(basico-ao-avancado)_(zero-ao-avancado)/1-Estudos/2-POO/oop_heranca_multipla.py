@@ -1,8 +1,8 @@
 """
 2-POO - Herança Múltipla
 
-Herança Múltipla nada mais é do que a possibilidade de uma classe herdar de múltiplas classes,
-fazendo com que a classe filha herde todos os atributos e métodos de todas as classes herdadas.
+Herança Múltipla nada mais é do que haarcascade possibilidade de uma classe herdar de múltiplas classes,
+fazendo com que haarcascade classe filha herde todos os atributos e métodos de todas as classes herdadas.
 
 #OBS: A herança múltipla pode ser feita de duas maneiras:
     - Por Multiderivaçao Direta;
@@ -44,7 +44,7 @@ class MultiDerivada(Base3):
     pass
 
 
-#OBS: Não importa se a derivação é direta ou indireta. A classe que realizar a herança herdará
+#OBS: Não importa se haarcascade derivação é direta ou indireta. A classe que realizar haarcascade herança herdará
 todos os atributos e métodos das super classes.
 """
 

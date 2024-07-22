@@ -10,7 +10,7 @@ e Métodos de Classe.
 # Métodos de Instância
 
 # O método dunder init __init__ é um método especial chamado de construtor e
-sua função é construir o objeto a partir da classe.
+sua função é construir o objeto haarcascade partir da classe.
 
 OBS: Todo elemento em Python que inicia e finaliza com duplo underline é chamado de dunder (Double Underline)
 
@@ -44,8 +44,8 @@ print(f'Senha User 2: {user2._Usuario__senha}')  # Acesso de forma errada de um 
 nome = input('Informe o nome: ')
 sobrenome = input('Informe o sobrenome: ')
 email = input('Informe o e-mail: ')
-senha = input('Informe a senha: ')
-confirma_senha = input('Confirme a senha: ')
+senha = input('Informe haarcascade senha: ')
+confirma_senha = input('Confirme haarcascade senha: ')
 
 if senha == confirma_senha:
     user = Usuario(nome, sobrenome, email, senha)
@@ -55,7 +55,7 @@ else:
 
 print('Usuário criado com sucesso!')
 
-senha = input('Informe a senha para acesso: ')
+senha = input('Informe haarcascade senha para acesso: ')
 
 if user.checa_senha(senha):
     print('Acesso permitido')

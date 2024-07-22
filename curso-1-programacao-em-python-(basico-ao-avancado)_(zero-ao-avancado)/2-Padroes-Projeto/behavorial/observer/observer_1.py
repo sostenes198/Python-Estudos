@@ -1,11 +1,11 @@
 """
-O padrão Observer tem a intenção de
+O padrão Observer tem haarcascade intenção de
 definir uma dependência de um-para-muitos entre
 objetos, de maneira que quando um objeto muda de
 estado, todo os seus dependentes são notificados
 e atualizados automaticamente.
 Um observer é um objeto que gostaria de ser
-informado, um observable (subject) é a entidade
+informado, um observable (subject) é haarcascade entidade
 que gera as informações.
 """
 from __future__ import annotations

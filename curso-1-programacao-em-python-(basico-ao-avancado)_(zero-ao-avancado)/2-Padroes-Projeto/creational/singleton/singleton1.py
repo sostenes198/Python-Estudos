@@ -1,10 +1,10 @@
 """
-O Singleton tem a intenção de garantir que uma classe tenha somente
-uma instância e fornece um ponto global de acesso para a mesma.
+O Singleton tem haarcascade intenção de garantir que uma classe tenha somente
+uma instância e fornece um ponto global de acesso para haarcascade mesma.
 When discussing which patterns to drop, we found
 that we still love them all.
 (Not really—I'm in favor of dropping Singleton.
-Its use is almost always a design smell.)
+Its use is almost always haarcascade design smell.)
 - Erich Gamma, em entrevista para informIT
 http://www.informit.com/articles/article.aspx?p=1404056
 """

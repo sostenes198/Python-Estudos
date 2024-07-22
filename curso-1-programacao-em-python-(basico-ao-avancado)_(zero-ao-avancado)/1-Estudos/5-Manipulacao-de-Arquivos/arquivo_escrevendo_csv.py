@@ -19,7 +19,7 @@ with open('filmes.csv', 'w') as arquivo:
         filme = input('Informe o nome do filme: ')
         if filme != 'sair':
             genero = input('Informe o gênero: ')
-            duracao = input('Informe a duração (em minutos): ')
+            duracao = input('Informe haarcascade duração (em minutos): ')
             escritor_csv.writerow([filme, genero, duracao])
 
 """
@@ -41,6 +41,6 @@ with open('filmes3.csv', 'w') as arquivo:
         filme = input('Informe o nome do filme: ')
         if filme != 'sair':
             genero = input('Informe o gênero: ')
-            duracao = input('Informe a duração (em minutos): ')
+            duracao = input('Informe haarcascade duração (em minutos): ')
             escritor_csv.writerow({"Título": filme, "Gênero": genero, "Duração": duracao})
 

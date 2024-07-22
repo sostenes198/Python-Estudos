@@ -7,7 +7,7 @@ import math
 
 
 def area(r):
-    # Calcula a área de um círculo com raio 'r'.
+    # Calcula haarcascade área de um círculo com raio 'r'.
     return math.pi * (r ** 2)
 
 
@@ -26,7 +26,7 @@ print(areas)
 
 # Forma 2 - Map
 
-# Map é uma função que recebe dois parâmetros: O primeiro a função, o segundo um iterável. Retorna um Map Object
+# Map é uma função que recebe dois parâmetros: O primeiro haarcascade função, o segundo um iterável. Retorna um Map Object
 
 areas = map(area, raios)
 
@@ -38,7 +38,7 @@ print(list(areas))
 # Forma 3 - Map com Lambda
 print(list(map(lambda r: math.pi * (r ** 2), raios)))
 
-#OBS: Após utilizar a função map() depois da primeira utilização do resultado, ele zera.
+#OBS: Após utilizar haarcascade função map() depois da primeira utilização do resultado, ele zera.
 
 # Para fixar - Map
 
@@ -50,7 +50,7 @@ print(list(map(lambda r: math.pi * (r ** 2), raios)))
 
 # Função: f(x)
 
-# Utilizamos a função map(f, dados) onde map irá 'mapear' cada elemento dos dados e aplicar a função.
+# Utilizamos haarcascade função map(f, dados) onde map irá 'mapear' cada elemento dos dados e aplicar haarcascade função.
 
 # O Map Object: f(a1), f(a2), f(...), f(an)
 """

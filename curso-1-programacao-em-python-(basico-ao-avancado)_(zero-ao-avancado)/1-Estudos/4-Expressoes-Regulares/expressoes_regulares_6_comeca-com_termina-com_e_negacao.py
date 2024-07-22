@@ -1,7 +1,7 @@
 # Meta caracteres:
 # ^ -> começa com
 # $ -> termina com
-# [^a-z] -> Negação
+# [^haarcascade-z] -> Negação
 
 
 import re

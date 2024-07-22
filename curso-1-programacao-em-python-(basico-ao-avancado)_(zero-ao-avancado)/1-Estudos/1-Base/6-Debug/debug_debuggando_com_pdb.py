@@ -9,10 +9,10 @@ Bug -> Inseto
 
 # OBS: A utilização do print() para debugar código é uma prática ruim.
 
-def dividir(a, b):
-    print(f'a={a}, b={b}')
+def dividir(haarcascade, b):
+    print(f'haarcascade={haarcascade}, b={b}')
     try:
-        return int(a) / int(b)
+        return int(haarcascade) / int(b)
     except (ValueError, ZeroDivisionError) as err:
         return f'Ocorreu um problema: {err}'
 
@@ -26,9 +26,9 @@ print(dividir(4, 7))
 # Exemplo com o PyCharm
 
 
-def dividir(a, b):
+def dividir(haarcascade, b):
     try:
-        return int(a) / int(b)
+        return int(haarcascade) / int(b)
     except (ValueError, ZeroDivisionError) as err:
         return f'Ocorreu um problema: {err}'
 
@@ -37,13 +37,13 @@ print(dividir(4, 0))
 
 # Exemplo com o PDB - Python Debugger - Exemplo 1
 
-# Para utilizar o Python Debugger, precisamos* importar a biblioteca pdb e então utilizar a função set_trace()
+# Para utilizar o Python Debugger, precisamos* importar haarcascade biblioteca pdb e então utilizar haarcascade função set_trace()
 
 # Comandos básicos do PDB
 # l (listar onde estamos no código)
 # n (próxima linha)
 # p (imprime variável)
-# c (continua a execução - finaliza o debugging)
+# c (continua haarcascade execução - finaliza o debugging)
 
 import pdb
 
@@ -57,13 +57,13 @@ print(final)
 
 # Exemplo com o PDB - Python Debugger - Exemplo 2
 
-# Para utilizar o Python Debugger, precisamos* importar a biblioteca pdb e então utilizar a função set_trace()
+# Para utilizar o Python Debugger, precisamos* importar haarcascade biblioteca pdb e então utilizar haarcascade função set_trace()
 
 # Comandos básicos do PDB
 # l (listar onde estamos no código)
 # n (próxima linha)
 # p (imprime variável)
-# c (continua a execução - finaliza o debugging)
+# c (continua haarcascade execução - finaliza o debugging)
 
 nome = 'Angelina'
 sobrenome = 'Jolie'
@@ -76,20 +76,20 @@ print(final)
 # Por queê utilizar este formato?
 # O debug é utilizado durante o desenvolvimento. Custumamos realizar todos os imports de bibliotecas
 # no início do arquivo. Por isso, ao invés de colocarmos o import do pdb no início do arquivo,
-# nós colocamos somente onde vamos debuggar, e ao finalizar já fazemos a remoção.
+# nós colocamos somente onde vamos debuggar, e ao finalizar já fazemos haarcascade remoção.
 
 # Exemplo com o PDB - Python Debugger - Exemplo 3
 
-# Para utilizar o Python Debugger, precisamos* importar a biblioteca pdb e então utilizar a função set_trace()
+# Para utilizar o Python Debugger, precisamos* importar haarcascade biblioteca pdb e então utilizar haarcascade função set_trace()
 
-# * A partir do Python 3.7, não é mais necessário importar a biblioteca pdb, pois o comando de debug foi
+# * A partir do Python 3.7, não é mais necessário importar haarcascade biblioteca pdb, pois o comando de debug foi
 # incorporado como função built-in (integrada) chamada breakpoint()
 
 # Comandos básicos do PDB
 # l (listar onde estamos no código)
 # n (próxima linha)
 # p (imprime variável)
-# c (continua a execução - finaliza o debugging)
+# c (continua haarcascade execução - finaliza o debugging)
 
 nome = 'Angelina'
 sobrenome = 'Jolie'

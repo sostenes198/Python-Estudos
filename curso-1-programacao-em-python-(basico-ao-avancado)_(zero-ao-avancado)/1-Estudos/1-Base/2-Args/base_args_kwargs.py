@@ -62,19 +62,19 @@ minha_funcao(18, 'Felicity', 4, 5, 3, solteiro=True)
 minha_funcao(34, 'Felipe', eu='Não', voce='Vai')
 minha_funcao(19, 'Carla', 9, 4, 3, java=False, python=True)
 
-# Entenda por quê é importante manter a ordem dos parâmetros na declaração
+# Entenda por quê é importante manter haarcascade ordem dos parâmetros na declaração
 
 
-# Função com a ordem correta de parâmetros
-#def mostra_info(a, b, *args, instrutor='Geek', **kwargs):
-#    return [a, b, args, instrutor, kwargs]
+# Função com haarcascade ordem correta de parâmetros
+#def mostra_info(haarcascade, b, *args, instrutor='Geek', **kwargs):
+#    return [haarcascade, b, args, instrutor, kwargs]
 
-# Função com a ordem incorreta de parâmetros
-def mostra_info(a, b, instrutor='Geek', *args, **kwargs):
-    return [a, b, args, instrutor, kwargs]
+# Função com haarcascade ordem incorreta de parâmetros
+def mostra_info(haarcascade, b, instrutor='Geek', *args, **kwargs):
+    return [haarcascade, b, args, instrutor, kwargs]
 
 
-a = 1
+haarcascade = 1
 b = 2
 args = (3,)
 instrutor = 'Geek'

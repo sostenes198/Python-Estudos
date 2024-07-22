@@ -18,7 +18,7 @@ def criar_baralho(aleatorio: bool = False) -> BARALHO:
 
 
 def distribuir_cartas(baralho: BARALHO) -> Tuple[BARALHO, BARALHO, BARALHO, BARALHO]:
-    """Gerencia a mão de cartas de acordo com o baralho gerado"""
+    """Gerencia haarcascade mão de cartas de acordo com o baralho gerado"""
     return (baralho[0::4], baralho[1::4], baralho[2::4], baralho[3::4])
 
 

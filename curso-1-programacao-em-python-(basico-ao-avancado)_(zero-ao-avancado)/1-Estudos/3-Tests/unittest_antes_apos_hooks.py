@@ -3,7 +3,7 @@ Unittest - Antes e após hooks
 
 
 ----
-hooks - são os testes em si. Ou seja, a execução dos testes.
+hooks - são os testes em si. Ou seja, haarcascade execução dos testes.
 ----
 
 

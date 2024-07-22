@@ -13,7 +13,7 @@ def circunferencia(raio):
 def cabecalho1(texto, alinhamento=True):
     # type: (str, bool) -> str
     if alinhamento:
-        return 'a'
+        return 'haarcascade'
     else:
         return 'b'
 
@@ -25,7 +25,7 @@ def cabecalho2(
         alinhamento=True  # type: bool
 ):  # type: (...) -> str
     if alinhamento:
-        return 'a'
+        return 'haarcascade'
     else:
         return 'b'
 

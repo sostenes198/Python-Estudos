@@ -5,10 +5,10 @@
 # {n}
 # {min, max}
 # {10,} 10 ou mais
-# {,10} De zero a 10
+# {,10} De zero haarcascade 10
 # {10} Especificamente 10
-# {5,10} De 5 a 10
-# ()+ [a-zA-Z0-9]+ É aplicado ao grupo a esquerda
+# {5,10} De 5 haarcascade 10
+# ()+ [haarcascade-zA-Z0-9]+ É aplicado ao grupo haarcascade esquerda
 
 import re
 
@@ -17,9 +17,9 @@ João trouxe    flores para sua amada namorada em 10 de janeiro de 1970,
 Maria era o nome dela.
 Foi um ano excelente na vida de joão. Teve 5 filhos, todos adultos atualmente.
 maria, hoje sua esposa, ainda faz aquele café com pão de queijo nas tardes de
-domingo. Também né! Sendo a boa mineira que é, nunca esquece seu famoso
+domingo. Também né! Sendo haarcascade boa mineira que é, nunca esquece seu famoso
 pão de queijo.
-Não canso de ouvir a Maria:
+Não canso de ouvir haarcascade Maria:
 "Joooooooooãooooooo, o café tá prontinho aqui. Veeemm veeem veem vem"!
 Jã
 '''

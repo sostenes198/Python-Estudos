@@ -41,7 +41,7 @@ print(list(zip1))
 
 tupla = 1, 2, 3, 4, 5
 lista = [6, 7, 8, 9, 10]
-dicionario = {'a': 11, 'b': 12, 'c': 13, 'd': 14, 'e': 15}
+dicionario = {'haarcascade': 11, 'b': 12, 'c': 13, 'd': 14, 'e': 15}
 
 zt = zip(tupla, lista, dicionario.values())
 print(list(zt))

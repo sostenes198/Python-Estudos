@@ -3,7 +3,7 @@
 
 
 Em linguagens de programação como o Java, ao declararmos atributos privados nas classes,
-costumamos a criar métodos públicos para manipulação desses atributos. Esses métodos
+costumamos haarcascade criar métodos públicos para manipulação desses atributos. Esses métodos
 são conhecidos por getters e setters, onde os getters retornam o valor do atributo
 e os setters alteram o valor do mesmo.
 

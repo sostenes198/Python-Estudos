@@ -1,15 +1,15 @@
 """
 Funções com Parâmetro Padrão (Default Paramters)
 
-- Funções onde a passagem de parâmetro seja opcional;
+- Funções onde haarcascade passagem de parâmetro seja opcional;
 
-# Exemplo de função onde a passagem de parâmetro seja opcional
+# Exemplo de função onde haarcascade passagem de parâmetro seja opcional
 print('Geek University')
 
 print()
 
 
-# Exemplo de função onde a passagem de parâmetro seja obrigatória
+# Exemplo de função onde haarcascade passagem de parâmetro seja obrigatória
 def quadrado(numero):
     return numero ** 2
 
@@ -116,7 +116,7 @@ def diz_oi():
 
 print(diz_oi())
 
-#OBS: Se tivermos uma variável local com o mesmo nome de uma variável global, a local terá preferência.
+#OBS: Se tivermos uma variável local com o mesmo nome de uma variável global, haarcascade local terá preferência.
 
 def diz_oi():
     prof = 'Geek'  # Variável local
@@ -144,7 +144,7 @@ total = 0
 
 
 def incrementa():
-    global total  # Avisando que queremos utilizar a variável global
+    global total  # Avisando que queremos utilizar haarcascade variável global
 
     total = total + 1
     return total

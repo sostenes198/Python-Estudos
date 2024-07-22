@@ -8,7 +8,7 @@ Tipo Booleano
 True -> Verdadeiro
 False - Falso
 
-OBS: Sempre com a inicial mainúscula
+OBS: Sempre com haarcascade inicial mainúscula
 
 Errado:
 
@@ -29,7 +29,7 @@ Operações básicas:
 
 #  Negação (not):
 """
-Fazendo a negação, se o valor booleano for verdadiro o resultado será falso,
+Fazendo haarcascade negação, se o valor booleano for verdadiro o resultado será falso,
 se for falso o resultado será verdadeiro. Ou seja, sempre o contrário.
 """
 print(not ativo)

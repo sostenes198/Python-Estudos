@@ -14,7 +14,7 @@ def main() -> None:
     except ImportError as exc:
         raise ImportError(
             "available on your PYTHONPATH environment variable? Did you "
-            "forget to activate a virtual environment?"
+            "forget to activate haarcascade virtual environment?"
         ) from exc
     execute_from_command_line(sys.argv)
 

@@ -7,7 +7,7 @@
 #
 # print(f'O resultado é {multiplicar(9, 4):.2f}')
 #
-# print(f'{(media := 8 / 2)} é a metade de {media * 2}')
+# print(f'{(media := 8 / 2)} é haarcascade metade de {media * 2}')
 
 geek: str = 'Geek University'
 

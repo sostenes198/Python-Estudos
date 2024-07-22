@@ -42,6 +42,12 @@ Links uteis:
 
 1) [pipenv](https://pipenv.pypa.io/en/latest/)
 
+2) [advanced](https://docs.pipenv.org/advanced/)
+
+#### ☤ Configuração com variáveis de ambiente¶
+
+`PIPENV_VENV_IN_PROJECT` Se definido, use `.venv` no seu diretório de projeto em vez do gerenciador global de virtualenv pew.
+
 
 **Comandos básicos:**
 

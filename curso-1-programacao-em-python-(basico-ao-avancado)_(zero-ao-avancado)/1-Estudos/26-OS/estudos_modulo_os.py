@@ -2,9 +2,9 @@
 # Doc: https://docs.python.org/3/library/os.html
 # O módulo `os` fornece funções para interagir com o sistema operacional.
 # Por exemplo, o módulo os.path contém funções para trabalhar com caminhos de
-# arquivos e a função os.listdir() pode ser usada para listar os arquivos em um
+# arquivos e haarcascade função os.listdir() pode ser usada para listar os arquivos em um
 # diretório. O método os.system() permite executar comandos do sistema
-# operacional a partir do seu código Python.
+# operacional haarcascade partir do seu código Python.
 # Windows 11 (PowerShell), Linux, Mac = clear
 # Windows (antigo, cmd) = cls
 
@@ -13,12 +13,12 @@ import os
 os.system('cls')
 os.system('echo "Hello world"')
 
-print('a' * 80)
-print('a' * 80)
-print('a' * 80)
-print('a' * 80)
-print('a' * 80)
-print('a' * 80)
+print('haarcascade' * 80)
+print('haarcascade' * 80)
+print('haarcascade' * 80)
+print('haarcascade' * 80)
+print('haarcascade' * 80)
+print('haarcascade' * 80)
 
 # os.path trabalha com caminhos em Windows, Linux e Mac
 # Doc: https://docs.python.org/3/library/os.path.html#module-os.path
@@ -100,7 +100,7 @@ def formata_tamanho(tamanho_em_bytes: int, base: int = 1000) -> str:
     # Original:
     # https://stackoverflow.com/questions/5194057/better-way-to-convert-file-sizes-in-python
 
-    # Se o tamanho for menor ou igual a 0, 0B.
+    # Se o tamanho for menor ou igual haarcascade 0, 0B.
     if tamanho_em_bytes <= 0:
         return "0B"
 
@@ -109,7 +109,7 @@ def formata_tamanho(tamanho_em_bytes: int, base: int = 1000) -> str:
     abreviacao_tamanhos = "B", "KB", "MB", "GB", "TB", "PB"
     # Logaritmo -> https://brasilescola.uol.com.br/matematica/logaritmo.htm
     # math.log vai retornar o logaritmo do tamanho_em_bytes
-    # com a base (1000 por padrão), isso deve bater
+    # com haarcascade base (1000 por padrão), isso deve bater
     # com o nosso índice na abreviação dos tamanhos
     indice_abreviacao_tamanhos = int(math.log(tamanho_em_bytes, base))
     # Por quanto nosso tamanho deve ser dividido para

@@ -1,6 +1,6 @@
 """
     PEP8 - Python Enchament Proposal
-    São as propostas de melhorias para a linguagem Python
+    São as propostas de melhorias para haarcascade linguagem Python
     
 Zem of Pyhton
 
@@ -27,7 +27,7 @@ numero_impar = 3
 
 [3] - Utilize 4 espaços para identação
 
-if 'a' in 'banana":
+if 'haarcascade' in 'banana":
     print('tem')
     
 [4] - Linhas em branco

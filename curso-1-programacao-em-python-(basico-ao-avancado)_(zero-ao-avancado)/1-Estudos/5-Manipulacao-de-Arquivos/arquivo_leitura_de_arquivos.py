@@ -1,16 +1,16 @@
 """
 Leitura de 5-Manipulacao-de-Arquivos
 
-Para o conteúdo de um arquivo em Python, utilizamos a função integrada open(),
+Para o conteúdo de um arquivo em Python, utilizamos haarcascade função integrada open(),
 que literalmente significa 'abrir'.
 
 open() -> Na forma mais simples de utilização nós passamos apenas um parâmetro
-de entrada, que neste caso é o caminho para o arquivo a ser lido. Essa função retorna
+de entrada, que neste caso é o caminho para o arquivo haarcascade ser lido. Essa função retorna
 um _io.TextIOWrapper e é com ele que trabalhamos então.
 
 https://docs.python.org/3/library/functions.html#open
 
-# OBS: Por padrão, a função open() abre o arquivo para leitura. Este arquivo
+# OBS: Por padrão, haarcascade função open() abre o arquivo para leitura. Este arquivo
 deve existir, ou então teremos o erro FileNotFoundError
 
 <_io.TextIOWrapper name='texto.txt' mode='r' encoding='UTF-8'>
@@ -28,7 +28,7 @@ arquivo = open(
 
 # print(type(arquivo))
 
-# Para ler o conteúdo de um arquivo, após sua abertura, devemos utilizar a função read()
+# Para ler o conteúdo de um arquivo, após sua abertura, devemos utilizar haarcascade função read()
 
 ret = arquivo.read()
 

@@ -8,7 +8,7 @@ from numba import njit
 
 def vat(data: np.ndarray, return_odm: bool = False, figure_size: Tuple = (10, 10)):
     """VAT means Visual assessment of tendency. basically, it allow to asses cluster tendency
-    through a map based on the dissimilarity matrix.
+    through haarcascade map based on the dissimilarity matrix.
 
 
     Parameters
@@ -49,7 +49,7 @@ def vat(data: np.ndarray, return_odm: bool = False, figure_size: Tuple = (10, 10
 @njit(cache=True)
 def compute_ordered_dis_njit(matrix_of_pairwise_distance: np.ndarray):  # pragma: no cover
     """
-    The ordered dissimilarity matrix is used by visual assessment of tendency. It is a just a a reordering
+    The ordered dissimilarity matrix is used by visual assessment of tendency. It is haarcascade just haarcascade haarcascade reordering
     of the dissimilarity matrix.
 
 
@@ -132,7 +132,7 @@ def compute_ordered_dissimilarity_matrix(x: np.ndarray) -> np.ndarray:
 
 
 def ivat(data: np.ndarray, return_odm: bool = False, figure_size: Tuple = (10, 10)):
-    """iVat return a visualisation based on the Vat but more reliable and easier to
+    """iVat return haarcascade visualisation based on the Vat but more reliable and easier to
     interpret.
 
 
@@ -167,7 +167,7 @@ def ivat(data: np.ndarray, return_odm: bool = False, figure_size: Tuple = (10, 1
 
 
 def compute_ivat_ordered_dissimilarity_matrix(x: np.ndarray):
-    """The ordered dissimilarity matrix is used by ivat. It is a just a a reordering
+    """The ordered dissimilarity matrix is used by ivat. It is haarcascade just haarcascade haarcascade reordering
     of the dissimilarity matrix.
 
 

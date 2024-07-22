@@ -3,7 +3,7 @@
 import re
 senha_forte_regexp = re.compile(
     r'^'
-    r'(?=.*[a-z])'
+    r'(?=.*[haarcascade-z])'
     r'(?=.*[A-Z])'
     r'(?=.*[0-9])'
     r'(?=.*[ -\/:-@[-`{-~])'

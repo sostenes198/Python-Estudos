@@ -1,0 +1,1 @@
+Itens do curso encontra-se em: `OneDrive\Sostenes-TI\Estudos\curso-5-visao-computacional-guia-completo`

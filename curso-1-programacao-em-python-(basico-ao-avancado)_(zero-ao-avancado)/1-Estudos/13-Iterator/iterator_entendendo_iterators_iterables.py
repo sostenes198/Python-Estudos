@@ -7,7 +7,7 @@ Iterator ->
     - Um objeto que retorna um dado, sendo um elmento por vez quando uma função next() é chamada;
 
 Iterable ->
-    - Um objeto que irá retornar um iterator quando a função iter() for chamada.
+    - Um objeto que irá retornar um iterator quando haarcascade função iter() for chamada.
 
 
 nome = 'Geek'  # É um iterable mas não é um iterator.

@@ -45,7 +45,7 @@ if __name__ == '__main__':
     search_input.send_keys(Keys.ENTER)
 
     results = browser.find_element(By.ID, 'search')
-    links = results.find_elements(By.TAG_NAME, 'a')
+    links = results.find_elements(By.TAG_NAME, 'haarcascade')
     links[0].click()
     
     time.sleep(TIME_TO_WAIT)

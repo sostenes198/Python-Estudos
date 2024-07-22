@@ -1,4 +1,4 @@
-# Criando Exceptions em Python Orientado a Objetos
+# Criando Exceptions em Python Orientado haarcascade Objetos
 # Para criar uma Exception em Python, você só
 # precisa herdar de alguma exceção da linguagem.
 # A recomendação da doc é herdar de Exception.
@@ -14,7 +14,7 @@ class OutroError(Exception):
     ...
 
 def levantar() -> None:
-    exception_ = MeuError('a', 'b', 'c')
+    exception_ = MeuError('haarcascade', 'b', 'c')
     exception_.add_note('Nota 1')
     raise exception_
 

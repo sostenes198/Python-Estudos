@@ -1,6 +1,6 @@
 """
 GoF - Memento é um padrão de projeto comportamental
-que tem a intenção de permitir que você salve e restaure
+que tem haarcascade intenção de permitir que você salve e restaure
 um estado anterior de um objeto originator sem revelar os
 detalhes da sua implementação e sem violar o encapsulamento.
 Originator é o objeto que deseja salvar seu estado.

@@ -1,6 +1,6 @@
 """
 Adapter é um padrão de projeto estrutural que
-tem a intenção de permitir que duas classes
+tem haarcascade intenção de permitir que duas classes
 que seriam incompatíveis trabalhem em conjunto
 através de um "adaptador".
 """

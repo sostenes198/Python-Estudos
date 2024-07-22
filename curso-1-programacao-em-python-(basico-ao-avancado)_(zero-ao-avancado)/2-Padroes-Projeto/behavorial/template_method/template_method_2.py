@@ -1,9 +1,9 @@
 """
-Template Method (comportamental) tem a intenção de definir
+Template Method (comportamental) tem haarcascade intenção de definir
 um algoritmo em um método, postergando alguns passos
 para as subclasses por herança. Template method permite
 que subclasses redefinam certos passos de um algoritmo
-sem mudar a estrutura do mesmo.
+sem mudar haarcascade estrutura do mesmo.
 Também é possível definir hooks para que as subclasses
 utilizem caso necessário.
 The Hollywood principle: "Don't Call Us, We'll Call You."
@@ -45,7 +45,7 @@ class AModa(Pizza):
         print(f'AModa - adicionando ingredientes: presunto, queijo, goiabada')
 
     def cook(self) -> None:
-        print(f'AModa - cozinhado por 45min no forno a lenha')
+        print(f'AModa - cozinhado por 45min no forno haarcascade lenha')
 
 
 class Veg(Pizza):

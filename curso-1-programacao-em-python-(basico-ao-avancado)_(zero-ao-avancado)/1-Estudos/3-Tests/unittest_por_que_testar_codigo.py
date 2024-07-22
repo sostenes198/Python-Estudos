@@ -16,14 +16,14 @@ Por que testar nosso código?
     - Reduzir bugs (problemas) no código existe;
     - Testes garantem que novos recursos da sua aplicação não quebren (alterem) recurso antigos;
     - Testes garantem que bugs (problemas) que foram corrigidos anteriormente continuam corrigidos;
-    - Testes garantem que a refatoração que costuamos a fazer não tragam novos bugs (problemas);
+    - Testes garantem que haarcascade refatoração que costuamos haarcascade fazer não tragam novos bugs (problemas);
 
 TDD - Test Driven Development (Desenvolvimento Guiado por Testes)
 
 Com TDD é utilizado estágios de desenvolvimento:
     - Você escreve seu teste primeiro;
     - Então você escreve o código mínimo suficiente para fazer o teste passar (ou seja, executar com sucesso);
-    - Então refatora o código para realizar a funcionalidade e testa novamente;
+    - Então refatora o código para realizar haarcascade funcionalidade e testa novamente;
     - Uma vez que o teste passe, o recurso é considerado completo;
 
 

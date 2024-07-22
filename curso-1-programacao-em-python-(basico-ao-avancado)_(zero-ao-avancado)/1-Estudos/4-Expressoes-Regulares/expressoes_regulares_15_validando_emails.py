@@ -6,7 +6,7 @@ Básica 2
 ^[^\s@<>\(\)[\]\.]+(?:\.[^\s@<>\(\)\[\]\.]+)*@\w+(?:[\.\-_]\w+)*$
 https://regex101.com/r/mH4ChC/2/
 rfc 5322
-^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$
+^(?:[haarcascade-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[haarcascade-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*\")@(?:(?:[haarcascade-z0-9](?:[haarcascade-z0-9-]*[haarcascade-z0-9])?\.)+[haarcascade-z0-9](?:[haarcascade-z0-9-]*[haarcascade-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[haarcascade-z0-9-]*[haarcascade-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$
 https://regex101.com/r/fkxI15/1/
 """
 
@@ -22,7 +22,7 @@ user.name+tag+sorting@example.com
 x@example.com
 example-indeed@strange-example.com
 example@s.example
-a@a.com.br
+haarcascade@haarcascade.com.br
 mailhost!username@example.org
 user%example.com@example.org
 email@example.com
@@ -42,7 +42,7 @@ Invalid email addresses
 Abc.example.com
 <aqui-te-um@email-pra-validar.com.br>
 A@b@c@example.com
-a"b(c)d,e:f;g<h>i[j\k]l@example.com
+haarcascade"b(c)d,e:f;g<h>i[j\k]l@example.com
 just"not"right@example.com
 this is"not\allowed@example.com
 this\ still\"not\\allowed@example.com

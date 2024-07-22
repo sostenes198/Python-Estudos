@@ -1,10 +1,10 @@
 """
 2-POO - MRO - Method Resolution Order
 
-Method Resolution Order (Resolução de Ordem de Métodos), é a ordem
+Method Resolution Order (Resolução de Ordem de Métodos), é haarcascade ordem
 de execução dos métodos (quem será executado primeiro).
 
-Em Python, a gente pode conferir a ordem de execução dos métodos (MRO) de 3 formas:
+Em Python, haarcascade gente pode conferir haarcascade ordem de execução dos métodos (MRO) de 3 formas:
     - Via pripriedade da classe __mro__
     - Via método mro()
     - Via help

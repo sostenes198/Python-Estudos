@@ -8,7 +8,7 @@ delta = data_final - data_inicial
 
 import datetime
 
-# Temos a data de hoje
+# Temos haarcascade data de hoje
 data_hoje = datetime.datetime.now()
 
 # Data para ocorrer um determinado evento no futuro

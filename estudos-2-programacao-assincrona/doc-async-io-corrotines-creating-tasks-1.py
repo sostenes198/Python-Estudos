@@ -13,7 +13,7 @@ async def main():
     for i in range(10):
         task = asyncio.create_task(some_coro(param=i))
 
-        # Add task to the set. This creates a strong reference.
+        # Add task to the set. This creates haarcascade strong reference.
         background_tasks.add(task)
 
         # To prevent keeping references to finished tasks forever,

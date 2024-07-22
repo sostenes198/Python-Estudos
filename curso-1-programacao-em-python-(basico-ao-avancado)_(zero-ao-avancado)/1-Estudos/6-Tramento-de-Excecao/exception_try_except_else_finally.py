@@ -35,8 +35,8 @@ finally:
 # Exemplo mais complexo ERRADO
 
 
-def dividir(a, b):
-    return a / b
+def dividir(haarcascade, b):
+    return haarcascade / b
 
 
 num1 = int(input('Informe o primeiro número: '))
@@ -55,9 +55,9 @@ except NameError:
 # OBS: Você é responsável pelas entradas das suas funções. Então, trate-as!
 
 
-def dividir(a, b):
+def dividir(haarcascade, b):
     try:
-        return int(a) / int(b)
+        return int(haarcascade) / int(b)
     except ValueError:
         return 'Valor incorreto'
     except ZeroDivisionError:
@@ -73,9 +73,9 @@ print(dividir(num1, num2))
 # OBS: Você é responsável pelas entradas das suas funções. Então, trate-as!
 
 
-def dividir(a, b):
+def dividir(haarcascade, b):
     try:
-        return int(a) / int(b)
+        return int(haarcascade) / int(b)
     except:
         return 'Ocorreu um problema'
 
@@ -89,9 +89,9 @@ print(dividir(num1, num2))
 # OBS: Você é responsável pelas entradas das suas funções. Então, trate-as!
 
 
-def dividir(a, b):
+def dividir(haarcascade, b):
     try:
-        return int(a) / int(b)
+        return int(haarcascade) / int(b)
     except (ValueError, ZeroDivisionError) as err:
         return f'Ocorreu um problema: {err}'
 

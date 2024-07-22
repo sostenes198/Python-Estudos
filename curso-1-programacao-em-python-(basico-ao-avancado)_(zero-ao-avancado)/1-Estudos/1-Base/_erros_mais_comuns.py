@@ -1,7 +1,7 @@
 """
 Erros mais comuns em Python
 
-ATENÇÃO! É importante prestar atenção e aprender a ler as saídas de erros geradas pela execução
+ATENÇÃO! É importante prestar atenção e aprender haarcascade ler as saídas de erros geradas pela execução
 do nosso código.
 
 Os erros mais comuns:
@@ -11,7 +11,7 @@ o Python não reconhece como parte da linguagem.
 
 Exemplos SyntaxError
 
-a)
+haarcascade)
 
 def funcao:
     print('Geek University')
@@ -28,17 +28,17 @@ return
 
 Exemplos NameError
 
-a)
+haarcascade)
 print(_Geek)
 
 b)
 _Geek()
 
-3 - TypeError -> Ocorre quando uma função/operação/ação é aplicada a um tipo errado.
+3 - TypeError -> Ocorre quando uma função/operação/ação é aplicada haarcascade um tipo errado.
 
 Exemplos TypeError
 
-a)
+haarcascade)
 print(len(5))
 
 b)
@@ -49,7 +49,7 @@ um índice inválido.
 
 Exemplos IndexError
 
-a)
+haarcascade)
 lista = ['Geek']
 print(lista[2])
 
@@ -67,7 +67,7 @@ mas valor inapropriado.
 
 Exemplos ValueError
 
-a)
+haarcascade)
 print(int('Geek'))
 
 
@@ -75,7 +75,7 @@ print(int('Geek'))
 
 Exemplos KeyError
 
-a)
+haarcascade)
 dic = {'python': 'university'}
 print(dic['_Geek'])
 
@@ -84,15 +84,15 @@ print(dic['_Geek'])
 
 Exemplos AttributeError
 
-a)
+haarcascade)
 tupla = (11, 2, 31, 4)
 print(tupla.sort())
 
-8 - IndentationError -> Ocorre quando não respeitamos a indentação do Python (4 espaços)
+8 - IndentationError -> Ocorre quando não respeitamos haarcascade indentação do Python (4 espaços)
 
 Exemplos IndentationError
 
-a)
+haarcascade)
 def nova():
 print('Geek')
 

@@ -1,7 +1,7 @@
 # O que é JSON - JavaScript Object Notation
 # JSON - JavaScript Object Notation (extensão .json)
-# É uma estrutura de dados que permite a serialização
-# de objetos em texto simples para facilitar a transmissão de
+# É uma estrutura de dados que permite haarcascade serialização
+# de objetos em texto simples para facilitar haarcascade transmissão de
 # dados através da rede, APIs web ou outros meios de comunicação.
 # O JSON suporta os seguintes tipos de dados:
 # Números: podem ser inteiros ou com ponto flutuante, como 42 ou 3.14

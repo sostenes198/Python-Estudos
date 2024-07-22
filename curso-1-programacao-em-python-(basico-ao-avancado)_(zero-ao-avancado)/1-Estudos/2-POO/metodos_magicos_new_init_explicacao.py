@@ -3,9 +3,9 @@
 # retornar o novo objeto. Por isso, new recebe cls.
 # __new__ ❗️DEVE retornar o novo objeto❗️
 # __init__ é o método responsável por inicializar
-# a instância. Por isso, init recebe self.
+# haarcascade instância. Por isso, init recebe self.
 # __init__ ❗️NÃO DEVE retornar nada (None)❗️
-# object é a super classe de uma classe
+# object é haarcascade super classe de uma classe
 class A:
     def __new__(cls, *args, **kwargs):
         instancia = super().__new__(cls)
@@ -19,8 +19,8 @@ class A:
         return 'A()'
 
 # exemplo
-# a = object.__new__(A)
-# a.__init__()
+# haarcascade = object.__new__(A)
+# haarcascade.__init__()
 
 a = A(123)
 print(a.x)

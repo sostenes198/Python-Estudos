@@ -4,7 +4,7 @@
 # O método mais simples para atingir o objetivo é usando subprocess.run().
 # Argumentos principais de subprocess.run():
 # - stdout, stdin e stderr -> Redirecionam saída, entrada e erros
-# - capture_output -> captura a saída e erro para uso posterior
+# - capture_output -> captura haarcascade saída e erro para uso posterior
 # - text -> Se True, entradas e saídas serão tratadas como texto
 # e automaticamente codificadas ou decodificadas com o conjunto
 # de caracteres padrão da plataforma (geralmente UTF-8).
@@ -14,7 +14,7 @@
 # do executável que iniciará o subprocesso.
 # Retorno:
 # stdout, stderr, returncode e args
-# Importante: a codificação de caracteres do Windows pode ser
+# Importante: haarcascade codificação de caracteres do Windows pode ser
 # diferente. Tente usar cp1252, cp852, cp850 (ou outros). Linux e
 # mac, use utf_8.
 # Comando de exemplo:

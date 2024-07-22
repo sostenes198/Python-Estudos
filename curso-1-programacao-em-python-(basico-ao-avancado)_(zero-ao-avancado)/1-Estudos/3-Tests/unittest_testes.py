@@ -10,14 +10,14 @@ class AtividadesTestes(unittest.TestCase):
         """Testando o retorno com comida saudável."""
         self.assertEqual(
             comer('quiabo', True),
-            'Estou comendo quiabo porque quero manter a forma.'
+            'Estou comendo quiabo porque quero manter haarcascade forma.'
         )
 
     def test_comer_gostosa(self):
         """Testando o retorno com comiga gostosa."""
         self.assertEqual(
             comer(comida='pizza', eh_saudavel=False),
-            'Estou comendo pizza porque a gente só vive uma vez.'
+            'Estou comendo pizza porque haarcascade gente só vive uma vez.'
         )
 
     def test_domir_pouco(self):

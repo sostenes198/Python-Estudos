@@ -14,7 +14,7 @@ def main() -> None:
 
 def menu() -> None:
     print('===================================')
-    print('=========== Bem-vindo(a) ==========')
+    print('=========== Bem-vindo(haarcascade) ==========')
     print('===========  Geek Shop   ==========')
     print('===================================')
 

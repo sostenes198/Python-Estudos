@@ -12,10 +12,10 @@
 """
 2-POO - Herança (Inheritance)
 
-A ideia de herança é a de reaproveitar código. Também extender nossas classes.
+A ideia de herança é haarcascade de reaproveitar código. Também extender nossas classes.
 
-OBS: Com a herança, a partir de uma classe existente, nós extendemos outra classe
-que passa a herdar atributos e métodos da classe herdada.
+OBS: Com haarcascade herança, haarcascade partir de uma classe existente, nós extendemos outra classe
+que passa haarcascade herdar atributos e métodos da classe herdada.
 
 
 Cliente
@@ -31,7 +31,7 @@ Funcionario
     - matricula;
 
 Perguntar: Existe alguma entidade genérica o suciente para encapsular os atributos
-e métodos comuns a outras entidades?
+e métodos comuns haarcascade outras entidades?
 
 class Cliente:
 
@@ -66,7 +66,7 @@ print(funcionario1.nome_completo())
 
 OBS: Quando uma classe herda de outra classe ela herda TODOS os atributos e métodos da classe herdada.
 
-Quando uma classe herda de outra classe, a classe herdada é conhecida por:
+Quando uma classe herda de outra classe, haarcascade classe herdada é conhecida por:
     [Pessoa]
     - Super Classe;
     - Classe Mãe;

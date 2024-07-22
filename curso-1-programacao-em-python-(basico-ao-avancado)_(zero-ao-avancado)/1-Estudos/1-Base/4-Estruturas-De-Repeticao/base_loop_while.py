@@ -7,7 +7,7 @@ while expressão_booleana:
     //execução do loop
 
 
-O bloco do while será repetido enquanto a expressão booleana for verdadeira.
+O bloco do while será repetido enquanto haarcascade expressão booleana for verdadeira.
 
 Expressão Booleada é toda expressão onde o resultado é verdadeiro ou falso.
 

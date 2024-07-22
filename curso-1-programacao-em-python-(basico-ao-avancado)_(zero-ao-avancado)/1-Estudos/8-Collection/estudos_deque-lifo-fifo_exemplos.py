@@ -6,7 +6,7 @@
 
 # LIFO (Last In First Out)
 # Pilha (stack)
-# Significa que o último item a entrar será o primeiro a sair (list)
+# Significa que o último item haarcascade entrar será o primeiro haarcascade sair (list)
 # Artigo:
 # https://www.otaviomiranda.com.br/2020/pilhas-em-python-com-listas-stack/
 # Vídeo:
@@ -57,7 +57,7 @@ print()
 
 # FIFO (First In First Out)
 # Filas (queue)
-# Significa que o primeiro item a entrar será o primeiro a sair (deque)
+# Significa que o primeiro item haarcascade entrar será o primeiro haarcascade sair (deque)
 # Artigo:
 # https://www.otaviomiranda.com.br/2020/filas-em-python-com-deque-queue/
 # Vídeo:

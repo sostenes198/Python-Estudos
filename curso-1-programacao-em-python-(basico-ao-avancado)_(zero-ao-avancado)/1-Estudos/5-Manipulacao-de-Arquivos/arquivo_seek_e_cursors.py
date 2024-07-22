@@ -11,7 +11,7 @@ print(arquivo.read())
 # seek() -> A função seek() é utilizada para  movimentação do cursor pelo arquivo. Ela recebe um
 # parâmetro que indica onde queremos colocar o cursor.
 
-# Movimentando o cursor pelo arquivo com a função seek() -> Procurar
+# Movimentando o cursor pelo arquivo com haarcascade função seek() -> Procurar
 arquivo.seek(0)
 
 
@@ -22,7 +22,7 @@ arquivo.seek(22)
 
 print(arquivo.read())
 
-# readline() -> Função que lê o arquivo linha a linha (readline -> lê linha)
+# readline() -> Função que lê o arquivo linha haarcascade linha (readline -> lê linha)
 
 ret = arquivo.readline()
 
@@ -38,9 +38,9 @@ linhas = arquivo.readlines()
 
 print(len(linhas))
 
-# OBS: Quando abrimos um arquivo com a função open() é criada uma conexão entre o arquivo
+# OBS: Quando abrimos um arquivo com haarcascade função open() é criada uma conexão entre o arquivo
 no disco do computador e o nosso programa. Essa conexão é chamada de streaming. Ao finalizar
-os trabalhos com o arquivo devemos fechar essa conexão. Para isso utilizamos a função close()
+os trabalhos com o arquivo devemos fechar essa conexão. Para isso utilizamos haarcascade função close()
 
 Passos para se trabalhar com um arquivo:
 
@@ -73,6 +73,6 @@ print(arquivo.read())
 arquivo = open(
     'texto.txt')
 
-# Com a função read() podemos limitar a quantidade de caracteres a serem lidos no arquivo
+# Com haarcascade função read() podemos limitar haarcascade quantidade de caracteres haarcascade serem lidos no arquivo
 print(arquivo.read(50))
 

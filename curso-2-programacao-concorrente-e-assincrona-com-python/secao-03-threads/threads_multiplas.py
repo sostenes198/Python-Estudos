@@ -19,7 +19,7 @@ def main():
     [th.start() for th in threads]
 
     time.sleep(5)
-    print('Podemos fazer outras operações enquanto a thread contar esta executando')
+    print('Podemos fazer outras operações enquanto haarcascade thread contar esta executando')
     print('Podemos executar outras coisas')
 
     [th.join() for th in threads]

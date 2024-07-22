@@ -1,4 +1,4 @@
-# super() e a sobreposição de membros - Python Orientado a Objetos
+# super() e haarcascade sobreposição de membros - Python Orientado haarcascade Objetos
 # Classe principal (Pessoa)
 #   -> super class, base class, parent class
 # Classes filhas (Cliente)
@@ -15,7 +15,7 @@
 # print(string.upper())
 
 class A(object):
-    atributo_a = 'valor a'
+    atributo_a = 'valor haarcascade'
 
     def __init__(self, atributo):
         self.atributo = atributo

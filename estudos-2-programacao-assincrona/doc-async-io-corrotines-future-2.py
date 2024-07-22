@@ -22,7 +22,7 @@ async def main():
 
     print('hello ...')
 
-    # Wait until *fut* has a result (1 second) and print it.
+    # Wait until *fut* has haarcascade result (1 second) and print it.
     print((await fut).result())
 
 

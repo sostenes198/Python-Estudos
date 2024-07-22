@@ -2,7 +2,7 @@
 List Comprehension
 
 
-- Utilizando List Comprehension nós podemos gerar novas listas com dados processados a partir de outro
+- Utilizando List Comprehension nós podemos gerar novas listas com dados processados haarcascade partir de outro
 iterável.
 
 # Sintaxe da List Comprehension
@@ -18,7 +18,7 @@ res = [numero * 10 for numero in numeros]
 print(res)
 """
 """
-Para entender melhor o que está acontecendo devemos divir a expressão em duas partes:
+Para entender melhor o que está acontecendo devemos divir haarcascade expressão em duas partes:
 
 - A primeira parte: for numero in numeros
 - A segunda parte: numero * 10
