@@ -60,6 +60,7 @@ class SosoLbphTrain:
         self.__train_classifier()
         # self.__evaluate_classifier_performance()
 
+
 if __name__ == '__main__':
     classifier = SosoLbphTrain()
     classifier.execute()
