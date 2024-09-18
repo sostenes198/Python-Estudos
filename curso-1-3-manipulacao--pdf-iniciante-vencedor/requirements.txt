@@ -1,0 +1,25 @@
+Requirements
+
+1) Python Basic Knowledge 
+2) Python 3.8 >=
+3) Visual Studio Code (Recomended)
+4) Virtual Environment (Recomended)
+5) How it will be?
+
+# BASIC OPERATIONS
+# HOW TO... ?
+# 1) Get number of pages
+# 2) Get document info
+# 3) Get text from pages
+# 4) Get images from pages
+# 5) Get URLs from pages
+# 6) Make images from pages
+# 7) Scale pages
+# 8) Rotate Pages
+# 9) Split pages
+# 10) Merge pages
+# 11) Crop pages
+# 12) Add watermark
+
+PyMuPDF - pip install PyMuPDF
+PyPi Project: https://pypi.org/project/PyMuPDF/
