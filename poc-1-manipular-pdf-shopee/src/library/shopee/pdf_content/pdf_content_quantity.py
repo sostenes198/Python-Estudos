@@ -1,3 +1,5 @@
+from reportlab.lib.enums import TA_RIGHT
+
 from library.shopee.pdf_content.base.pdf_content import PdfContent
 from library.shopee.pdf_style.pdf_paragraph_style import PdfParagraphStyle
 import re
@@ -20,6 +22,6 @@ class PdfContentQuantity(PdfContent):
     @staticmethod
     def __get_style(value: str) -> PdfParagraphStyle:
         parsed_value: int = int(value)
-        font_size = 23 if parsed_value > 1 else PdfParagraphStyle.default_font_size()
+        font_size = PdfParagraphStyle.default_font_size() + 3 if parsed_value > 1 else PdfParagraphStyle.default_font_size()
         leading = PdfParagraphStyle.default_leading() + 3 if parsed_value > 1 else PdfParagraphStyle.default_leading()
-        return PdfParagraphStyle(font_size=font_size, leading=leading)
+        return PdfParagraphStyle(font_size=font_size, leading=leading, alignment=TA_RIGHT)
