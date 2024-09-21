@@ -12,6 +12,9 @@ import pdfplumber
 import pandas as pd
 import re
 
+from library.shopee.pdf_content.pdf_content_name import ContentNameType
+from library.shopee.pdf_excel_extractor import PdfExcelExtractor
+
 
 class ContentExtractedExcel:
     def __init__(self, order_code: str,
@@ -168,7 +171,6 @@ def add_content(input_pdf_stream: BytesIO, content_extracted_excel: List[Content
     writer = PdfWriter()
     packet = BytesIO()
 
-
     # Customized style for paragraphs, including font size, alignment and font
     custom_style = ParagraphStyle(
         name="CustomStyle",
@@ -248,10 +250,10 @@ def add_content(input_pdf_stream: BytesIO, content_extracted_excel: List[Content
         table_page = table_reader.pages[0]
 
         # Create a new page for the final PDF
-        new_page = page.create_blank_page(width=width, height=height+height_table+20)
+        new_page = page.create_blank_page(width=width, height=height + height_table + 20)
 
         # Add the original page and table to the new page
-        new_page.merge_translated_page(page, 0, height_table+20)
+        new_page.merge_translated_page(page, 0, height_table + 20)
 
         new_page.merge_translated_page(table_page, 0, (height * -1) + height_to_translate)
 

@@ -37,7 +37,7 @@ if __name__ == '__main__':
     # Espere para encontrar o input
     search_input = WebDriverWait(browser, TIME_TO_WAIT).until(
         EC.presence_of_element_located(
-            (By.NAME, 'q')
+            (By.PRODUCT_NAME, 'q')
         )
     )
 
