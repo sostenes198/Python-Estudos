@@ -1,7 +1,7 @@
+from io import BytesIO
 from typing import List, Optional
 import pandas as pd
 import re
-
 
 from library.shopee.pdf_content.pdf_content_name import PdfContentName, ContentNameType
 from library.shopee.pdf_content.pdf_content_order_code import PdfContentOrderCode
@@ -13,7 +13,7 @@ from library.shopee.pdf_content.pdf_content import PdfContent
 class PdfExcelExtractor:
     __PATTERN_TO_SPLIT_PRODUCT_INFO = r'(?=\[\d+\])'
 
-    def __init__(self, content_name_type: ContentNameType, excel_file_path: str):
+    def __init__(self, content_name_type: ContentNameType, excel_file_path: str | BytesIO):
         self.__pdf_contents: List[PdfContent] = self.__populate_pdf_contents(content_name_type, excel_file_path)
 
     def __populate_pdf_contents(self, content_name_type: ContentNameType,

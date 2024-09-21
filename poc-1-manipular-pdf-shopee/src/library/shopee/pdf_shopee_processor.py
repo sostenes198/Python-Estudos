@@ -17,20 +17,15 @@ from .pdf_style.pdf_style import PdfStyle
 
 
 class PdfShopeeProcessor:
-    def __init__(self, path: str):
+    def __init__(self, path: str | BytesIO):
         self.__original_pdf_in_memory = self.__read_file(path)
         self.__in_memory_pdf_pipeline = BytesIO(self.__original_pdf_in_memory.read())
         self.__in_memory_pdf_pipeline.seek(0)
         self.__original_pdf_in_memory.seek(0)
 
-    def process(self, pdf_excel_extractor: PdfExcelExtractor, left_margin: int, right_margin: int, bottom_margin: int,
-                top_margin: int) -> PdfShopeeResult:
+    def process(self, pdf_excel_extractor: PdfExcelExtractor) -> PdfShopeeResult:
         self.__in_memory_pdf_pipeline = self.__split_pdf_into_quadrants(self.__in_memory_pdf_pipeline)
-        self.__in_memory_pdf_pipeline = self.__add_margin_to_page(self.__in_memory_pdf_pipeline,
-                                                                  left_margin,
-                                                                  right_margin,
-                                                                  bottom_margin,
-                                                                  top_margin)
+        self.__in_memory_pdf_pipeline = self.__add_margin_to_page(self.__in_memory_pdf_pipeline)
         self.__in_memory_pdf_pipeline = self.__add_content(pdf_excel_extractor, self.__in_memory_pdf_pipeline)
         self.__in_memory_pdf_pipeline.seek(0)
 
@@ -105,8 +100,13 @@ class PdfShopeeProcessor:
 
         return packet
 
-    def __add_margin_to_page(self, in_memory_pdf: BytesIO, left_margin: int, right_margin: int, bottom_margin: int,
-                             top_margin: int) -> BytesIO:
+    def __add_margin_to_page(self, in_memory_pdf: BytesIO) -> BytesIO:
+        # Set margins
+        left_margin = 20
+        right_margin = 20
+        bottom_margin = 0
+        top_margin = 5
+
         # Open the existing PDF
         reader = PdfReader(in_memory_pdf)
         writer = PdfWriter()
