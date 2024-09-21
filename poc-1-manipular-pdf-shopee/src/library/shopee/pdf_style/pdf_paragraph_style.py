@@ -4,9 +4,9 @@ from reportlab.lib.enums import TA_CENTER
 
 class PdfParagraphStyle:
     __FONT_NAME: str = 'Courier-Bold'
-    __FONT_SIZE: int = 20
+    __FONT_SIZE: int = 14
     __ALIGNMENT: TA_CENTER = TA_CENTER
-    __LEADING: str = __FONT_SIZE + 2
+    __LEADING: int = __FONT_SIZE * 0.9
 
     def __init__(self,
                  font_name=__FONT_NAME,
@@ -37,5 +37,5 @@ class PdfParagraphStyle:
         return cls.__ALIGNMENT
 
     @classmethod
-    def default_leading(cls) -> TA_CENTER:
+    def default_leading(cls) -> int:
         return cls.__LEADING

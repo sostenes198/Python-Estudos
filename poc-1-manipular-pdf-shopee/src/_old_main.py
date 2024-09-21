@@ -279,7 +279,7 @@ def save_pdf(input_pdf: BytesIO, output_path):
 def process(pdf_input: str, excel_input: str, pdf_output: str):
     with open(pdf_input, 'rb') as file:
         packet = split_pdf_into_quadrants(BytesIO(file.read()), )
-        packet = add_margin_to_page(packet, 20, 20, 0, 5)
+        # packet = add_margin_to_page(packet, 5, 5, 0, 5)
 
         content_extracted_excel = get_content_from_excel(pd.read_excel(excel_input))
         packet = add_content(packet, content_extracted_excel)
@@ -287,11 +287,11 @@ def process(pdf_input: str, excel_input: str, pdf_output: str):
 
 
 def execute() -> None:
-    # process('./entradas/1 etiqueta.pdf', './entradas/1 etiqueta.xlsx', './saidas/1-output.pdf')
-    # process('./entradas/2 etiqueta.pdf', './entradas/2 etiqueta.xlsx', './saidas/2-output.pdf')
-    # process('./entradas/3 etiqueta.pdf', './entradas/3 etiqueta.xlsx', './saidas/3-output.pdf')
-    # process('./entradas/4 etiqueta.pdf', './entradas/4 etiqueta.xlsx', './saidas/4-output.pdf')
-    process('./entradas/5 etiqueta.pdf', './entradas/5 etiqueta.xlsx', './saidas/5-output.pdf')
+    process('../entradas/1 etiqueta.pdf', '../entradas/1 etiqueta.xlsx', '../saidas/1-output.pdf')
+    # process('../entradas/2 etiqueta.pdf', '../entradas/2 etiqueta.xlsx', '../saidas/2-output.pdf')
+    # process('../entradas/3 etiqueta.pdf', '../entradas/3 etiqueta.xlsx', '../saidas/3-output.pdf')
+    # process('../entradas/4 etiqueta.pdf', '../entradas/4 etiqueta.xlsx', '../saidas/4-output.pdf')
+    # process('../entradas/5 etiqueta.pdf', '../entradas/5 etiqueta.xlsx', '../saidas/5-output.pdf')
 
 
 if __name__ == '__main__':

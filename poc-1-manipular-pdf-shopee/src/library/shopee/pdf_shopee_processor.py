@@ -102,10 +102,10 @@ class PdfShopeeProcessor:
 
     def __add_margin_to_page(self, in_memory_pdf: BytesIO) -> BytesIO:
         # Set margins
-        left_margin = 20
-        right_margin = 20
+        left_margin = 10
+        right_margin = 10
         bottom_margin = 0
-        top_margin = 5
+        top_margin = 10
 
         # Open the existing PDF
         reader = PdfReader(in_memory_pdf)
@@ -120,18 +120,34 @@ class PdfShopeeProcessor:
             original_width = page.mediabox.width
             original_height = page.mediabox.height
 
-            # Calculate new dimensions with margin
-            new_width = original_width + left_margin + right_margin
-            new_height = original_height + bottom_margin + top_margin
+            # Calculate the available area after applying margins
+            available_width = original_width - left_margin - right_margin
+            available_height = original_height - top_margin - bottom_margin
 
-            # Create a new page with the adjusted dimensions
-            new_page = page.create_blank_page(width=new_width, height=new_height)
+            # Calculate scaling factor to fit the content within the new available space
+            scale_x = available_width / original_width
+            scale_y = available_height / original_height
+            # scale_factor = min(scale_x, scale_y)  # Maintain aspect ratio
 
-            # Add the original page to the center of the new page
-            new_page.merge_translated_page(page, left_margin, bottom_margin)
+            # Create a new blank page with the original dimensions
+            new_page = PageObject.create_blank_page(width=original_width, height=original_height)
 
+            # Create the transformation matrix to scale and translate the original content
+            transformation = (
+                Transformation()
+                .scale(scale_x, scale_y)  # Scale down the content to fit within margins
+                .translate(left_margin, bottom_margin)
+                # Move the content to the right and up by the margin size
+            )
+
+            # Apply the transformation to the original page and add it to the new page
+            new_page.merge_transformed_page(page, transformation)
+            # new_page.merge_translated_page(new_page, right_margin, top_margin)
+
+            # Add the modified page to the writer
             writer.add_page(new_page)
 
+        # Write the final output to the packet
         writer.write_stream(packet)
         packet.seek(0)
 
@@ -148,55 +164,67 @@ class PdfShopeeProcessor:
             page: PageObject = reader.pages[index]
             order_code: Optional[str] = self.__extract_order_code_from_page(page, index, in_memory_pdf)
             content_items: List[PdfContent] = self.__list_pdf_content_items(pdf_excel_extractor, order_code)
+
+            # Prepare table data
             data: List[List] = []
             for item in content_items:
                 data.append([item.content_name.paragraph, item.variation_name.paragraph, item.quantity.paragraph])
 
-            table_packet = BytesIO()
-            width = page.mediabox.width
-            height = page.mediabox.height
+            original_width = page.mediabox.width
+            original_height = page.mediabox.height
             right_margin = 10
             left_margin = 10
-            table_width = width - right_margin - left_margin
+            table_width = original_width - right_margin - left_margin
 
-            # Create a canvas to use with wrapOn()
-            dummy_canvas = canvas.Canvas(BytesIO(), pagesize=(width, height))
-
-            # Create a new page with the table
-            doc = SimpleDocTemplate(table_packet, pagesize=(width, height), rightMargin=right_margin,
-                                    leftMargin=left_margin)
-
-            # Create table
-            table = Table(data,
-                          colWidths=[table_width * 0.5, table_width * 0.4, table_width * 0.1],
+            # Create a dummy canvas to measure the table size
+            dummy_canvas = canvas.Canvas(BytesIO(), pagesize=(original_width, original_height))
+            table = Table(data, colWidths=[((table_width * 65) / 100), ((table_width * 20) / 100),
+                                           ((table_width * 15) / 100)],
                           style=PdfStyle.table_style())
+            table_width, table_height = table.wrapOn(dummy_canvas, original_width, original_height)
+            translate_content_to_make_space_between_table_and_content_page = 20
 
-            # Width and Height of table
-            width_table, height_table = table.wrapOn(dummy_canvas, width, height)
+            # Calculate the remaining height for the page content after the table
+            remaining_height_for_content = original_height - table_height - 20
 
-            # height to translate
-            initial_height_to_translate = 90
-            height_to_translate = initial_height_to_translate + height_table
+            # Create a new blank page with the original dimensions
+            new_page = PageObject.create_blank_page(width=original_width, height=original_height)
+
+            # Scale the content vertically to fit within the remaining space
+            scale_factor_y = remaining_height_for_content / original_height
+
+            # Apply vertical scaling to the content
+            transformation = (
+                Transformation()
+                .scale(1, scale_factor_y)  # Only scale vertically
+                .translate(0, table_height + translate_content_to_make_space_between_table_and_content_page)
+            )
+
+            # Merge the scaled content into the new page
+            new_page.merge_transformed_page(page, transformation)
 
             # Build the PDF with the table
+            table_packet = BytesIO()
+            doc = SimpleDocTemplate(table_packet, pagesize=(original_width, original_height),
+                                    rightMargin=right_margin, leftMargin=left_margin)
             doc.build([table])
             table_packet.seek(0)
 
+            # Add the table to the new page at the bottom
             table_reader = PdfReader(table_packet)
             table_page = table_reader.pages[0]
 
-            # Create a new page for the final PDF
-            new_page = page.create_blank_page(width=width, height=height + height_table + 20)
+            # Calculate the position for the table
+            default_initial_position_table = 90
+            new_page.merge_translated_page(table_page, 0,
+                                           (original_height * -1) + table_height + default_initial_position_table)
 
-            # Add the original page and table to the new page
-            new_page.merge_translated_page(page, 0, height_table + 20)
-
-            new_page.merge_translated_page(table_page, 0, (height * -1) + height_to_translate)
-
+            # Add the new page with content and table to the writer
             writer.add_page(new_page)
 
-            writer.write_stream(packet)
-            packet.seek(0)
+        # Write the final output to the packet
+        writer.write_stream(packet)
+        packet.seek(0)
 
         return packet
 
@@ -254,6 +282,9 @@ class PdfShopeeProcessor:
             return content_items
 
     @staticmethod
-    def __read_file(path: str) -> BytesIO:
-        with open(path, 'rb') as file:
-            return BytesIO(file.read())
+    def __read_file(path: str | BytesIO) -> BytesIO:
+        if isinstance(path, str):
+            with open(path, 'rb') as file:
+                return BytesIO(file.read())
+        else:
+            return BytesIO(path.read())
