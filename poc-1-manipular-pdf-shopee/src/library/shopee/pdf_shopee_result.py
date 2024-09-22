@@ -1,7 +1,8 @@
 from io import BytesIO
 
-
 from pypdf import PdfReader, PdfWriter
+
+from library.utils.pdf.byte_io_utils import ByteIoUtils
 
 
 class PdfShopeeResult:
@@ -23,6 +24,4 @@ class PdfShopeeResult:
             writer.write(output_pdf)
 
     def __get_in_memory_pdf_result(self) -> BytesIO:
-        copy_in_memory_pdf_result: BytesIO = BytesIO(self.___in_memory_pdf_result.read())
-        self.___in_memory_pdf_result.seek(0)
-        return copy_in_memory_pdf_result
+        return ByteIoUtils.clone(self.___in_memory_pdf_result)
