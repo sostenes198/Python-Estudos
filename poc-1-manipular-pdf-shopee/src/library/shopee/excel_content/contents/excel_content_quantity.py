@@ -22,6 +22,5 @@ class ExcelContentQuantity(ExcelContent):
     @staticmethod
     def __get_style(style: PdfParagraphStyle, value: str) -> PdfParagraphStyle:
         parsed_value: int = int(value)
-        font_size = style.default_font_size() + 3 if parsed_value > 1 else style.default_font_size()
-        leading = style.default_leading() + 3 if parsed_value > 1 else style.default_leading()
-        return PdfParagraphStyle(font_size=font_size, leading=leading, alignment=TA_RIGHT)
+        font_size: int = style.default_font_size() + 3 if parsed_value > 1 else style.default_font_size()
+        return PdfParagraphStyle(font_size=font_size, alignment=TA_RIGHT)

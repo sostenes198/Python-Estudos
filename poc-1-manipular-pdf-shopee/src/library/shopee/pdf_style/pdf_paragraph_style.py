@@ -6,18 +6,18 @@ class PdfParagraphStyle:
     __FONT_NAME: str = 'Courier-Bold'
     __FONT_SIZE: int = 14
     __ALIGNMENT: TA_CENTER = TA_CENTER
-    __LEADING: int = __FONT_SIZE * 0.9
+    __LEADING: int = 0.9
 
     def __init__(self,
                  font_name=__FONT_NAME,
                  font_size=__FONT_SIZE,
                  alignment=__ALIGNMENT,
-                 leading=__LEADING,):
+                 leading=__LEADING):
         self.__name = 'ShopeePdfStyle'
         self.__font_name = font_name
         self.__font_size = font_size
         self.__alignment = alignment
-        self.__leading = leading
+        self.__leading = font_size * leading
         self.style: ParagraphStyle = ParagraphStyle(name=self.__name,
                                                     fontName=self.__font_name,
                                                     fontSize=self.__font_size,
@@ -37,5 +37,5 @@ class PdfParagraphStyle:
         return cls.__ALIGNMENT
 
     @classmethod
-    def default_leading(cls) -> int:
+    def default_leading(cls) -> TA_CENTER:
         return cls.__LEADING
