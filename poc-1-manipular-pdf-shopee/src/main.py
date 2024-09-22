@@ -9,7 +9,7 @@ def process(pdf_input: str, excel_input: str, pdf_output: str):
     config: ShopeeConfig = ShopeeConfig(
         shopee_excel_config=ShopeeExcelConfig(content_name_type=ContentNameType.PRODUCT_NAME,
                                               font_size=PdfParagraphStyle.default_font_size()))
-    pdf_result = pdf_shopee_processor.process(config=config, in_memory_pdf=pdf_input, in_memory_excel_pdf=excel_input)
+    pdf_result = pdf_shopee_processor.process(config=config, in_memory_pdf=pdf_input, in_memory_excel=excel_input)
     pdf_result.save_pdf(pdf_output)
 
 
