@@ -1,24 +1,24 @@
+import re
 from io import BytesIO
 from typing import List, Optional
-import pandas as pd
-import re
 
-from library.shopee.excel_content.contents.excel_content_name import ExcelContentName, ContentNameType
+import pandas as pd
+
+from library.shopee.excel_content.contents.excel_content_name import ExcelContentName
 from library.shopee.excel_content.contents.excel_content_order_code import ExcelContentOrderCode
 from library.shopee.excel_content.contents.excel_content_quantity import ExcelContentQuantity
 from library.shopee.excel_content.contents.excel_content_variation_name import ExcelContentVariationName
 from library.shopee.excel_content.excel_content_manager import ExcelContentManager
 from library.shopee.pdf_style.pdf_paragraph_style import PdfParagraphStyle
-from library.shopee.pdf_style.pdf_style import PdfStyle
 from library.shopee.shopee_config import ShopeeExcelConfig
 
 
 class ExcelShopeeExtractor:
     __PATTERN_TO_SPLIT_PRODUCT_INFO = r'(?=\[\d+\])'
 
-    def __init__(self, config: ShopeeExcelConfig, excel_file_path: str | BytesIO):
+    def __init__(self, config: ShopeeExcelConfig, excel_file_path_or_stream: str | BytesIO):
         self.__pdf_contents: List[ExcelContentManager] = self.__populate_pdf_contents(config=config,
-                                                                                      excel_file_path=excel_file_path)
+                                                                                      excel_file_path=excel_file_path_or_stream)
 
     def list_pdf_contents_by_order_code(self, order_code: Optional[str]) -> List[ExcelContentManager]:
         return [item for item in self.__pdf_contents if item.content_order_code.text_value == order_code]
