@@ -27,8 +27,8 @@ class PdfShopeeProcessor:
     def process(self, config: ShopeeConfig, in_memory_pdf: str | BytesIO,
                 in_memory_excel_pdf: str | BytesIO) -> PdfShopeeResult:
         __in_memory_pdf_pipeline: BytesIO = ByteIoUtils.clone(stream_or_path_file=in_memory_pdf)
-        __pdf_excel_extractor: ExcelShopeeExtractor = ExcelShopeeExtractor(config.excel_config,
-                                                                           in_memory_excel_pdf)
+        __pdf_excel_extractor: ExcelShopeeExtractor = ExcelShopeeExtractor(config=config.excel_config,
+                                                                           excel_file_path_or_stream=in_memory_excel_pdf)
         __pdf_processor_config: PdfProcessorPipelineConfig = PdfProcessorPipelineConfig(
             original_in_memory_pdf=__in_memory_pdf_pipeline,
             pdf_extractor=__pdf_excel_extractor)
