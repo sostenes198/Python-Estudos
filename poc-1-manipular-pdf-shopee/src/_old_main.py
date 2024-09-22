@@ -12,9 +12,6 @@ import pdfplumber
 import pandas as pd
 import re
 
-from library.shopee.pdf_content.pdf_content_name import ContentNameType
-from library.shopee.pdf_excel_extractor import PdfExcelExtractor
-
 
 class ContentExtractedExcel:
     def __init__(self, order_code: str,
