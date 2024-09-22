@@ -2,7 +2,6 @@ from io import BytesIO
 
 from typing import List
 
-from library.shopee.excel_content.contents.excel_content_name import ContentNameType
 from .excel_shopee_extractor import ExcelShopeeExtractor
 from .pdf_processor_pipeline.base.pdf_processor_pipeline import PDFProcessorPipeline
 from .pdf_processor_pipeline.base.pdf_processor_pipeline_config import PdfProcessorPipelineConfig
@@ -37,4 +36,4 @@ class PdfShopeeProcessor:
             __in_memory_pdf_pipeline = pipeline_processor.process(config=__pdf_processor_config,
                                                                   in_memory_pdf=__in_memory_pdf_pipeline)
 
-        return PdfShopeeResult(ByteIoUtils.clone(__in_memory_pdf_pipeline))
+        return PdfShopeeResult(__in_memory_pdf_pipeline)

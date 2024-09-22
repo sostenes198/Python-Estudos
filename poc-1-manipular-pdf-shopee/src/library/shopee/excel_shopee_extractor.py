@@ -25,7 +25,9 @@ class ExcelShopeeExtractor:
 
     def __populate_pdf_contents(self, config: ShopeeExcelConfig,
                                 excel_file_path: str | BytesIO) -> List[ExcelContentManager]:
-        __pdf_contents: List[ExcelContentManager] = []
+        pdf_contents: List[ExcelContentManager] = []
+        default_paragraph_style: PdfParagraphStyle = PdfParagraphStyle(font_size=config.font_size)
+
         for _, row in pd.read_excel(excel_file_path).iterrows():
             order_sn: str = row['order_sn']
             product_infos: str = row['product_info']
@@ -33,10 +35,8 @@ class ExcelShopeeExtractor:
             products = [part.strip() for part in re.split(self.__PATTERN_TO_SPLIT_PRODUCT_INFO, product_infos) if
                         part.strip()]
 
-            default_paragraph_style: PdfParagraphStyle = PdfParagraphStyle(font_size=config.font_size)
-
             for product in products:
-                __pdf_contents.append(ExcelContentManager(
+                pdf_contents.append(ExcelContentManager(
                     content_order_code=ExcelContentOrderCode(style=default_paragraph_style,
                                                              excel_content_order_sn=order_sn),
                     content_name=ExcelContentName(style=default_paragraph_style,
@@ -47,4 +47,4 @@ class ExcelShopeeExtractor:
                     quantity=ExcelContentQuantity(style=default_paragraph_style, excel_content_product=product)
                 ))
 
-        return __pdf_contents
+        return pdf_contents
