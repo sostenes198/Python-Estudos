@@ -21,6 +21,7 @@ def execute() -> None:
     process('../entradas/3 etiqueta.pdf', '../entradas/3 etiqueta.xlsx', '../saidas/3-output.pdf')
     process('../entradas/4 etiqueta.pdf', '../entradas/4 etiqueta.xlsx', '../saidas/4-output.pdf')
     process('../entradas/5 etiqueta.pdf', '../entradas/5 etiqueta.xlsx', '../saidas/5-output.pdf')
+    process('../entradas/6 etiqueta.pdf', '../entradas/6 etiqueta.xlsx', '../saidas/6-output.pdf')
 
 
 if __name__ == '__main__':

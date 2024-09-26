@@ -1,6 +1,6 @@
 import re
 from io import BytesIO
-from typing import List, Optional
+from typing import List
 
 import pandas as pd
 
@@ -17,11 +17,14 @@ class ExcelShopeeExtractor:
     __PATTERN_TO_SPLIT_PRODUCT_INFO = r'(?=\[\d+\])'
 
     def __init__(self, config: ShopeeExcelConfig, excel_file_path_or_stream: str | BytesIO):
-        self.__pdf_contents: List[ExcelContentManager] = self.__populate_pdf_contents(config=config,
-                                                                                      excel_file_path=excel_file_path_or_stream)
+        self.__excel_contents: List[ExcelContentManager] = self.__populate_pdf_contents(config=config,
+                                                                                        excel_file_path=excel_file_path_or_stream)
 
-    def list_pdf_contents_by_order_code(self, order_code: Optional[str]) -> List[ExcelContentManager]:
-        return [item for item in self.__pdf_contents if item.content_order_code.text_value == order_code]
+    def list_order_codes_from_excel_contents(self) -> List[ExcelContentOrderCode]:
+        return [item.content_order_code for item in self.__excel_contents]
+
+    def list_pdf_contents_by_order_code(self, order_code: str) -> List[ExcelContentManager]:
+        return [item for item in self.__excel_contents if item.content_order_code.text_value == order_code]
 
     def __populate_pdf_contents(self, config: ShopeeExcelConfig,
                                 excel_file_path: str | BytesIO) -> List[ExcelContentManager]:
