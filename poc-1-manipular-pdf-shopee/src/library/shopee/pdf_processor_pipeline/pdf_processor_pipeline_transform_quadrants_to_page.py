@@ -6,7 +6,7 @@ from pypdf import PdfReader, PdfWriter, PageObject, Transformation
 from pypdf.generic import RectangleObject
 
 from library.shopee.pdf_processor_pipeline.base.pdf_processor_pipeline import PDFProcessorPipeline
-from library.shopee.pdf_processor_pipeline.base.pdf_processor_pipeline_config import PdfProcessorPipelineConfig
+from library.shopee.pdf_processor_pipeline.context.pdf_processor_pipeline_context import PdfProcessorPipelineContext
 
 
 class PdfProcessorPipelineTransformQuadrantsToPage(PDFProcessorPipeline):
@@ -14,7 +14,7 @@ class PdfProcessorPipelineTransformQuadrantsToPage(PDFProcessorPipeline):
 
         super().__init__()
 
-    def _internal_process(self, config: PdfProcessorPipelineConfig, in_memory_pdf: BytesIO) -> BytesIO:
+    def _internal_process(self, config: PdfProcessorPipelineContext, in_memory_pdf: BytesIO) -> BytesIO:
         reader = PdfReader(in_memory_pdf)
         in_memory_pdf.seek(0)
         pdf_document: fitz.Document = fitz.open(stream=in_memory_pdf.read(), filetype="pdf")

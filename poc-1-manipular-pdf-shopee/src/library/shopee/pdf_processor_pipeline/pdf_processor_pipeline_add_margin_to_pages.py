@@ -3,7 +3,7 @@ from io import BytesIO
 from pypdf import PdfReader, PdfWriter, PageObject, Transformation
 
 from library.shopee.pdf_processor_pipeline.base.pdf_processor_pipeline import PDFProcessorPipeline
-from library.shopee.pdf_processor_pipeline.base.pdf_processor_pipeline_config import PdfProcessorPipelineConfig
+from library.shopee.pdf_processor_pipeline.context.pdf_processor_pipeline_context import PdfProcessorPipelineContext
 
 
 class PdfProcessorPipelineAddMarginToPages(PDFProcessorPipeline):
@@ -15,7 +15,7 @@ class PdfProcessorPipelineAddMarginToPages(PDFProcessorPipeline):
     def __init__(self):
         super().__init__()
 
-    def _internal_process(self, config: PdfProcessorPipelineConfig, in_memory_pdf: BytesIO) -> BytesIO:
+    def _internal_process(self, config: PdfProcessorPipelineContext, in_memory_pdf: BytesIO) -> BytesIO:
         # Open the existing PDF
         reader = PdfReader(in_memory_pdf)
         writer = PdfWriter()

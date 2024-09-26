@@ -1,16 +1,15 @@
-import re
 from io import BytesIO
-from typing import Optional, List, Any
+from typing import Optional, List
 
-import pdfplumber
 from pypdf import PdfReader, PdfWriter, PageObject, Transformation
 from reportlab.pdfgen import canvas
 from reportlab.platypus import SimpleDocTemplate, Table
 
 from library.shopee.excel_content.excel_content_manager import ExcelContentManager
-from library.shopee.excel_shopee_extractor import ExcelShopeeExtractor
 from library.shopee.pdf_processor_pipeline.base.pdf_processor_pipeline import PDFProcessorPipeline
-from library.shopee.pdf_processor_pipeline.base.pdf_processor_pipeline_config import PdfProcessorPipelineConfig
+from library.shopee.pdf_processor_pipeline.context.pdf_processor_pipeline_context import PdfProcessorPipelineContext
+from library.shopee.pdf_processor_pipeline.context.pdf_processor_pipeline_context_extract_order_code_from_page import \
+    ExtractOrderCodeFromPage
 from library.shopee.pdf_style.pdf_style import PdfStyle
 
 
@@ -18,7 +17,7 @@ class PdfProcessorPipelineAppendTableWithExcelContent(PDFProcessorPipeline):
     def __init__(self):
         super().__init__()
 
-    def _internal_process(self, config: PdfProcessorPipelineConfig, in_memory_pdf: BytesIO) -> BytesIO:
+    def _internal_process(self, config: PdfProcessorPipelineContext, in_memory_pdf: BytesIO) -> BytesIO:
         # Open pdf
         reader = PdfReader(in_memory_pdf)
         writer = PdfWriter()
@@ -27,8 +26,8 @@ class PdfProcessorPipelineAppendTableWithExcelContent(PDFProcessorPipeline):
         # Process each page of the PDF
         for index in range(len(reader.pages)):
             page: PageObject = reader.pages[index]
-            order_code: Optional[str] = self.__extract_order_code_from_page(page, index, in_memory_pdf)
-            content_items: List[ExcelContentManager] = self.__list_pdf_content_items(config.pdf_extractor, order_code)
+            content_items: List[ExcelContentManager] = self.__list_pdf_content_items(config=config,
+                                                                                     page_number=index)
 
             # Prepare table data
             data: List[List] = []
@@ -94,53 +93,12 @@ class PdfProcessorPipelineAppendTableWithExcelContent(PDFProcessorPipeline):
         return packet
 
     @staticmethod
-    def __extract_order_code_from_page(page: PageObject, index_page: int, in_memory_pdf: BytesIO) \
-            -> Optional[str]:
+    def __list_pdf_content_items(config: PdfProcessorPipelineContext, page_number: int) -> List[ExcelContentManager]:
+        extracted_order_code: Optional[ExtractOrderCodeFromPage] = config.context_extract_order_code_from_page.get_extracted_page(
+            page_number=page_number)
+        content_items: List[ExcelContentManager] = config.excel_shopee_extractor.list_pdf_contents_by_order_code(
+            order_code=extracted_order_code.order_code)
 
-        order_code_shopee: Optional[str] = (
-            PdfProcessorPipelineAppendTableWithExcelContent.__extract_order_code_from_page_shopee(page, index_page,
-                                                                                                  in_memory_pdf))
-
-        order_code_correios: Optional[str] = (
-            PdfProcessorPipelineAppendTableWithExcelContent.__extract_order_code_from_page_correios(page,
-                                                                                                    index_page,
-                                                                                                    in_memory_pdf))
-
-        if not order_code_shopee and not order_code_correios:
-            raise Exception('Não encontrado número do pedido na página do PDF.')
-
-        return order_code_shopee or order_code_correios
-
-    @staticmethod
-    def __extract_order_code_from_page_shopee(page: PageObject, index_page: int, in_memory_pdf: BytesIO) \
-            -> Optional[str]:
-        with pdfplumber.open(in_memory_pdf) as pdf:
-            first_page = pdf.pages[index_page]
-            words = first_page.within_bbox(page.mediabox).extract_words()
-            first_occurrence: Optional[dict[str, Any]] = next(
-                (word for word in words if word['text'].startswith("Pedido:")), None)
-            if first_occurrence is None:
-                return None
-
-            order_code: Optional[str] = first_occurrence['text'].split(":")[1]
-
-        return order_code
-
-    @staticmethod
-    def __extract_order_code_from_page_correios(page: PageObject, index_page: int, in_memory_pdf: BytesIO) \
-            -> Optional[str]:
-        with pdfplumber.open(in_memory_pdf) as pdf:
-            first_page = pdf.pages[index_page]
-            words = first_page.within_bbox(page.mediabox).extract_text()
-            math_result = re.search(r'ID pedido:[A-Za-z0-9\s]+[\D]+\s*([A-Za-z0-9\s]+)\s', words)
-            if math_result:
-                return math_result.group(1)
-            return None
-
-    @staticmethod
-    def __list_pdf_content_items(pdf_excel_extractor: ExcelShopeeExtractor,
-                                 order_code: Optional[str]) -> List[ExcelContentManager]:
-        content_items: List[ExcelContentManager] = pdf_excel_extractor.list_pdf_contents_by_order_code(order_code)
         if not content_items:
             raise Exception('Nenhum pedido encontrado para o código fornecido')
         elif len(content_items) > 10:
