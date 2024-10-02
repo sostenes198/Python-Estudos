@@ -5,6 +5,8 @@ from typing import List
 from .excel_shopee_extractor import ExcelShopeeExtractor
 from .pdf_processor_pipeline.base.pdf_processor_pipeline import PDFProcessorPipeline
 from library.shopee.pdf_processor_pipeline.context.pdf_processor_pipeline_context import PdfProcessorPipelineContext
+from .pdf_processor_pipeline.pdf_processor_pipeline_add_audit_text_on_top_page import \
+    PdfProcessorPipelineAddAuditTextOnTopPage
 from .pdf_processor_pipeline.pdf_processor_pipeline_add_margin_to_pages import PdfProcessorPipelineAddMarginToPages
 from .pdf_processor_pipeline.pdf_processor_pipeline_append_table_with_excel_content import \
     PdfProcessorPipelineAppendTableWithExcelContent
@@ -21,6 +23,7 @@ class PdfShopeeProcessor:
     def __init__(self):
         self.__processor_pipelines: List[PDFProcessorPipeline] = [
             PdfProcessorPipelineTransformQuadrantsToPage(),
+            PdfProcessorPipelineAddAuditTextOnTopPage(),
             PdfProcessorPipelineExtractOrderCodeFromPage(),
             PdfProcessorPipelineAddMarginToPages(),
             PdfProcessorPipelineAppendTableWithExcelContent()
