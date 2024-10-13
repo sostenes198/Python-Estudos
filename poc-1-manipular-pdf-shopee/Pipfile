@@ -12,6 +12,7 @@ pymupdf = "*"
 pypdf2 = {extras = ["full"], version = "*"}
 pandas = "*"
 openpyxl = "*"
+pytz = "*"
 
 [dev-packages]
 

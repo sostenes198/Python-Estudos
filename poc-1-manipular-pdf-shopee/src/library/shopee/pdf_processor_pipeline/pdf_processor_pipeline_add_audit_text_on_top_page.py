@@ -1,13 +1,13 @@
 from io import BytesIO
-from datetime import datetime
 
-from pypdf import PdfReader, PdfWriter, PageObject, Transformation
+from pypdf import PdfReader, PdfWriter, Transformation
 
 from reportlab.pdfgen import canvas
 
 from library.shopee.pdf_processor_pipeline.base.pdf_processor_pipeline import PDFProcessorPipeline
 from library.shopee.pdf_processor_pipeline.context.pdf_processor_pipeline_context import PdfProcessorPipelineContext
 from library.shopee.pdf_style.pdf_paragraph_style import PdfParagraphStyle
+from library.utils.built_in.date_factory import DateFactory
 
 
 class PdfProcessorPipelineAddAuditTextOnTopPage(PDFProcessorPipeline):
@@ -21,7 +21,7 @@ class PdfProcessorPipelineAddAuditTextOnTopPage(PDFProcessorPipeline):
         writer = PdfWriter()
         packet = BytesIO()
 
-        date_text = datetime.now().strftime("%d/%m/%y %H:%M:%S")
+        date_text = DateFactory.new_date().strftime("%d/%m/%y %H:%M:%S")
         total_pages = reader.get_num_pages()
 
         # Define how much to move the content down to create space for the header
