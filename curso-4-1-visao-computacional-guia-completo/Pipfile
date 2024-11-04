@@ -12,6 +12,7 @@ opencv-contrib-python = "*"
 scikit-learn = "*"
 seaborn = "*"
 numpy = "==1.26.4"
+tensorflow = "*"
 
 [dev-packages]
 
