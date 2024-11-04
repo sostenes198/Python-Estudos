@@ -5,10 +5,10 @@
 **/**/**.jpg
 **/**/**.gif
 **/**/**.mp4
+**/**/**.bmp
 
 **/**/yalefaces
 **/**/sosofaces
+**/**/homer_bart_1
 
 !**/**/parametros_lbph.png
-
-**/**/homer_bart_1
