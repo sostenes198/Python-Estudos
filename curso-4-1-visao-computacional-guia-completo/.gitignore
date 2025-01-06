@@ -6,6 +6,8 @@
 **/**/**.gif
 **/**/**.mp4
 **/**/**.bmp
+**/**/**.h5
+**/**/**.keras
 
 **/**/yalefaces
 **/**/sosofaces
