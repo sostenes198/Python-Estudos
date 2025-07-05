@@ -10,7 +10,7 @@ class RnKeras:
         ...
 
     def train(self, X_train, Y_train) -> None:
-        # input_shape será igual a quantidade de pixels da imagem mutliplando a altura vs a lagura
+        # input_shape será igual a quantidade de pixels da imagem multiplicando a altura vs a lagura
         # O calculo simples do unit será a formula: (16384) + 2) / 2
         # ONDE 16384  Quantidade de neurônios da camada de entrada
         # ONDE 2 é a Quantidade de classes (Homer e Bart)
@@ -21,6 +21,8 @@ class RnKeras:
             tf.keras.layers.Dense(units=1, activation='sigmoid'))  # retorna um valor entre 0 e 1, uma probabilidade
 
         # print(network1.summary())
+        # https://keras.io/api/optimizers/
+        # https://keras.io/api/losses
         network1.compile(optimizer='Adam', loss='binary_crossentropy', metrics=['accuracy'])
 
         # batch_size=128, validation_data=(X_test, Y_test)
