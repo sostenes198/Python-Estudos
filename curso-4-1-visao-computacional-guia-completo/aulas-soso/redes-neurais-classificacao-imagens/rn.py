@@ -13,6 +13,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 from rn_keras import RnKeras
 
+# Extração de pixels
 width = 128
 height = 128
 directory_path = './homer_bart_1'
@@ -40,6 +41,7 @@ Y = np.asarray(classes)
 # print(np.unique(Y, return_counts=True))
 # print(X[0].max(), X[0].min())
 
+# Normalização dos pixels
 scaler = MinMaxScaler()
 X = scaler.fit_transform(X)
 
