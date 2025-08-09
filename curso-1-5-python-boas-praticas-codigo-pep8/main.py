@@ -1,0 +1,15 @@
+from fila_normal import FilaNormal
+
+fila_test = FilaNormal()
+fila_test.atualiza_fila()
+fila_test.atualiza_fila()
+fila_test.atualiza_fila()
+fila_test.atualiza_fila()
+fila_test.atualiza_fila()
+fila_test.atualiza_fila()
+fila_test.atualiza_fila()
+fila_test.atualiza_fila()
+print(fila_test.chama_cliente(5))
+print(fila_test.chama_cliente(1))
+print(fila_test.estatistica('10/01/1993', 198, 'detail'))
+print(fila_test.estatistica('10/01/1993', 198, 'full'))
