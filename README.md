@@ -88,3 +88,9 @@ Links uteis:
 #### Executar análise em um arquivo:
     mypy {FILE_NAME}.py
 
+
+## Gerenciador de múltiplas versões python
+[https://github.com/pyenv-win/pyenv-win](https://github.com/pyenv-win/pyenv-win)
+
+![pyenv_usage.png](imgs/pyenv_usage.png)
+
