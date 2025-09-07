@@ -89,6 +89,49 @@ Links uteis:
     mypy {FILE_NAME}.py
 
 
+## Pipx
+[https://pipx.pypa.io/stable/](https://pipx.pypa.io/stable/)
+
+Para gerenciar executaveis python. <br>
+Instalando pipx no python global: <br>
+`pip install pipx` <br>
+`pipx ensurepath`
+
+Apos instaladado o `pipx`, no windows é necessário executar o comando: 
+`pipx ensurepath` para adicionar os executaveis do pipx ao ambiente para ser executado
+pela linha de comando.
+
+### Comandos:
+
+`pipx list` -> Lista pacotes instalados
+
+`pipx install {PACKAGE_NAME}` -> Instala pacote
+
+`pipx uninstall {PACKAGE_NAME}` -> Remove pacote
+
+`pipx upgrade {PACKAGE_NAME}` -> Atualiza pacote
+
+# Poetry
+
+> Local onde os ambientes virtuais criados para o `poetry` <br>
+> estão: `%USERPROFILE%/AppData\Local\pypoetry\Cache\virtualenvs` <br>
+
+
+### Comandos:
+
+`poetry env info --path` -> Exibe path de onde o `env`encontra-se 
+
+`poetry env list` -> Lista todos os enviroments gerenciados
+
+`poetry env remove {{POETRY_ENV_NAME}}` -> Remove enviroment selecionado
+
+`poetry env use` ->  Activates or creates a new virtualenv for the current project.
+
+`poetry new {{PROJECT_NAME}}` -> Cria novo projeto com gerenciador poetry
+
+`poetry init` -> Inicializa projeto com gerenciador poetry
+
+
 ## Gerenciador de múltiplas versões python
 [https://github.com/pyenv-win/pyenv-win](https://github.com/pyenv-win/pyenv-win)
 
