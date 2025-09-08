@@ -1,0 +1,36 @@
+### Default route
+
+GET http://localhost:5000/
+Accept: application/json
+
+### Get items
+
+GET http://localhost:5000/items
+Accept: application/json
+
+### Create Items
+POST http://localhost:5000/items
+Content-Type: application/json
+
+{
+  "id": 1,
+  "value": "content"
+}
+
+### Update Items
+PUT http://localhost:5000/items/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "value": "new_content"
+}
+
+### Delete Items
+DELETE http://localhost:5000/items/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "value": "new_content"
+}
