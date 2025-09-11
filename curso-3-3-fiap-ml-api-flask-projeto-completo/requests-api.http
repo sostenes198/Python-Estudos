@@ -1,48 +1,60 @@
-### Default route
-
-GET http://localhost:5000/
-Accept: application/json
-
-### Get items
-
-GET http://localhost:5000/items
-Accept: application/json
-
-### Create Items
-POST http://localhost:5000/items
+### register
+POST http://localhost:5000/register
 Content-Type: application/json
 
 {
-  "id": 1,
-  "value": "content"
+  "username": "user1",
+  "password": "password1"
 }
 
-### Update Items
-PUT http://localhost:5000/items/1
+### login
+POST http://localhost:5000/login
 Content-Type: application/json
 
 {
-  "id": 1,
-  "value": "new_content"
+  "username": "user1",
+  "password": "password1"
 }
 
-### Delete Items
-DELETE http://localhost:5000/items/1
+> {% client.global.set("auth_token", response.body.access_token); %}
+
+### protected
+GET http://localhost:5000/protected
+Authorization: Bearer {{auth_token}}
+
+#### Sem token
+GET http://localhost:5000/protected
+#Authorization: Bearer {{auth_token}}
+
+#### token inválido
+GET http://localhost:5000/protected
+Authorization: Bearer {{auth_token}}123
+
+### Receipt
+
+#### Receipt Create
+POST http://localhost:5000/recipes
 Content-Type: application/json
+Authorization: Bearer {{auth_token}}
 
 {
-  "id": 1,
-  "value": "new_content"
+  "title": "Feijoada",
+  "ingredients": "Feijão preto, carne de porco, linguiçã calabresa, temperos",
+  "time_minutes": 120
 }
 
+#### Receipt List
+GET http://localhost:5000/recipes
 
-### Scrape title
-GET http://localhost:5000/scrape/title?url=https://olhardigital.com.br/2024/09/12/pro/ia-teria-encontrado-forma-de-nao-ser-controlada-por-humanos-entenda/
-Authorization: Basic user1 password1
+### Receipt Patch
+PATCH localhost:5000/recipes/1
 Content-Type: application/json
+Authorization: Bearer {{auth_token}}
 
+{
+  "title": "Feijoada Atualizada"
+}
 
-### Scrape content
-GET http://localhost:5000/scrape/content?url=https://olhardigital.com.br/2024/09/12/pro/ia-teria-encontrado-forma-de-nao-ser-controlada-por-humanos-entenda/
-Authorization: Basic user1 password1
-Content-Type: application/json
+### Receipt Delete
+DELETE localhost:5000/recipes/1
+Authorization: Bearer {{auth_token}}
