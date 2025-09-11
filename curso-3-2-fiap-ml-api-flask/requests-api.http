@@ -34,3 +34,15 @@ Content-Type: application/json
   "id": 1,
   "value": "new_content"
 }
+
+
+### Scrape title
+GET http://localhost:5000/scrape/title?url=https://olhardigital.com.br/2024/09/12/pro/ia-teria-encontrado-forma-de-nao-ser-controlada-por-humanos-entenda/
+Authorization: Basic user1 password1
+Content-Type: application/json
+
+
+### Scrape content
+GET http://localhost:5000/scrape/content?url=https://olhardigital.com.br/2024/09/12/pro/ia-teria-encontrado-forma-de-nao-ser-controlada-por-humanos-entenda/
+Authorization: Basic user1 password1
+Content-Type: application/json
