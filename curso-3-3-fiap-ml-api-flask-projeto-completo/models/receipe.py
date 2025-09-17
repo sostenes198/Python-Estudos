@@ -1,6 +1,9 @@
 from extensions import db
 
+
 class Recipe(db.Model):
+    __tablename__ = "receitas"
+
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(120), nullable=False)
     ingredients = db.Column(db.Text, nullable=False)

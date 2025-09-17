@@ -1,0 +1,58 @@
+terraform {
+  required_providers {
+    vercel = {
+      source  = "vercel/vercel"
+      version = "~> 1.9"
+    }
+  }
+}
+
+provider "vercel" {
+  # usa o token do env: VERCEL_API_TOKEN
+}
+
+# 1) Projeto Vercel (ligado ao seu GitHub) — ou deixe sem git_repository e use deployments diretos
+resource "vercel_project" "fastapi" {
+  name      = "fastapi-curso-4"
+  framework = "fastapi"
+
+  # Se quiser conectar ao Git (opcional):
+  # git_repository = {
+  #   type = "github"
+  #   repo = "<seu-usuario>/<seu-repo>"
+  # }
+}
+
+# 2) Variáveis de ambiente (produção/preview/dev)
+resource "vercel_project_environment_variable" "jwt_secret" {
+  project_id = vercel_project.fastapi.id
+  key        = "JWT_SECRET"
+  value      = "MY_SECRET_HERE"
+  target     = ["production", "preview", "development"]
+}
+
+# Desligar DB no ambiente Vercel (serverless)
+resource "vercel_project_environment_variable" "disable_db" {
+  project_id = vercel_project.fastapi.id
+  key        = "DISABLE_DB"
+  value      = "1"
+  target     = ["production", "preview", "development"]
+}
+
+# 3) (Opcional) Fazer deploy direto do diretório local via Terraform
+data "vercel_project_directory" "repo" {
+  path = "../"  # raiz que contém api/, vercel.json, requirements.txt, main.py, modelo_iris.pkl
+}
+
+resource "vercel_deployment" "deploy" {
+  project_id  = vercel_project.fastapi.id
+  files       = data.vercel_project_directory.repo.files
+  path_prefix = data.vercel_project_directory.repo.path
+  production  = true
+}
+
+# 4) (Opcional) Domínio *.vercel.app fixo
+# resource "vercel_project_domain" "auto" {
+#   project_id = vercel_project.fastapi.id
+#   domain     = "fastapi-curso-4.vercel.app"
+# }
