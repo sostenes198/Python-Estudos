@@ -1,0 +1,4 @@
+vercel.token
+.vercel
+vercel_output
+./infra/.terraform
