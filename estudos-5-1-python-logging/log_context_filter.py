@@ -18,13 +18,14 @@ class LogContextFilter(logging.Filter):
             if k not in logging.LogRecord('', 0, '', 0, '', (), None).__dict__
         }
 
-        # mescla os dois dicionários (extra_attrs tem prioridade se houver conflito)
+        # ⬇️ injeta CADA campo no LogRecord → NR vai enviar como attributes
         merged_ctx = {**ctx, **extra_attrs}
 
         # # injeta no record para ficar disponível no formatter
         # for k, v in merged_ctx.items():
         #     setattr(record, k, v)
 
+        # (opcional) manter um campo "ctx" só para debug humano no console
         record.ctx = json.dumps(merged_ctx, ensure_ascii=False, separators=(",", ":"))
 
         return True
