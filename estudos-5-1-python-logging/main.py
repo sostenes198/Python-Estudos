@@ -2,10 +2,13 @@
 import asyncio
 
 from log_context_filter import LogContextFilter
+from log_json_formatter import JsonFormatter
 
 #
 # log_context = LogContextManager()
 log_filter = LogContextFilter()
+
+json_formatter = JsonFormatter()
 
 from types import SimpleNamespace
 from api import handle_request
@@ -15,19 +18,23 @@ import logging.config
 def filter_factory():
     return log_filter  # sempre retorna a MESMA instância
 
+def formatter_json_factory():
+    return json_formatter  # sempre retorna a MESMA instância
+
 
 logging.config.dictConfig({
     "version": 1,
     "disable_existing_loggers": False,
     "filters": {"ctx": {"()": filter_factory}},
     "formatters": {
-        "default": {"format": "%(message)s | ctx=%(ctx)s"}
+        "default": {"format": "%(message)s | ctx=%(ctx)s"},
+        "json": {"()": formatter_json_factory}
     },
     "handlers": {
         "console": {
             "class": "logging.StreamHandler",
-            "filters": ["ctx"],
-            "formatter": "default"
+            # "filters": ["ctx"],
+            "formatter": "json"
         }
     },
     "loggers": {
