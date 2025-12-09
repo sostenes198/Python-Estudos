@@ -75,6 +75,12 @@ Links uteis:
     pipenv --venv
     ```
 
+* Locais ondes envs são criados
+
+  ```
+  %USERPROFILE%\.virtualenvs
+  ```
+
 ## Mypy:
 
 ### Documentação:
@@ -130,6 +136,12 @@ pela linha de comando.
 `poetry new {{PROJECT_NAME}}` -> Cria novo projeto com gerenciador poetry
 
 `poetry init` -> Inicializa projeto com gerenciador poetry
+
+`poetry config virtualenvs.in-project true` -> Se quise configurar para o poetry criar env no mesmo diretorio do projeto
+
+`poetry cache clear pypi --all` -> Limpar cache de arquivos baixados (Isso libera muito espaço)
+
+`%LocalAppData%\pypoetry\Cache` -> Local onde os pacotes e caches do poetry são instalados
 
 
 ## Gerenciador de múltiplas versões python
