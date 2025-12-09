@@ -1,0 +1,4 @@
+requests
+google-generativeai
+google-cloud-aiplatform>=1.38.0
+google-cloud-storage
