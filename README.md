@@ -125,6 +125,8 @@ pela linha de comando.
 
 ### Comandos:
 
+`poetry config --list` -> Lista todas as configurações do poetry
+
 `poetry env info --path` -> Exibe path de onde o `env`encontra-se 
 
 `poetry env list` -> Lista todos os enviroments gerenciados
