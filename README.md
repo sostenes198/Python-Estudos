@@ -127,13 +127,13 @@ pela linha de comando.
 
 `poetry config --list` -> Lista todas as configurações do poetry
 
-`poetry env info --path` -> Exibe path de onde o `env`encontra-se 
+`poetry env info --path` -> Exibe path de onde o `env` encontra-se 
 
 `poetry env list` -> Lista todos os enviroments gerenciados
 
 `poetry env remove {{POETRY_ENV_NAME}}` -> Remove enviroment selecionado
 
-`poetry env use` ->  Activates or creates a new virtualenv for the current project.
+`poetry env use {{PYTHON_VERSION}}` ->  Activates or creates a new virtualenv for the current project.
 
 `poetry new {{PROJECT_NAME}}` -> Cria novo projeto com gerenciador poetry
 
@@ -151,3 +151,119 @@ pela linha de comando.
 
 ![pyenv_usage.png](imgs/pyenv_usage.png)
 
+---
+
+## Limpando dependências Pipenv Poetry venv
+
+### 1. Limpando o POETRY
+
+O Poetry, por padrão, cria todos os ambientes em uma pasta centralizada e oculta, o que faz a gente esquecer que eles existem.
+
+**Opção A: Remover um ambiente específico (Se você estiver na pasta do projeto)**
+
+```bash
+# Lista os ambientes associados a este projeto
+poetry env list
+
+# Remove o ambiente
+poetry env remove <nome-do-ambiente-que-apareceu-na-lista>
+
+```
+
+**Opção B: O "Expurgo" Geral (Recomendado para liberar espaço)**
+Como o Poetry centraliza tudo, você pode ir lá e apagar a pasta inteira. Na próxima vez que rodar `poetry install` em um projeto, ele recria apenas o necessário.
+
+* **No Linux/Mac:**
+A pasta fica em: `~/.cache/pypoetry/virtualenvs`
+Comando para limpar tudo:
+```bash
+rm -rf ~/.cache/pypoetry/virtualenvs/*
+
+```
+
+
+* **No Windows:**
+A pasta geralmente fica em: `%LOCALAPPDATA%\pypoetry\virtualenvs`
+(Caminho exato costuma ser `C:\Users\SEU_USUARIO\AppData\Local\pypoetry\virtualenvs`).
+*Vá até lá pelo Explorador de Arquivos e delete as pastas.*
+
+---
+
+### 2. Limpando o PIPENV
+
+O Pipenv também centraliza os ambientes, dificultando o rastreio.
+
+**Opção A: Remover o ambiente atual**
+Entre na pasta do projeto e rode:
+
+```bash
+pipenv --rm
+
+```
+
+**Opção B: Apagar tudo manualmente**
+O Pipenv costuma guardar tudo em `~/.local/share/virtualenvs` (Linux/Mac) ou `C:\Users\SEU_USUARIO\.virtualenvs` (Windows).
+
+* **Comando de limpeza (Linux/Mac):**
+```bash
+rm -rf ~/.local/share/virtualenvs/*
+
+```
+
+* **No Windows:** Delete o conteúdo da pasta `.virtualenvs` no seu usuário.
+
+---
+
+### 3. Limpando VIRTUALENV / VENV (Padrão)
+
+Diferente dos anteriores, o `venv` e o `virtualenv` geralmente criam uma pasta (chamada `.venv`, `venv` ou `env`) **dentro** do diretório do seu projeto.
+
+Para limpar, você deve deletar a pasta manualmente.
+
+**Dica Ninja**
+Se você tem muitos projetos espalhados e quer encontrar todas as pastas `venv` para decidir qual apagar, use este comando. Ele procura pastas chamadas `.venv` ou `venv` e mostra o tamanho delas:
+
+**Linux**:
+```bash
+# Procura a partir da sua pasta home (pode demorar um pouco)
+find ~ -type d \( -name ".venv" -o -name "venv" \) -prune -exec du -sh {} +
+
+```
+
+**Windows:**
+
+Passo 1: Apenas encontrar (Listar) Este comando vai varrer sua pasta de usuário (C:\Users\SeuNome) procurando 
+por pastas chamadas .venv ou venv e listar o caminho delas.
+
+```powershell
+Get-ChildItem -Path $env:USERPROFILE -Recurse -Directory -Include ".venv","venv" -ErrorAction SilentlyContinue | Select-Object FullName
+```
+
+* Nota: Pode demorar alguns minutos dependendo de quantos arquivos você tem. O ErrorAction SilentlyContinue serve para ignorar 
+pastas de sistema onde você não tem permissão, evitando erros vermelhos na tela.
+
+* Se quiser apagar, basta dar um `rm -rf` na pasta(s) identificada.*
+
+---
+
+### 4. Bônus: Limpando o Cache do PIP
+
+Além dos ambientes, o próprio gerenciador de pacotes (`pip`) guarda cópias de downloads (`.whl`) para instalar mais rápido depois. Isso ocupa muito espaço.
+
+Para limpar o cache geral do Python:
+
+```bash
+# Funciona no Linux, Mac e Windows
+pip cache purge
+```
+
+*Isso geralmente libera instantaneamente de 500MB a 2GB.*
+
+---
+
+### Resumo da Faxina
+
+1. Rode `pip cache purge`.
+2. Vá na pasta de cache do Poetry e delete tudo.
+3. Vá na pasta de cache do Pipenv e delete tudo.
+4. Rode `poetry install` apenas no projeto que você está trabalhando **agora**.
