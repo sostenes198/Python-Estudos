@@ -14,3 +14,11 @@
 **/**/homer_bart_1
 
 !**/**/parametros_lbph.png
+
+**/**/**.csv
+
+**/homer_bart_1/**
+**/homer_bart_2/**
+**/fer2013/**
+**/fer2013/**.bib
+**/fer2013/README
