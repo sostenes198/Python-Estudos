@@ -8,6 +8,9 @@
 **/**/**.bmp
 **/**/**.h5
 **/**/**.keras
+**/**/**.pt
+**/**/**.prototxt
+**/**/**.caffemodel
 
 **/**/yalefaces
 **/**/sosofaces
