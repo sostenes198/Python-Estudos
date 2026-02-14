@@ -267,3 +267,51 @@ pip cache purge
 2. Vá na pasta de cache do Poetry e delete tudo.
 3. Vá na pasta de cache do Pipenv e delete tudo.
 4. Rode `poetry install` apenas no projeto que você está trabalhando **agora**.
+
+
+## yt-dlp
+
+Para baixar vídeos na melhor qualidade possível com o `yt-dlp`, você geralmente precisa baixar o vídeo e o áudio separadamente e uni-los (o `yt-dlp` faz isso automaticamente se o **FFmpeg** estiver instalado).
+
+Aqui está o comando padrão para a máxima qualidade:
+
+```bash
+yt-dlp -f "bv+ba/b" <URL_DO_VIDEO>
+
+```
+
+### O que esse comando faz:
+
+* **`-f`**: Seleciona o formato.
+* **`bv` (best video)**: Baixa o melhor fluxo de vídeo disponível (ex: 4K ou 8K).
+* **`ba` (best audio)**: Baixa o melhor fluxo de áudio disponível.
+* **`+`**: Instrui o `yt-dlp` a unir (merge) o vídeo e o áudio em um único arquivo.
+* **`/b`**: É um "fallback". Se não for possível baixar vídeo e áudio separados, ele baixa o melhor arquivo único disponível (geralmente limitado a 720p).
+
+---
+
+### Requisito Importante: FFmpeg
+
+Para que a "união" (o `+` no comando acima) funcione e você consiga qualidades superiores a 1080p, você **precisa** ter o [FFmpeg](https://ffmpeg.org/) instalado e acessível no seu sistema.
+
+* **Sem FFmpeg:** O YouTube separa o áudio do vídeo em altas resoluções. Sem essa ferramenta, o `yt-dlp` pode baixar dois arquivos separados ou limitar a qualidade a 1080p/720p.
+
+### Dica Extra: Preferência por MP4
+
+O comando acima geralmente resulta em um arquivo `.mkv` ou `.webm` (pois suportam codecs melhores). Se você precisa garantir que o arquivo final seja **MP4**, adicione este parâmetro:
+
+```bash
+yt-dlp -f "bv+ba/b" --merge-output-format mp4 <URL_DO_VIDEO>
+
+```
+
+### Resumo Visual
+
+| Parâmetro | Função |
+| --- | --- |
+| `bv` | Melhor Vídeo (sem áudio) |
+| `ba` | Melhor Áudio (sem vídeo) |
+| `+` | Junta os dois |
+| `--merge-output-format mp4` | Converte o resultado final para MP4 |
+
+Gostaria que eu explicasse como instalar o FFmpeg ou como baixar uma playlist inteira com esses parâmetros?
