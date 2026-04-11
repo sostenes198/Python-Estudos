@@ -1,0 +1,39 @@
+### login
+POST https://fastapi-curso-4.vercel.app/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "secret"
+}
+
+> {% client.global.set("auth_token", response.body.token); %}
+
+### predict
+POST https://fastapi-curso-4.vercel.app/predict
+Content-Type: application/json
+Authorization: Bearer {{auth_token}}
+
+{
+  "sepal_length": 5.1,
+  "sepal_width": 3.5,
+  "petal_length": 1.4,
+  "petal_width": 0.2
+}
+
+### predict
+POST https://fastapi-curso-4.vercel.app/predict
+Content-Type: application/json
+Authorization: Bearer {{auth_token}}
+
+{
+  "sepal_length": 5.1,
+  "sepal_width": 3.5,
+  "petal_length": 1.4,
+  "petal_width": 0.2
+}
+
+### list predictions
+GET https://fastapi-curso-4.vercel.app/predictions
+Content-Type: application/json
+Authorization: Bearer {{auth_token}}
