@@ -1,0 +1,48 @@
+services:
+
+  chromadb:
+    image: chromadb/chroma:latest
+    container_name: chromadb
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      - chroma_data:/data
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: vectoradmin-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: vectoradmin
+      POSTGRES_PASSWORD: vectoradmin
+      POSTGRES_DB: vectoradmin
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  chroma-ui:
+    image: mintplexlabs/vectoradmin:latest
+    container_name: chroma-ui
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+    environment:
+      - SERVER_PORT=3001
+      - STORAGE_DIR=/app/server/storage
+      - JWT_SECRET=mude-esta-chave-secreta
+      - SYS_EMAIL=admin@admin.com
+      - SYS_PASSWORD=senha123
+      - DATABASE_CONNECTION_STRING=postgresql://vectoradmin:vectoradmin@postgres:5432/vectoradmin
+      - CHROMA_ENDPOINT=http://chromadb:8000
+      - VECTOR_DB=chroma
+    volumes:
+      - vectoradmin_data:/app/server/storage
+    depends_on:
+      - postgres
+      - chromadb
+
+volumes:
+  chroma_data:
+  postgres_data:
+  vectoradmin_data:
