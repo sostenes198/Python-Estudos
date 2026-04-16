@@ -10,8 +10,13 @@ dependencies = [
     "groq (>=1.1.2,<2.0.0)",
     "python-dotenv (>=1.2.2,<2.0.0)",
     "chromadb (>=1.5.7,<2.0.0)",
-    "sentence-transformers (>=5.4.0,<6.0.0)"
+    "sentence-transformers (>=5.4.0,<6.0.0)",
+    "langchain (>=1.2.15,<2.0.0)",
+    "langchain-openai (>=1.1.13,<2.0.0)"
 ]
+
+[tool.poetry]
+package-mode = false
 
 
 [build-system]
