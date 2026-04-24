@@ -3,3 +3,16 @@
 **/.env
 
 **/**.pkl
+
+# Binários e drivers
+*.exe
+*.zip
+**/drivers/
+
+# Cache de ferramentas
+**/.mypy_cache/
+
+# Datasets de imagens grandes
+**/*.bmp
+
+**/settings.local.json
