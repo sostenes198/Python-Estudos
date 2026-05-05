@@ -1,0 +1,29 @@
+[project]
+name = "curso-4-3-3-langchain-agentic-ai-engineering-langchain-langgraph"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Sóstenes Gonçalves de Souza",email = "sostenes.souza@govoll.com"}
+]
+requires-python = "3.12.10"
+dependencies = [
+    "langchain (>=1.2.17,<2.0.0)",
+    "langchain-openai (>=1.2.1,<2.0.0)",
+    "python-dotenv (>=1.2.2,<2.0.0)",
+    "black (>=26.3.1,<27.0.0)",
+    "isort (>=8.0.1,<9.0.0)",
+    "langchain-gemini (>=0.1.1,<0.2.0)",
+    "langchain-tavily (>=0.2.18,<0.3.0)",
+    "tavily-python (>=0.7.24,<0.8.0)",
+    "langchain-community (>=0.4.1,<0.5.0)",
+    "langchain-pinecone (>=0.2.13,<0.3.0)",
+    "langchainhub (>=0.1.21,<0.2.0)"
+]
+
+
+[tool.poetry]
+package-mode = false
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
