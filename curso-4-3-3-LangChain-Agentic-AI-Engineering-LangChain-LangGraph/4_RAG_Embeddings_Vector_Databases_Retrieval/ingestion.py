@@ -27,6 +27,6 @@ if __name__ == "__main__":
 
     print("ingesting....")
 
-    PineconeVectorStore.from_documents(texts, embeddings, index_name=os.getenv("PINECONE_INDEX_NAME"))
+    PineconeVectorStore.from_documents(texts, embeddings, index_name="medium-blogs-embeddings-index")
 
     print("Finish...")

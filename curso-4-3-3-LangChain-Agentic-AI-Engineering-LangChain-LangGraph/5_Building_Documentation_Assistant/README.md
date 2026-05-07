@@ -1,0 +1,1 @@
+Comando para execução: ` poetry run streamlit run 5_Building_Documentation_Assistant/main.py`

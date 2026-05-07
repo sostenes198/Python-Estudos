@@ -15,7 +15,7 @@ print("Initializing components...")
 
 embeddings = OpenAIEmbeddings()
 llm = ChatOpenAI()
-vectorstore = PineconeVectorStore(index_name=os.getenv("PINECONE_INDEX_NAME"), embedding=embeddings)
+vectorstore = PineconeVectorStore(index_name="medium-blogs-embeddings-index", embedding=embeddings)
 
 retriever = vectorstore.as_retriever(search_kwargs={"k": 3})
 
