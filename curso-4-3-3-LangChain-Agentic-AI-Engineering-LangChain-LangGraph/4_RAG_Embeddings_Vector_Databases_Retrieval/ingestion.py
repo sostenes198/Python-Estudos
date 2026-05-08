@@ -13,6 +13,7 @@ if __name__ == "__main__":
 
     loader = TextLoader("../docs/mediumblog1.txt",
                         encoding="utf-8",)
+
     document = loader.load()
 
     print('splitting...')
