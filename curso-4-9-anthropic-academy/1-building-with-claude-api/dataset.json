@@ -1,0 +1,14 @@
+[
+  {
+    "task": "Parse an AWS S3 bucket name from a full S3 URI (e.g., 's3://my-bucket-name/path/to/object') and extract just the bucket name",
+    "format": "regex"
+  },
+  {
+    "task": "Create a JSON CloudFormation template snippet that defines an AWS IAM role with a basic trust policy allowing EC2 to assume the role",
+    "format": "json"
+  },
+  {
+    "task": "Write a Python function that takes an AWS error code string and returns a human-readable error message mapping (e.g., 'AccessDenied' -> 'User does not have permission to access this resource')",
+    "format": "python"
+  }
+]

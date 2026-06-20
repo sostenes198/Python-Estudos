@@ -1,0 +1,20 @@
+[project]
+name = "curso-4-9-anthropic-academy"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Sóstenes Gonçalves de Souza",email = "sostenes.souza@govoll.com"}
+]
+requires-python = "=3.14.3"
+dependencies = [
+    "python-dotenv (>=1.2.2,<2.0.0)",
+    "anthropic (>=0.109.2,<0.110.0)"
+]
+
+[tool.poetry]
+package-mode = false
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
