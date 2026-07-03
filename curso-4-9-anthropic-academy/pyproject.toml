@@ -8,7 +8,8 @@ authors = [
 requires-python = "=3.14.3"
 dependencies = [
     "python-dotenv (>=1.2.2,<2.0.0)",
-    "anthropic (>=0.109.2,<0.110.0)"
+    "anthropic (>=0.109.2,<0.110.0)",
+    "voyageai (>=0.4.1,<0.5.0)"
 ]
 
 [tool.poetry]
@@ -18,3 +19,8 @@ package-mode = false
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "ipywidgets (>=8.1.8,<9.0.0)"
+]
