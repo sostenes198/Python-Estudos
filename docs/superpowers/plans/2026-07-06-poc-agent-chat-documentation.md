@@ -111,6 +111,7 @@ poc-3-agent-chat-documentation/
 - Create: `poc-3-agent-chat-documentation/agent/agent/config.py`
 - Create: `poc-3-agent-chat-documentation/agent/agent/main.py`
 - Test: `poc-3-agent-chat-documentation/agent/tests/__init__.py`
+- Test: `poc-3-agent-chat-documentation/agent/tests/conftest.py`
 - Test: `poc-3-agent-chat-documentation/agent/tests/test_config.py`
 - Test: `poc-3-agent-chat-documentation/agent/tests/test_main.py`
 
@@ -151,45 +152,56 @@ SLACK_SIGNING_SECRET=xxxxx
 EOF
 ```
 
-- [ ] **Step 3: Write the failing test for `Settings`**
+- [ ] **Step 3: Write `tests/conftest.py` with a shared env fixture**
+
+Every test in this suite needs the same 8 env vars set and `get_settings` cache cleared.
+Define that once, here, as an autouse fixture — every later task's tests rely on this
+existing instead of repeating the same `monkeypatch.setenv` block.
 
 ```python
-# tests/test_config.py
-import os
-
+# tests/conftest.py
 import pytest
 
 
-@pytest.fixture
-def env_vars(monkeypatch):
+@pytest.fixture(autouse=True)
+def base_env(monkeypatch):
     monkeypatch.setenv("ANTHROPIC_API_KEY", "sk-ant-test")
     monkeypatch.setenv("OPENAI_API_KEY", "sk-test")
-    monkeypatch.setenv("MONGODB_URI", "mongodb://localhost:27017/outline_rag")
-    monkeypatch.setenv("OUTLINE_BASE_URL", "https://outline.test")
+    monkeypatch.setenv("MONGODB_URI", "mongodb://localhost:27017/outline_rag_test")
+    monkeypatch.setenv("OUTLINE_BASE_URL", "https://outline.example.test")
     monkeypatch.setenv("OUTLINE_API_TOKEN", "ol_test")
     monkeypatch.setenv("OUTLINE_WEBHOOK_SECRET", "whsec_test")
     monkeypatch.setenv("SLACK_BOT_TOKEN", "xoxb-test")
     monkeypatch.setenv("SLACK_SIGNING_SECRET", "slack_test")
 
-
-def test_settings_loads_from_env(env_vars):
     from agent.config import get_settings
 
     get_settings.cache_clear()
+    yield
+    get_settings.cache_clear()
+```
+
+- [ ] **Step 4: Write the failing test for `Settings`**
+
+```python
+# tests/test_config.py
+def test_settings_loads_from_env():
+    from agent.config import get_settings
+
     settings = get_settings()
 
     assert settings.anthropic_api_key == "sk-ant-test"
-    assert settings.mongodb_uri == "mongodb://localhost:27017/outline_rag"
+    assert settings.mongodb_uri == "mongodb://localhost:27017/outline_rag_test"
     assert settings.outline_webhook_secret == "whsec_test"
 ```
 
-- [ ] **Step 4: Run test to verify it fails**
+- [ ] **Step 5: Run test to verify it fails**
 
 Run: `poetry run pytest tests/test_config.py -v`
 Expected: FAIL with `ModuleNotFoundError: No module named 'agent.config'` (or similar import
 error).
 
-- [ ] **Step 5: Implement `agent/config.py`**
+- [ ] **Step 6: Implement `agent/config.py`**
 
 ```python
 # agent/config.py
@@ -216,28 +228,19 @@ def get_settings() -> Settings:
     return Settings()
 ```
 
-- [ ] **Step 6: Run test to verify it passes**
+- [ ] **Step 7: Run test to verify it passes**
 
 Run: `poetry run pytest tests/test_config.py -v`
 Expected: PASS
 
-- [ ] **Step 7: Write the failing test for the health endpoint**
+- [ ] **Step 8: Write the failing test for the health endpoint**
 
 ```python
 # tests/test_main.py
 from fastapi.testclient import TestClient
 
 
-def test_health_endpoint(monkeypatch):
-    monkeypatch.setenv("ANTHROPIC_API_KEY", "sk-ant-test")
-    monkeypatch.setenv("OPENAI_API_KEY", "sk-test")
-    monkeypatch.setenv("MONGODB_URI", "mongodb://localhost:27017/outline_rag")
-    monkeypatch.setenv("OUTLINE_BASE_URL", "https://outline.test")
-    monkeypatch.setenv("OUTLINE_API_TOKEN", "ol_test")
-    monkeypatch.setenv("OUTLINE_WEBHOOK_SECRET", "whsec_test")
-    monkeypatch.setenv("SLACK_BOT_TOKEN", "xoxb-test")
-    monkeypatch.setenv("SLACK_SIGNING_SECRET", "slack_test")
-
+def test_health_endpoint():
     from agent.main import app
 
     client = TestClient(app)
@@ -247,12 +250,12 @@ def test_health_endpoint(monkeypatch):
     assert response.json() == {"status": "ok"}
 ```
 
-- [ ] **Step 8: Run test to verify it fails**
+- [ ] **Step 9: Run test to verify it fails**
 
 Run: `poetry run pytest tests/test_main.py -v`
 Expected: FAIL with `ModuleNotFoundError: No module named 'agent.main'`
 
-- [ ] **Step 9: Implement `agent/main.py`**
+- [ ] **Step 10: Implement `agent/main.py`**
 
 ```python
 # agent/main.py
@@ -266,12 +269,12 @@ def health() -> dict[str, str]:
     return {"status": "ok"}
 ```
 
-- [ ] **Step 10: Run test to verify it passes**
+- [ ] **Step 11: Run test to verify it passes**
 
 Run: `poetry run pytest tests/test_main.py -v`
 Expected: PASS
 
-- [ ] **Step 11: Commit**
+- [ ] **Step 12: Commit**
 
 ```bash
 git add poc-3-agent-chat-documentation/agent
@@ -441,22 +444,14 @@ git commit -m "feat(outline): add self-hosted docker compose stack with cloudfla
 
 - [ ] **Step 1: Write the failing test**
 
+Relies on the `base_env` autouse fixture from `tests/conftest.py` (Task 1) for the env vars
+— only clear the extra `lru_cache` this module adds.
+
 ```python
 # tests/test_mongo.py
-def test_get_db_uses_default_database_from_uri(monkeypatch):
-    monkeypatch.setenv("ANTHROPIC_API_KEY", "x")
-    monkeypatch.setenv("OPENAI_API_KEY", "x")
-    monkeypatch.setenv("MONGODB_URI", "mongodb://localhost:27017/outline_rag_test")
-    monkeypatch.setenv("OUTLINE_BASE_URL", "https://outline.test")
-    monkeypatch.setenv("OUTLINE_API_TOKEN", "x")
-    monkeypatch.setenv("OUTLINE_WEBHOOK_SECRET", "x")
-    monkeypatch.setenv("SLACK_BOT_TOKEN", "x")
-    monkeypatch.setenv("SLACK_SIGNING_SECRET", "x")
-
-    from agent.config import get_settings
+def test_get_db_uses_default_database_from_uri():
     from agent.db.mongo import get_db, get_mongo_client
 
-    get_settings.cache_clear()
     get_mongo_client.cache_clear()
 
     db = get_db()
@@ -957,33 +952,11 @@ def remove_document(document_id: str) -> None:
     delete_document_chunks(document_id)
 ```
 
-- [ ] **Step 4: Fix the test's expected base URL and run**
+- [ ] **Step 4: Run tests to verify they pass**
 
-The test expects `outline_base_url` to be `https://outline.example.test` — add this to
-`tests/conftest.py` so every test gets consistent settings:
-
-```python
-# tests/conftest.py
-import pytest
-
-
-@pytest.fixture(autouse=True)
-def base_env(monkeypatch):
-    monkeypatch.setenv("ANTHROPIC_API_KEY", "sk-ant-test")
-    monkeypatch.setenv("OPENAI_API_KEY", "sk-test")
-    monkeypatch.setenv("MONGODB_URI", "mongodb://localhost:27017/outline_rag_test")
-    monkeypatch.setenv("OUTLINE_BASE_URL", "https://outline.example.test")
-    monkeypatch.setenv("OUTLINE_API_TOKEN", "ol_test")
-    monkeypatch.setenv("OUTLINE_WEBHOOK_SECRET", "whsec_test")
-    monkeypatch.setenv("SLACK_BOT_TOKEN", "xoxb-test")
-    monkeypatch.setenv("SLACK_SIGNING_SECRET", "slack_test")
-
-    from agent.config import get_settings
-
-    get_settings.cache_clear()
-    yield
-    get_settings.cache_clear()
-```
+The assertion on `metadata["source"]` depends on `OUTLINE_BASE_URL=https://outline.example.test`,
+which the `base_env` autouse fixture in `tests/conftest.py` (Task 1) already sets for every
+test in the suite — no new fixture needed here.
 
 Run: `poetry run pytest tests/ingestion/test_pipeline.py -v`
 Expected: PASS
@@ -991,7 +964,7 @@ Expected: PASS
 - [ ] **Step 5: Commit**
 
 ```bash
-git add poc-3-agent-chat-documentation/agent/agent/ingestion/pipeline.py poc-3-agent-chat-documentation/agent/tests/ingestion/test_pipeline.py poc-3-agent-chat-documentation/agent/tests/conftest.py
+git add poc-3-agent-chat-documentation/agent/agent/ingestion/pipeline.py poc-3-agent-chat-documentation/agent/tests/ingestion/test_pipeline.py
 git commit -m "feat(agent): add ingestion pipeline orchestration"
 ```
 
@@ -1035,11 +1008,11 @@ def sign(body: bytes, secret: str) -> str:
 
 
 def test_valid_signature_enqueues_sync_for_update_event(monkeypatch):
-    from agent import webhooks
+    from agent.webhooks import outline
 
     calls = []
-    monkeypatch.setattr(webhooks.outline, "sync_document", lambda document_id: calls.append(("sync", document_id)))
-    monkeypatch.setattr(webhooks.outline, "remove_document", lambda document_id: calls.append(("remove", document_id)))
+    monkeypatch.setattr(outline, "sync_document", lambda document_id: calls.append(("sync", document_id)))
+    monkeypatch.setattr(outline, "remove_document", lambda document_id: calls.append(("remove", document_id)))
 
     client = TestClient(make_app())
     payload = {"event": "documents.update", "payload": {"model": {"id": "doc-1"}}}
@@ -1056,11 +1029,11 @@ def test_valid_signature_enqueues_sync_for_update_event(monkeypatch):
 
 
 def test_delete_event_enqueues_remove(monkeypatch):
-    from agent import webhooks
+    from agent.webhooks import outline
 
     calls = []
-    monkeypatch.setattr(webhooks.outline, "sync_document", lambda document_id: calls.append(("sync", document_id)))
-    monkeypatch.setattr(webhooks.outline, "remove_document", lambda document_id: calls.append(("remove", document_id)))
+    monkeypatch.setattr(outline, "sync_document", lambda document_id: calls.append(("sync", document_id)))
+    monkeypatch.setattr(outline, "remove_document", lambda document_id: calls.append(("remove", document_id)))
 
     client = TestClient(make_app())
     payload = {"event": "documents.delete", "payload": {"model": {"id": "doc-1"}}}
@@ -1077,10 +1050,10 @@ def test_delete_event_enqueues_remove(monkeypatch):
 
 
 def test_invalid_signature_is_rejected(monkeypatch):
-    from agent import webhooks
+    from agent.webhooks import outline
 
     calls = []
-    monkeypatch.setattr(webhooks.outline, "sync_document", lambda document_id: calls.append(document_id))
+    monkeypatch.setattr(outline, "sync_document", lambda document_id: calls.append(document_id))
 
     client = TestClient(make_app())
     body = json.dumps({"event": "documents.update", "payload": {"model": {"id": "doc-1"}}}).encode()
@@ -2379,10 +2352,10 @@ def test_url_verification_challenge_is_echoed_back():
 
 
 def test_dm_message_is_enqueued_for_background_processing(monkeypatch):
-    from agent import webhooks
+    from agent.webhooks import slack_events
 
     calls = []
-    monkeypatch.setattr(webhooks.slack_events, "handle_message_event", lambda event: calls.append(event))
+    monkeypatch.setattr(slack_events, "handle_message_event", lambda event: calls.append(event))
 
     body = json.dumps(
         {
@@ -2412,10 +2385,10 @@ def test_dm_message_is_enqueued_for_background_processing(monkeypatch):
 
 
 def test_bot_messages_are_ignored(monkeypatch):
-    from agent import webhooks
+    from agent.webhooks import slack_events
 
     calls = []
-    monkeypatch.setattr(webhooks.slack_events, "handle_message_event", lambda event: calls.append(event))
+    monkeypatch.setattr(slack_events, "handle_message_event", lambda event: calls.append(event))
 
     body = json.dumps(
         {
@@ -2627,13 +2600,13 @@ def sign(body: bytes):
 
 
 def test_nova_conversa_resets_session_and_replies_ephemeral(monkeypatch):
-    from agent import webhooks
+    from agent.webhooks import slack_commands
 
     reset_calls = []
     monkeypatch.setattr(
-        webhooks.slack_commands, "reset_session", lambda channel_id, checkpointer: reset_calls.append(channel_id)
+        slack_commands, "reset_session", lambda channel_id, checkpointer: reset_calls.append(channel_id)
     )
-    monkeypatch.setattr(webhooks.slack_commands, "get_checkpointer", lambda: MagicMock())
+    monkeypatch.setattr(slack_commands, "get_checkpointer", lambda: MagicMock())
 
     body = urlencode({"command": "/nova-conversa", "channel_id": "D123", "user_id": "U1"}).encode()
     timestamp, signature = sign(body)
@@ -2737,18 +2710,11 @@ git commit -m "feat(agent): add /nova-conversa slash command to reset session"
 
 - [ ] **Step 1: Write the failing test**
 
+Relies on the `base_env` autouse fixture from `tests/conftest.py` (Task 1).
+
 ```python
 # tests/test_main.py (append to the file created in Task 1)
-def test_all_webhook_routes_are_registered(monkeypatch):
-    monkeypatch.setenv("ANTHROPIC_API_KEY", "sk-ant-test")
-    monkeypatch.setenv("OPENAI_API_KEY", "sk-test")
-    monkeypatch.setenv("MONGODB_URI", "mongodb://localhost:27017/outline_rag")
-    monkeypatch.setenv("OUTLINE_BASE_URL", "https://outline.test")
-    monkeypatch.setenv("OUTLINE_API_TOKEN", "ol_test")
-    monkeypatch.setenv("OUTLINE_WEBHOOK_SECRET", "whsec_test")
-    monkeypatch.setenv("SLACK_BOT_TOKEN", "xoxb-test")
-    monkeypatch.setenv("SLACK_SIGNING_SECRET", "slack_test")
-
+def test_all_webhook_routes_are_registered():
     from agent.main import app
 
     paths = {route.path for route in app.routes}
