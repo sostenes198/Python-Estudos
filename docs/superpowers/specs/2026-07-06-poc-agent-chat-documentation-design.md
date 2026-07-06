@@ -64,7 +64,7 @@ poc-3-agent-chat-documentation/
     │   │   ├── vector_store.py      # upsert/delete no MongoDBAtlasVectorSearch
     │   │   └── pipeline.py          # orquestra: fetch → chunk → embed (OpenAI) → upsert/delete
     │   ├── retrieval/
-    │   │   ├── hybrid_retriever.py  # EnsembleRetriever (vector + Atlas Search full-text)
+    │   │   ├── hybrid_retriever.py  # vector + Atlas Search full-text, fundidos por RRF
     │   │   └── tools.py             # tool `search_outline_docs(query, team=None)`
     │   ├── graph/
     │   │   ├── state.py             # schema do estado (messages, retrieved_docs, rewrite_count)
@@ -162,8 +162,8 @@ O bot é um Slack App sem canais: conversa 1:1 via Messages Tab do App Home, eve
 - **`outline_chunks`** — um documento por chunk:
   `{outline_document_id, chunk_index, content, embedding[1536], metadata: {source, title, owner, collection_id, updated_at}}`.
   - Índice **Atlas Vector Search** (`vector_index`) sobre `embedding`, cosine, 1536 dims.
-  - Índice **Atlas Search** (`text_index`) full-text sobre `content` — perna léxica do
-    `EnsembleRetriever`.
+  - Índice **Atlas Search** (`text_index`) full-text sobre `content` — perna léxica da
+    busca híbrida (ver Stack).
 - Coleções do checkpointer do LangGraph (`checkpoints`, `checkpoint_writes`) — criadas e
   geridas automaticamente pelo `MongoDBSaver`, chave `thread_id`. É essa a "memória ativa"
   que o agente lê para continuar a conversa.
@@ -184,9 +184,12 @@ O bot é um Slack App sem canais: conversa 1:1 via Messages Tab do App Home, eve
   chamada direta ao SDK `anthropic` apenas no passo de geração final, para habilitar
   Citations.
 - **Embeddings**: OpenAI (`text-embedding-3-small`).
-- **Vetor + busca híbrida**: `langchain-mongodb` (`MongoDBAtlasVectorSearch` + retriever de
-  full-text via Atlas Search) combinados com `EnsembleRetriever` (Reciprocal Rank Fusion no
-  cliente).
+- **Vetor + busca híbrida**: `langchain-mongodb` (`MongoDBAtlasVectorSearch`,
+  `similarity_search_with_score`) para a perna vetorial + uma agregação `$search` (Atlas
+  Search) via `pymongo` para a perna full-text, combinadas por Reciprocal Rank Fusion
+  implementada diretamente no código do agente (não existe hoje um retriever LangChain
+  dedicado para full-text no Atlas, então a fusão é feita à mão em vez de depender de uma
+  classe não confirmada como `EnsembleRetriever`).
 - **Memória de conversa**: `langgraph-checkpoint-mongodb` (`MongoDBSaver`/`AsyncMongoDBSaver`),
   chave `thread_id = channel_id` da DM.
 - **Exposição pública**: Cloudflare Tunnel (container `cloudflared` no `docker-compose` do
