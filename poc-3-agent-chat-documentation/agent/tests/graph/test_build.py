@@ -4,6 +4,7 @@ from langgraph.checkpoint.memory import InMemorySaver
 
 def test_graph_happy_path_calls_tool_then_generates_answer(monkeypatch):
     from agent.graph import build, nodes
+    from agent.retrieval import tools
 
     def fake_generate_query_or_respond(state):
         if len(state["messages"]) == 1:
@@ -19,9 +20,11 @@ def test_graph_happy_path_calls_tool_then_generates_answer(monkeypatch):
 
     monkeypatch.setattr(nodes, "generate_query_or_respond", fake_generate_query_or_respond)
     monkeypatch.setattr(
-        nodes,
-        "search_outline_docs",
-        type("T", (), {"invoke": staticmethod(lambda args: '[{"content": "Billing is monthly.", "source": "s", "owner": "Billing", "title": "t"}]')})(),
+        tools,
+        "hybrid_search",
+        lambda query, team=None, k=5: [
+            {"content": "Billing is monthly.", "source": "s", "owner": "Billing", "title": "t"}
+        ],
     )
     monkeypatch.setattr(nodes, "grade_documents", lambda state: "generate_answer")
     monkeypatch.setattr(nodes, "generate_answer", lambda state: {"messages": [AIMessage(content="Billing is monthly.\n\nFontes:\n- Billing: s")]})
@@ -37,6 +40,7 @@ def test_graph_happy_path_calls_tool_then_generates_answer(monkeypatch):
 
 def test_graph_no_context_path_after_rewrite_limit(monkeypatch):
     from agent.graph import build, nodes
+    from agent.retrieval import tools
 
     monkeypatch.setattr(
         nodes,
@@ -47,11 +51,7 @@ def test_graph_no_context_path_after_rewrite_limit(monkeypatch):
             ]
         },
     )
-    monkeypatch.setattr(
-        nodes,
-        "search_outline_docs",
-        type("T", (), {"invoke": staticmethod(lambda args: "[]")})(),
-    )
+    monkeypatch.setattr(tools, "hybrid_search", lambda query, team=None, k=5: [])
     monkeypatch.setattr(nodes, "grade_documents", lambda state: "no_context_found")
     monkeypatch.setattr(
         nodes,
