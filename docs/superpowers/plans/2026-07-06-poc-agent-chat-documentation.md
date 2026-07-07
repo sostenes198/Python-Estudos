@@ -2785,6 +2785,28 @@ agent with self-correction and Anthropic Citations.
    and Slack can reach `/webhooks/outline`, `/webhooks/slack/events`, and
    `/webhooks/slack/commands`.
 
+## Hybrid search: manual RRF vs `$rankFusion`
+
+`agent/retrieval/hybrid_retriever.py` combines the vector leg
+(`similarity_search_with_score`) and the full-text leg (a raw `$search` Atlas Search
+aggregation) by hand-rolling Reciprocal Rank Fusion in Python, instead of a single
+aggregation pipeline. This was a deliberate choice, not an oversight:
+
+- At the time this was built, there was no confirmed LangChain retriever for Atlas
+  full-text search, so the fusion step is our own code rather than a library call.
+- MongoDB Atlas also offers a native `$rankFusion` aggregation stage that does hybrid
+  search (vector + text) server-side in one pipeline — but it requires a specific
+  Atlas tier/version that a free M0 cluster (the likely choice for this POC) may not
+  support.
+
+**Future optimization, if your Atlas cluster/tier supports it:** replace the Python-side
+fusion in `hybrid_retriever.py` with a single `$rankFusion` aggregation stage. Benefits:
+one round-trip to Atlas instead of two separate queries, fusion computed server-side
+(lower latency, no need to over-fetch and merge in the app), and less custom code to
+maintain (`_vector_leg`/`_text_leg`/RRF-scoring logic in this file could mostly go away).
+This is not required for the POC to work — it's an upgrade path once the cluster tier
+allows it.
+
 ## Slack App setup
 
 1. Create an app at https://api.slack.com/apps.
