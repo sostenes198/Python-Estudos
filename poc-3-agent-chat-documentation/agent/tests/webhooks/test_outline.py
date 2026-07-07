@@ -1,6 +1,7 @@
 import hashlib
 import hmac
 import json
+import time
 
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
@@ -15,7 +16,10 @@ def make_app():
 
 
 def sign(body: bytes, secret: str) -> str:
-    return hmac.new(secret.encode(), body, hashlib.sha256).hexdigest()
+    timestamp = str(int(time.time() * 1000))
+    payload = f"{timestamp}.{body.decode()}".encode()
+    signature = hmac.new(secret.encode(), payload, hashlib.sha256).hexdigest()
+    return f"t={timestamp},s={signature}"
 
 
 def test_valid_signature_enqueues_sync_for_update_event(monkeypatch):
@@ -61,6 +65,25 @@ def test_delete_event_enqueues_remove(monkeypatch):
 
 
 def test_invalid_signature_is_rejected(monkeypatch):
+    from agent.webhooks import outline
+
+    calls = []
+    monkeypatch.setattr(outline, "sync_document", lambda document_id: calls.append(document_id))
+
+    client = TestClient(make_app())
+    body = json.dumps({"event": "documents.update", "payload": {"model": {"id": "doc-1"}}}).encode()
+
+    response = client.post(
+        "/webhooks/outline",
+        content=body,
+        headers={"Outline-Signature": "t=1234567890,s=deadbeef"},
+    )
+
+    assert response.status_code == 401
+    assert calls == []
+
+
+def test_malformed_signature_header_is_rejected(monkeypatch):
     from agent.webhooks import outline
 
     calls = []

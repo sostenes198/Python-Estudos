@@ -28,18 +28,28 @@ _REWRITE_PROMPT = (
     "mantendo a intencao original.\nPergunta original: {question}\nPergunta reformulada:"
 )
 
+_GENERATE_SYSTEM_PROMPT = (
+    "Você é um assistente que responde dúvidas de engenharia e produto usando "
+    "exclusivamente a documentação interna. Para qualquer pergunta que dependa de "
+    "informação factual, processos, políticas ou documentação, você DEVE chamar a "
+    "ferramenta search_outline_docs antes de responder — nunca responda de memória. "
+    "Só responda diretamente a saudações e mensagens puramente conversacionais que não "
+    "peçam nenhuma informação factual."
+)
+
 
 class _GradeDocuments(BaseModel):
     binary_score: str = Field(description="'yes' se relevante, 'no' se nao relevante")
 
 
 def generate_query_or_respond(state: RagState) -> dict:
-    response = _response_model.bind_tools([search_outline_docs]).invoke(state["messages"])
+    messages = [{"role": "system", "content": _GENERATE_SYSTEM_PROMPT}] + state["messages"]
+    response = _response_model.bind_tools([search_outline_docs]).invoke(messages)
     return {"messages": [response]}
 
 
 def grade_documents(state: RagState) -> Literal["generate_answer", "rewrite_question", "no_context_found"]:
-    question = state["messages"][0].content
+    question = state["current_question"]
     context = state["messages"][-1].content
 
     prompt = _GRADE_PROMPT.format(question=question, context=context)
@@ -55,7 +65,7 @@ def grade_documents(state: RagState) -> Literal["generate_answer", "rewrite_ques
 
 
 def rewrite_question(state: RagState) -> dict:
-    question = state["messages"][0].content
+    question = state["current_question"]
     prompt = _REWRITE_PROMPT.format(question=question)
     response = _response_model.invoke([{"role": "user", "content": prompt}])
     return {
@@ -65,7 +75,7 @@ def rewrite_question(state: RagState) -> dict:
 
 
 def generate_answer(state: RagState) -> dict:
-    question = state["messages"][0].content
+    question = state["current_question"]
     chunks = json.loads(state["messages"][-1].content)
 
     answer_text, sources = generate_grounded_answer(question, chunks)

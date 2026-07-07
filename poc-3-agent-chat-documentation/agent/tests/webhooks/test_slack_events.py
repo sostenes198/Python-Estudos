@@ -145,3 +145,41 @@ def test_handle_message_event_runs_graph_and_replies(monkeypatch):
     assert len(logged) == 2
     assert logged[0]["role"] == "user"
     assert logged[1]["role"] == "assistant"
+
+    invoke_args, invoke_kwargs = fake_graph.invoke.call_args
+    invoked_state = invoke_args[0]
+    assert invoked_state["current_question"] == "how does billing work?"
+    assert invoke_kwargs["config"] == {"configurable": {"thread_id": "D123"}}
+
+
+def test_handle_message_event_falls_back_to_friendly_message_when_graph_raises(monkeypatch):
+    from agent.webhooks import slack_events
+
+    monkeypatch.setattr(slack_events, "maybe_expire_session", lambda channel_id, checkpointer: False)
+    monkeypatch.setattr(slack_events, "touch_session", lambda channel_id: None)
+
+    def _raise_build_graph(checkpointer):
+        raise RuntimeError("boom")
+
+    monkeypatch.setattr(slack_events, "build_graph", _raise_build_graph)
+    monkeypatch.setattr(slack_events, "get_checkpointer", lambda: MagicMock())
+
+    posted = []
+    monkeypatch.setattr(slack_events, "post_message", lambda channel, text, thread_ts: posted.append((channel, text, thread_ts)))
+
+    logged = []
+    fake_log_collection = MagicMock()
+    fake_log_collection.insert_many.side_effect = lambda docs: logged.extend(docs)
+    monkeypatch.setattr(slack_events, "conversation_log_collection", lambda: fake_log_collection)
+
+    slack_events.handle_message_event(
+        {"channel": "D123", "user": "U1", "text": "how does billing work?", "ts": "169999.0001"}
+    )
+
+    assert len(posted) == 1
+    assert posted[0][0] == "D123"
+    assert posted[0][1] == "Tive um problema técnico, tenta de novo em instantes."
+    assert len(logged) == 2
+    assert logged[0]["role"] == "user"
+    assert logged[1]["role"] == "assistant"
+    assert logged[1]["text"] == "Tive um problema técnico, tenta de novo em instantes."

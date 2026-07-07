@@ -8,6 +8,29 @@ def _tool_message(chunks):
     return ToolMessage(content=json.dumps(chunks), tool_call_id="1", name="search_outline_docs")
 
 
+def test_generate_query_or_respond_injects_grounding_system_prompt(monkeypatch):
+    from agent.graph import nodes
+
+    fake_bound_model = MagicMock()
+    fake_bound_model.invoke.return_value = AIMessage(content="oi!")
+    fake_response_model = MagicMock()
+    fake_response_model.bind_tools.return_value = fake_bound_model
+    monkeypatch.setattr(nodes, "_response_model", fake_response_model)
+
+    state = {
+        "messages": [HumanMessage(content="how does billing work?")],
+        "rewrite_count": 0,
+        "current_question": "how does billing work?",
+    }
+
+    nodes.generate_query_or_respond(state)
+
+    invoked_messages = fake_bound_model.invoke.call_args[0][0]
+    assert invoked_messages[0]["role"] == "system"
+    assert "search_outline_docs" in invoked_messages[0]["content"]
+    assert invoked_messages[1] == state["messages"][0]
+
+
 def test_grade_documents_routes_to_generate_answer_when_relevant(monkeypatch):
     from agent.graph import nodes
 
@@ -22,6 +45,7 @@ def test_grade_documents_routes_to_generate_answer_when_relevant(monkeypatch):
             _tool_message([{"content": "Billing is monthly.", "source": "s", "owner": "Billing", "title": "t"}]),
         ],
         "rewrite_count": 0,
+        "current_question": "How does billing work?",
     }
 
     assert nodes.grade_documents(state) == "generate_answer"
@@ -41,6 +65,7 @@ def test_grade_documents_routes_to_rewrite_when_not_relevant_and_under_limit(mon
             _tool_message([]),
         ],
         "rewrite_count": 0,
+        "current_question": "How does billing work?",
     }
 
     assert nodes.grade_documents(state) == "rewrite_question"
@@ -60,6 +85,7 @@ def test_grade_documents_routes_to_no_context_found_after_two_rewrites(monkeypat
             _tool_message([]),
         ],
         "rewrite_count": 2,
+        "current_question": "How does billing work?",
     }
 
     assert nodes.grade_documents(state) == "no_context_found"
@@ -72,7 +98,7 @@ def test_rewrite_question_increments_rewrite_count(monkeypatch):
     fake_model.invoke.return_value = AIMessage(content="What is the billing cadence?")
     monkeypatch.setattr(nodes, "_response_model", fake_model)
 
-    state = {"messages": [HumanMessage(content="billing?")], "rewrite_count": 0}
+    state = {"messages": [HumanMessage(content="billing?")], "rewrite_count": 0, "current_question": "billing?"}
 
     result = nodes.rewrite_question(state)
 
@@ -93,6 +119,7 @@ def test_generate_answer_uses_citations_helper_and_appends_sources(monkeypatch):
     state = {
         "messages": [HumanMessage(content="How does billing work?"), _tool_message(chunks)],
         "rewrite_count": 0,
+        "current_question": "How does billing work?",
     }
 
     result = nodes.generate_answer(state)
@@ -105,7 +132,7 @@ def test_generate_answer_uses_citations_helper_and_appends_sources(monkeypatch):
 def test_no_context_found_returns_fixed_message():
     from agent.graph import nodes
 
-    state = {"messages": [HumanMessage(content="anything")], "rewrite_count": 2}
+    state = {"messages": [HumanMessage(content="anything")], "rewrite_count": 2, "current_question": "anything"}
 
     result = nodes.no_context_found(state)
 

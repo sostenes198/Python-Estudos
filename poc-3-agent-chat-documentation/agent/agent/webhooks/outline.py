@@ -13,10 +13,18 @@ _REMOVE_EVENTS = {"documents.delete", "documents.archive"}
 _SYNC_EVENTS = {"documents.create", "documents.update", "documents.publish"}
 
 
-def _verify_signature(body: bytes, signature: str) -> bool:
+def _verify_signature(body: bytes, signature_header: str) -> bool:
     secret = get_settings().outline_webhook_secret
-    expected = hmac.new(secret.encode(), body, hashlib.sha256).hexdigest()
-    return hmac.compare_digest(expected, signature)
+    try:
+        parts = dict(part.split("=", 1) for part in signature_header.split(","))
+        timestamp = parts["t"]
+        provided_signature = parts["s"]
+    except (KeyError, ValueError):
+        return False
+
+    payload = f"{timestamp}.{body.decode()}".encode()
+    expected = hmac.new(secret.encode(), payload, hashlib.sha256).hexdigest()
+    return hmac.compare_digest(expected, provided_signature)
 
 
 @router.post("/webhooks/outline")

@@ -7,8 +7,7 @@ from langgraph.checkpoint.mongodb import MongoDBSaver
 
 from agent.chat.session import maybe_expire_session, touch_session
 from agent.chat.slack_client import post_message, verify_slack_signature
-from agent.config import get_settings
-from agent.db.mongo import conversation_log_collection
+from agent.db.mongo import conversation_log_collection, get_mongo_client
 from agent.graph.build import build_graph
 
 router = APIRouter()
@@ -16,7 +15,7 @@ router = APIRouter()
 
 @lru_cache
 def get_checkpointer() -> MongoDBSaver:
-    return MongoDBSaver.from_conn_string(get_settings().mongodb_uri)
+    return MongoDBSaver(get_mongo_client(), db_name=get_mongo_client().get_default_database().name)
 
 
 def handle_message_event(event: dict) -> None:
@@ -31,12 +30,15 @@ def handle_message_event(event: dict) -> None:
         [{"channel_id": channel_id, "role": "user", "text": text, "sources": [], "created_at": event["ts"]}]
     )
 
-    graph = build_graph(checkpointer)
-    result = graph.invoke(
-        {"messages": [HumanMessage(content=text)], "rewrite_count": 0},
-        config={"configurable": {"thread_id": channel_id}},
-    )
-    answer = result["messages"][-1].content
+    try:
+        graph = build_graph(checkpointer)
+        result = graph.invoke(
+            {"messages": [HumanMessage(content=text)], "rewrite_count": 0, "current_question": text},
+            config={"configurable": {"thread_id": channel_id}},
+        )
+        answer = result["messages"][-1].content
+    except Exception:
+        answer = "Tive um problema técnico, tenta de novo em instantes."
 
     if expired:
         answer = "Nossa conversa anterior expirou por inatividade — começando um papo novo!\n\n" + answer
