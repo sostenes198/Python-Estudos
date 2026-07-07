@@ -14,6 +14,7 @@ def get_vector_store() -> MongoDBAtlasVectorSearch:
         collection=chunks_collection(),
         index_name="vector_index",
         relevance_score_fn="cosine",
+        text_key="content",
     )
 
 

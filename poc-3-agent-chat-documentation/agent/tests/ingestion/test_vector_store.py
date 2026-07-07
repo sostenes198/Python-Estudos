@@ -41,3 +41,28 @@ def test_delete_document_chunks_removes_by_document_id(fake_collection, monkeypa
     vector_store.delete_document_chunks("doc-1")
 
     fake_collection.delete_many.assert_called_once_with({"outline_document_id": "doc-1"})
+
+
+def test_get_vector_store_uses_content_as_text_key(monkeypatch, fake_collection):
+    """The Atlas Search index and hybrid_retriever._text_leg both expect the chunk
+    body to live under the "content" field, so MongoDBAtlasVectorSearch must be
+    constructed with text_key="content" (its default is "text")."""
+    from agent.ingestion import vector_store
+
+    monkeypatch.setattr(vector_store, "chunks_collection", lambda: fake_collection)
+
+    captured_kwargs = {}
+
+    class FakeMongoDBAtlasVectorSearch:
+        def __init__(self, *args, **kwargs):
+            captured_kwargs.update(kwargs)
+
+    monkeypatch.setattr(vector_store, "MongoDBAtlasVectorSearch", FakeMongoDBAtlasVectorSearch)
+    vector_store.get_vector_store.cache_clear()
+
+    try:
+        vector_store.get_vector_store()
+    finally:
+        vector_store.get_vector_store.cache_clear()
+
+    assert captured_kwargs.get("text_key") == "content"
