@@ -1,9 +1,8 @@
-from core.configs import settings
-from core.database import engine
+from core import settings
+from core import engine
 
 
 async def create_tables() -> None:
-    import models.__all_models
     print('Criando as tabelas do banco de dados')
     async with engine.begin() as conn:
         await conn.run_sync(settings.DBBaseModel.metadata.drop_all)

@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from core.configs import settings
+from core import settings
 from api.api import api_router
 
 

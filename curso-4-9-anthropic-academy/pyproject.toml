@@ -5,11 +5,15 @@ description = ""
 authors = [
     {name = "Sóstenes Gonçalves de Souza",email = "sostenes.souza@govoll.com"}
 ]
-requires-python = "=3.14.3"
+requires-python = "==3.14.3"
 dependencies = [
     "python-dotenv (>=1.2.2,<2.0.0)",
     "anthropic (>=0.109.2,<0.110.0)",
-    "voyageai (>=0.4.1,<0.5.0)"
+    "voyageai (>=0.4.1,<0.5.0)",
+    "mcp[cli] (>=1.8.0,<2.0.0)",
+    "prompt-toolkit (>=3.0.51,<4.0.0)",
+    "streamlit (>=1.59.0,<2.0.0)",
+    "boto3 (>=1.43.42,<2.0.0)"
 ]
 
 [tool.poetry]
