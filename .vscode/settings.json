@@ -1,0 +1,11 @@
+{
+  "files.exclude": {
+    "1-change-file-name": true,
+    "curso-*": true,
+    "docs": true,
+    "estudos-*": true,
+    "imgs": true,
+    "livros-*": true,
+    "poc-*": true
+  }
+}

@@ -34,52 +34,272 @@ Tutorial instalando pip para gerenciamento de pacotes pyhton: [installing-packag
 
 ### Pipenv
 
-Tutorial para instalação do pipenv: [Tutorial de instalação](https://packaging.python.org/pt_BR/latest/tutorials/managing-dependencies/)
+O [Pipenv](https://pipenv.pypa.io/en/latest/) combina `pip` e `virtualenv` em uma única ferramenta: cria/gerencia o ambiente virtual do projeto e mantém as dependências declaradas em um [`Pipfile`](#o-pipfile) (mais previsível que um `requirements.txt`).
 
-Local onde os ambientes virtual são criados: C:\Users\{CURRENT_USER}\.virtualenvs
-
-Links uteis:
+Links úteis:
 
 1) [pipenv](https://pipenv.pypa.io/en/latest/)
 
 2) [advanced](https://docs.pipenv.org/advanced/)
 
+3) [managing dependencies](https://packaging.python.org/pt_BR/latest/tutorials/managing-dependencies/)
+
+#### Instalação
+
+O pipenv é uma ferramenta **global**, não algo que fica dentro do ambiente de um projeto específico — por isso o ideal é instalá-lo isolado do Python de cada projeto, evitando que ele quebre quando você troca a versão do Python via `pyenv`.
+
+**Opção recomendada (multiplataforma) — via `pipx`:**
+
+```bash
+# macOS
+brew install pipx
+pipx ensurepath
+
+# Windows (PowerShell)
+py -m pip install --user pipx
+py -m pipx ensurepath
+```
+```bash
+# depois, em qualquer plataforma:
+pipx install pipenv
+```
+
+**macOS — alternativa via Homebrew:**
+
+```bash
+brew install pipenv
+```
+
+**Windows — alternativa via pip:**
+
+```powershell
+py -m pip install --user pipenv
+```
+> No Windows, garanta que a pasta de scripts do usuário (algo como `%APPDATA%\Python\Python3xx\Scripts`) esteja no `PATH` — senão o comando `pipenv` não é reconhecido depois de instalado.
+
+Confirme a instalação (qualquer plataforma):
+
+```bash
+pipenv --version
+```
+
+#### Onde os ambientes virtuais são criados
+
+Por padrão o pipenv **não** cria o `.venv` dentro da pasta do projeto — ele centraliza todos os ambientes numa pasta própria do usuário:
+
+* **macOS/Linux:** `~/.local/share/virtualenvs/`
+* **Windows:** `%USERPROFILE%\.virtualenvs`
+
+Para achar o caminho exato do ambiente de um projeto específico, rode dentro da pasta do projeto:
+
+```bash
+pipenv --venv
+```
+
 #### ☤ Configuração com variáveis de ambiente¶
 
-`PIPENV_VENV_IN_PROJECT` Se definido, use `.venv` no seu diretório de projeto em vez do gerenciador global de virtualenv pew.
+`PIPENV_VENV_IN_PROJECT` — se definida, o pipenv cria o ambiente numa pasta `.venv` **dentro do próprio projeto**, em vez de usar a pasta global acima. Isso facilita bastante a integração com o VS Code (veja a seção [Visual Studio Code](#visual-studio-code) abaixo).
 
+```bash
+# macOS/Linux (~/.zshrc ou ~/.bashrc)
+export PIPENV_VENV_IN_PROJECT=1
+```
+```powershell
+# Windows (PowerShell, permanente)
+setx PIPENV_VENV_IN_PROJECT 1
+```
 
 **Comandos básicos:**
 
-* pipenv para listar comandos:
-        
-    ```
+* Listar todos os comandos do pipenv:
+
+    ```bash
     pipenv
     ```
 
-*  criar ambiente virtual
+* Criar o ambiente virtual (e o `Pipfile`, se ainda não existir) com uma versão específica do Python:
 
+    ```bash
+    pipenv install --python 3.11
     ```
-    pipenv --python 3.11.1 (3.11.1<VERSION_PYTON>)
-    ``` 
 
-* remove a virtualenv created by "pipenv run"
-  
+* Instalar uma dependência (grava automaticamente no `Pipfile`):
+
+    ```bash
+    pipenv install requests
+    pipenv install pytest --dev
     ```
+
+* Ativar o ambiente virtual no terminal atual:
+
+    ```bash
+    pipenv shell
+    ```
+
+* Remover o ambiente virtual do projeto atual ("remove a virtualenv created by pipenv"):
+
+    ```bash
     pipenv --rm
     ```
 
-* Listar local onde o ambiente virtual está
+* Ver o caminho do ambiente virtual:
 
-    ```
+    ```bash
     pipenv --venv
     ```
 
-* Locais ondes envs são criados
+* Ver o caminho do interpretador Python usado pelo ambiente:
 
-  ```
-  %USERPROFILE%\.virtualenvs
-  ```
+    ```bash
+    pipenv --py
+    ```
+
+#### O `Pipfile`
+
+Todo projeto gerenciado pelo pipenv tem um `Pipfile` na raiz — é o substituto do `requirements.txt`, em formato TOML:
+
+```toml
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+requests = "*"
+
+[dev-packages]
+pytest = "*"
+mypy = "*"
+
+[requires]
+python_version = "3.11"
+
+[scripts]
+start = "python main.py"
+```
+
+* **`[[source]]`** — de onde os pacotes são baixados (por padrão, o PyPI oficial).
+* **`[packages]`** — dependências de produção; cada `pipenv install <pkg>` adiciona uma entrada aqui.
+* **`[dev-packages]`** — dependências só de desenvolvimento (testes, linters); preenchido por `pipenv install <pkg> --dev`.
+* **`[requires]`** — versão do Python exigida pelo projeto. Se você tiver o `pyenv` instalado, o pipenv usa essa informação para achar (ou sugerir instalar) o interpretador certo automaticamente.
+* **`[scripts]`** — atalhos executados com `pipenv run <nome>` (ex.: `pipenv run start`).
+
+O `Pipfile.lock`, gerado junto, fixa as versões exatas (com hashes) de tudo que foi instalado — é ele que garante que outra máquina reproduza o mesmo ambiente rodando `pipenv install`. Por isso ele **deve** ser commitado no git (diferente do `.venv`/pasta do ambiente virtual, que nunca deve ser commitada).
+
+#### Criando o ambiente em uma subpasta específica
+
+Este repositório tem uma pasta por curso/estudo, cada uma com seu próprio `Pipfile` — o ambiente é criado **dentro da subpasta**, não na raiz do repo:
+
+```bash
+cd nome-da-subpasta
+
+# se a subpasta (ou uma pasta acima, via pyenv) tiver uma versão do Python
+# configurada que você ainda não tem instalada, indique explicitamente
+# uma versão que você já possui:
+pipenv install --python 3.11
+
+# opcional: fixa essa versão só para esta subpasta,
+# sobrescrevendo o .python-version herdado de uma pasta acima
+pyenv local 3.11
+```
+
+## Visual Studio Code
+
+### Múltiplos ambientes pipenv em um só repositório
+
+Cada subpasta deste repo tem seu próprio `Pipfile`/ambiente virtual. A extensão Python do VS Code só detecta automaticamente o ambiente de uma pasta quando essa pasta é a **raiz do workspace aberto** — se você abrir `Python-Estudos/` inteiro como uma pasta única, ela não encontra o `Pipfile` de uma subpasta como `curso-x/`.
+
+Duas formas de resolver:
+
+#### Opção 1 — Abrir a subpasta diretamente
+
+```bash
+code nome-da-subpasta
+```
+Mais simples, mas você perde a visão do repo inteiro numa janela só.
+
+#### Opção 2 — Workspace multi-root
+
+Um arquivo `.code-workspace` permite abrir várias pastas como "raízes" independentes dentro de uma única janela do VS Code, cada uma com seu próprio interpretador Python selecionado. Este repositório já tem um: [`Python-Estudos.code-workspace`](./Python-Estudos.code-workspace), com todas as subpastas listadas.
+
+Para usar: `File > Open Workspace from File...` e selecione esse arquivo (em vez de `Open Folder`). Para adicionar novas pastas depois, use `File > Add Folder to Workspace...` — o VS Code atualiza o arquivo automaticamente.
+
+#### `.vscode/settings.json` por subpasta
+
+Dentro de uma raiz do workspace (a pasta inteira aberta na Opção 1, ou uma das entradas do multi-root da Opção 2), um `.vscode/settings.json` local aponta o interpretador certo:
+
+```bash
+cd nome-da-subpasta
+pipenv --venv   # copie o caminho retornado
+```
+
+```json
+{
+  "python.defaultInterpreterPath": "/caminho/retornado/por/pipenv --venv/bin/python"
+}
+```
+> No Windows, o interpretador fica em `...\Scripts\python.exe` em vez de `.../bin/python`.
+
+> **Importante:** esse `settings.json` só é lido pelo VS Code se a subpasta onde ele está for, ela mesma, uma raiz do workspace (Opção 1, ou uma entrada do `.code-workspace` da Opção 2). Colocá-lo dentro de uma subpasta enquanto o VS Code tem só a pasta-pai aberta como raiz única **não funciona** — o arquivo é ignorado silenciosamente.
+
+Se quiser que o `.venv` fique dentro da própria subpasta (mais fácil de localizar), exporte `PIPENV_VENV_IN_PROJECT=1` antes de criar o ambiente (veja a seção [Pipenv](#pipenv) acima) — assim o caminho do interpretador fica previsível (`./.venv/bin/python` ou `.\.venv\Scripts\python.exe`).
+
+### ✳ Configurar debug no VSCode
+
+Com o interpretador certo já selecionado (seção anterior), o debugger é configurado por pasta/projeto, através de um `launch.json` dentro de `.vscode/`.
+
+1. Abra a pasta do projeto (ou garanta que ela é uma raiz do workspace, como acima).
+2. `Ctrl+Shift+P` (`Cmd+Shift+P` no macOS) → **Python: Select Interpreter** → escolha o ambiente do pipenv daquela pasta (a extensão já lista os ambientes pipenv encontrados).
+3. Abra a view **Run and Debug** (`Ctrl+Shift+D` / `Cmd+Shift+D`) → **create a launch.json file** → escolha **Python Debugger** → **Python File**. Isso cria `.vscode/launch.json` dentro da pasta.
+4. A configuração gerada já cobre o caso mais comum — depurar o arquivo aberto no editor:
+
+    ```json
+    {
+      "version": "0.2.0",
+      "configurations": [
+        {
+          "name": "Python: Current File",
+          "type": "debugpy",
+          "request": "launch",
+          "program": "${file}",
+          "console": "integratedTerminal",
+          "justMyCode": true
+        }
+      ]
+    }
+    ```
+
+5. Para sempre depurar o mesmo arquivo de entrada (ex.: `main.py`), independente do que estiver aberto no editor, adicione outra configuração nomeada em vez de trocar a existente:
+
+    ```json
+    {
+      "name": "Python: main.py",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/main.py",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    }
+    ```
+    > `${workspaceFolder}` aponta para a raiz **daquela pasta específica**. Em um workspace multi-root, cada pasta tem seu próprio `launch.json` e seu próprio `${workspaceFolder}` — por isso nunca use caminho absoluto aqui.
+
+6. Para depurar testes com `pytest`, adicione:
+
+    ```json
+    {
+      "name": "Python: Pytest",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "pytest",
+      "args": ["-v"],
+      "console": "integratedTerminal",
+      "justMyCode": true
+    }
+    ```
+
+7. Para rodar: coloque um breakpoint clicando à esquerda do número da linha, escolha a configuração desejada no dropdown do topo da view **Run and Debug** e aperte `F5` (ou o botão ▶️ verde). `Shift+F5` para parar, `F10` (step over) e `F11` (step into) para navegar linha a linha.
+
+> Nota: em versões mais antigas da extensão Python, o `type` do debugger era `"python"` em vez de `"debugpy"`. Se um `launch.json` antigo usar `"python"`, ele ainda funciona — é só o nome de compatibilidade legado.
 
 ## Mypy:
 
